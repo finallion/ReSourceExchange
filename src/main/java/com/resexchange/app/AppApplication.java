@@ -8,6 +8,9 @@ public class AppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AppApplication.class, args);
+
+		// Benutzer-Name: user
+		// Password: beim Starten der Application in der Console
 	}
 
 }

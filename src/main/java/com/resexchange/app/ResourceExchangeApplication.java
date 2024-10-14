@@ -1,5 +1,6 @@
 package com.resexchange.app;
 
+import com.resexchange.app.model.PrivateUser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,10 @@ public class ResourceExchangeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ResourceExchangeApplication.class, args);
+
+		PrivateUser user = new PrivateUser();
+		user.setName("Lion");
+		user.setSurname("Brettmeister");
 
 		// Benutzer-Name: user
 		// Password: beim Starten der Application in der Console

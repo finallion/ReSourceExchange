@@ -10,10 +10,6 @@ public class ResourceExchangeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ResourceExchangeApplication.class, args);
 
-		PrivateUser user = new PrivateUser();
-		user.setName("Lion");
-		user.setSurname("Brettmeister");
-
 		// Benutzer-Name: user
 		// Password: beim Starten der Application in der Console
 	}

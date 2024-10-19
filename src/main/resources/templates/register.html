@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+</head>
+<body>
+<h2>Create an Account</h2>
+
+<h3>Register as Private User</h3>
+<form th:action="@{/register/private}" method="post">
+    <div>
+        <label>First Name:</label>
+        <input type="text" name="firstName" required/>
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" required/>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" name="mail" required/>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" name="password" required/>
+    </div>
+    <button type="submit">Register as Private User</button>
+</form>
+
+<h3>Register as Company</h3>
+<form th:action="@{/register/company}" method="post">
+    <div>
+        <label>Company Name:</label>
+        <input type="text" name="companyName" required/>
+    </div>
+    <div>
+        <label>Registration Number:</label>
+        <input type="text" name="registrationNumber" required/>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" name="email" required/>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" name="password" required/>
+    </div>
+    <button type="submit">Register as Company</button>
+</form>
+
+<p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+</body>
+</html>

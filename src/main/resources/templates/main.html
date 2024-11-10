@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+
+    <script src="/js/scripts.js"></script>
+    <link type="text/css" href="/css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Messaging Stomp API / Topic -->
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@5.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.0/dist/sockjs.min.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
+                    <button id="toggleMapView" class="btn btn-outline-success me-2" type="button">Switch to map</button>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-page">
+        <div class="side-bar">
+            <div class="main-page-content">
+
+                <p>Filter-Options</p>
+                <div id="search-div">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="listings">
+            <div class="main-page-content" id="listings" style="display: block;">
+                <!-- loop -->
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Remember</a>
+                        <a href="#" class="card-link">Message</a>
+                        <a href="#" class="card-link">Buy</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main-page-content" id="map" style="display: none;">
+                <p>I'm the map!</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-window">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+
+
+    <script>
+        // toggle for map view / listing
+        document.getElementById("toggleMapView").addEventListener("click", function () {
+            const section1 = document.getElementById("listings");
+            const section2 = document.getElementById("map");
+
+            if (section1.style.display === "block") {
+                section1.style.display = "none";
+                section2.style.display = "block";
+            } else {
+                section1.style.display = "block";
+                section2.style.display = "none";
+            }
+        });
+    </script>
+
+    <script>
+        // Create a Stomp Client
+        const client = new StompJs.Client({
+            brokerURL: 'ws://localhost:8080/ws',  // Update with your WebSocket URL
+            reconnectDelay: 5000,  // Attempt to reconnect after 5 seconds if the connection drops
+            heartbeatIncoming: 4000,
+            heartbeatOutgoing: 4000,
+            debug: (str) => {
+                console.log(str);  // Log debug messages from Stomp.js
+            }
+        });
+
+        // Define the onConnect handler
+        client.onConnect = (frame) => {
+            console.log("Connected: " + frame);
+
+            // Subscribe to a topic
+            client.subscribe('/topic/chat/1', (message) => {
+                // Display the received message
+                const msgContent = JSON.parse(message.body);
+                showReceivedMessage(msgContent);
+            });
+        };
+
+        // Define the onStompError handler
+        client.onStompError = (frame) => {
+            console.error('Broker reported error: ' + frame.headers['message']);
+            console.error('Additional details: ' + frame.body);
+        };
+
+        // Activate the client to connect
+        client.activate();
+
+        // Function to send a message
+        function sendMessage() {
+            const content = document.getElementById('message-input').value;
+            const message = {
+                sender: "User1",  // Replace with the actual sender's name or ID
+                content: content
+            };
+
+            client.publish({
+                destination: '/app/chat/1',
+                body: JSON.stringify(message)
+            });
+
+            document.getElementById('message-input').value = '';  // Clear input field after sending
+        }
+
+        // Function to display received messages
+        function showReceivedMessage(message) {
+            const messagesDiv = document.getElementById('messages');
+            const messageElement = document.createElement('p');
+            messageElement.textContent = `${message.sender}: ${message.content}`;
+            messagesDiv.appendChild(messageElement);
+        }
+    </script>
+
+
+</body>
+</html>

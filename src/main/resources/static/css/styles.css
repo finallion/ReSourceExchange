@@ -1,0 +1,76 @@
+.center-page-div {
+    margin-top: 30px;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.title {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.split-page-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.form-div {
+    height: 60%;
+    padding: 15px;
+    margin: 20px 20px 0;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+}
+
+.register-btn {
+    margin-top: 20px;
+}
+
+#offset-btn {
+    margin-top: 50%;
+}
+
+.me-auto {
+    margin-left: auto !important;
+}
+
+
+.main-page {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+}
+
+.side-bar {
+    height: 800px;                      <!-- REMOVE -->
+    padding: 10px;
+    width: 20%;
+    background-color: #f8f9fa;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.listings {
+    width: 80%;
+    height: 800px;                      <!-- REMOVE -->
+    border: 1px solid grey;
+}
+
+.main-page-content{
+    padding: 10px;
+}
+
+#search-div {
+    display: flex;
+    align-items: flex-end;
+}

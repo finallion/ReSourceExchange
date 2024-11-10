@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,17 +31,17 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/register/**", "/login").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/company/**").hasRole("COMPANY")
-                        .requestMatchers("/user/**").hasRole("PRIVATE_USER")
+                        .requestMatchers("/user/**").hasAnyRole("COMPANY", "PRIVATE_USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .usernameParameter("mail")
-                        .passwordParameter("password")
-                        .defaultSuccessUrl("/welcome", true)
+                        .usernameParameter("mail") // must match name="" field for mail input in /login
+                        .passwordParameter("password") // must match name="" field for password input in /login
+                        .defaultSuccessUrl("/main", true)
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )

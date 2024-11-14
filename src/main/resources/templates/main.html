@@ -26,13 +26,33 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
                     <button id="toggleMapView" class="btn btn-outline-success me-2" type="button">Switch to map</button>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Add material</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/material/create}">Add material</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Create listing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Switch language</a>
+                        <span th:text="#{lang.change}"></span>:
+                        <select id="locales" onchange="changeLanguage(this.value)">
+                            <option value="en" th:text="#{lang.en}"></option>
+                            <option value="de" th:text="#{lang.de}"></option>
+                        </select>
+                        <script>
+                            // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const lang = urlParams.get('lang');  // Der Parameter aus der URL
+
+                            // Wenn ein Wert gefunden wird, setze ihn im select-Feld
+                            if (lang) {
+                                document.getElementById("locales").value = lang;
+                            }
+
+                            // Funktion, um die Sprache zu ändern
+                            function changeLanguage(language) {
+                                // Sprache in der URL ändern (z.B. ?lang=en)
+                                window.location.href = window.location.pathname + "?lang=" + language;
+                            }
+                        </script>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Profile</a>

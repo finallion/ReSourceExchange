@@ -22,7 +22,7 @@
             <input type="email" class="form-control" id="mail-id" aria-describedby="basic-addon3" name="mail">
         </div>
 
-        <label for="password-id" class="form-label">Password:</label>
+        <label for="password-id" class="form-label" th:text="#{password}+':'"></label>
         <div class="input-group mb-3">
             <!-- name must match the entities attribute name -->
             <input type="password" class="form-control" id="password-id" aria-describedby="basic-addon3" name="password">
@@ -30,11 +30,12 @@
 
 
         <div class="center-div">
-            <button  type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <button  type="submit" class="btn btn-primary btn-block mb-4" th:text="#{sign-in}"></button>
         </div>
 
         <div class="text-center">
-            <p>Not a member? <a th:href="@{/register}">Register</a></p>
+            <p th:text="#{noMember}"></p>
+            <a th:href="@{/register}" th:text="#{register}"></a>
         </div>
     </form>
 </div>

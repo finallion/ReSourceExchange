@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" th:href="@{/material/create}">Add material</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Create listing</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/listing/create}">Create listing</a>
                     </li>
                     <li class="nav-item">
                         <span th:text="#{lang.change}"></span>:
@@ -83,22 +83,24 @@
 
         <div class="listings">
             <div class="main-page-content" id="listings" style="display: block;">
-                <!-- loop -->
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Remember</a>
-                        <a href="#" class="card-link">Message</a>
-                        <a href="#" class="card-link">Buy</a>
+                <div class="cards-container">
+                    <!-- Thymeleaf-Schleife für Listings -->
+                    <div th:each="listing : ${listings}" class="card" style="width: 18rem; margin-bottom: 20px;">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${listing.material.name}">Material Type</h6>
+                            <p class="card-text">
+                                <span th:text="'Quantity: ' + ${listing.quantity}"></span><br>
+                                <span th:text="'Price: $' + ${listing.price}"></span><br>
+                            </p>
+                            <a href="#" class="card-link">Update</a>
+                            <a href="#" class="card-link">Delete</a>
+                            <a href="#" class="card-link">Buy</a>
+                        </div>
                     </div>
                 </div>
-
             </div>
             <div class="main-page-content" id="map" style="display: none;">
                 <p>I'm the map!</p>
-
             </div>
         </div>
     </div>

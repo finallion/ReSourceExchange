@@ -74,3 +74,21 @@
     display: flex;
     align-items: flex-end;
 }
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1 0 30%;
+    max-width: 20%;
+    height: 150px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

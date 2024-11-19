@@ -72,11 +72,10 @@ public class ListingController {
     // GET-Request, um alle Listings anzuzeigen
     @GetMapping("/main")
     public String showListings(Model model) {
-        // Alle Listings aus der Datenbank abrufen
         List<Listing> listings = listingRepository.findAll();
+        System.out.println("Listings size: " + listings.size());  // Debugging
         model.addAttribute("listings", listings);  // Listings an das Model übergeben
-
-        return "main";  // Das Template, das die Listings anzeigt
+        return "main";  // Haupttemplate "main.html" wird gerendert
     }
 
     /*

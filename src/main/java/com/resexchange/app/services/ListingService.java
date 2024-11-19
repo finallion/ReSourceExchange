@@ -19,7 +19,6 @@ public class ListingService {
     private final ListingRepository listingRepository;
     private final MaterialRepository materialRepository;
 
-    // Der Service benötigt sowohl ListingRepository als auch MaterialRepository
     public ListingService(ListingRepository listingRepository, MaterialRepository materialRepository) {
         this.listingRepository = listingRepository;
         this.materialRepository = materialRepository;

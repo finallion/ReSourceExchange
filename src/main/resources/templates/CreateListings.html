@@ -34,7 +34,6 @@
     <h1 class="mb-4">Listing erstellen</h1>
 
     <form th:action="@{/listing/create}" th:object="${listing}" method="post">
-        <!-- Dropdown zum Auswählen des Materials -->
         <div class="mb-3">
             <label for="material" class="form-label">Material:</label>
             <select th:field="*{material.id}" id="material" class="form-control" required>
@@ -44,13 +43,11 @@
             </select>
         </div>
 
-        <!-- Menge Eingabe -->
         <div class="mb-3">
             <label for="quantity" class="form-label">Menge:</label>
             <input type="number" th:field="*{quantity}" id="quantity" class="form-control" required min="1" />
         </div>
 
-        <!-- Preis Eingabe -->
         <div class="mb-3">
             <label for="price" class="form-label">Preis:</label>
             <input type="number" th:field="*{price}" id="price" class="form-control" required step="0.01" min="0" />

@@ -9,12 +9,12 @@ public class Listing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne // Eine Beziehung zu einem bereits existierenden Material
+    @ManyToOne
     @JoinColumn(name = "material_id", nullable = false)
     private Material material;
 
-    private int quantity;  // Anzahl der verfügbaren Materialien in diesem Listing
-    private double price;  // Preis für das Material in diesem Listing
+    private int quantity;
+    private double price;
 
     public Material getMaterial() {
         return material;

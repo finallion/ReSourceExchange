@@ -38,7 +38,7 @@
             <label for="material" class="form-label">Material:</label>
             <select th:field="*{material.id}" id="material" class="form-control" required>
                 <option th:each="material : ${materials}"
-                        th:value="${material.id}"
+                        th:value="${material.getId()}"
                         th:text="${material.getName()}">Material Option</option>
             </select>
         </div>

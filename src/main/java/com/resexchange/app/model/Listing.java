@@ -16,6 +16,14 @@ public class Listing {
     private int quantity;
     private double price;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public Material getMaterial() {
         return material;
     }

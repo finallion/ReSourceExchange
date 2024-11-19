@@ -92,8 +92,8 @@
                                 <span th:text="'Quantity: ' + ${listing.quantity}"></span><br>
                                 <span th:text="'Price: $' + ${listing.price}"></span><br>
                             </p>
-                            <a href="#" class="card-link">Update</a>
-                            <a href="#" class="card-link">Delete</a>
+                            <a th:href="@{/listing/update/{id}(id=${listing.id})}" class="card-link">Update</a>
+                            <a th:href="@{/listing/delete/{id}(id=${listing.id})}" class="card-link">Delete</a>
                             <a href="#" class="card-link">Buy</a>
                         </div>
                     </div>

@@ -79,11 +79,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .card {
-    flex: 1 0 30%;
+    flex: 0 1 20%;
     max-width: 20%;
     height: 150px;
     box-sizing: border-box;

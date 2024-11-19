@@ -4,6 +4,7 @@ import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.MaterialRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,13 +50,23 @@ public class ListingService {
         return listingRepository.findAll();
     }
 
-    // Listing nach ID abrufen
-    public Optional<Listing> getListingById(Long id) {
-        LOGGER.info("Retrieving listing with ID: {}", id);
-        return listingRepository.findById(id);
+    //Listing updaten
+    public void updateListing(Listing listing) {
+        if (listingRepository.existsById(listing.getId())) {
+            listingRepository.save(listing);  // Speichert das Listing (update)
+        } else {
+            LOGGER.warn("Listing with ID: {} not found", listing.getId());
+        }
     }
 
+    public Listing getListingById(Long id) {
+        return listingRepository.findById(id)
+                .orElse(null);  // Gibt null zurück, wenn das Listing nicht gefunden wird
+    }
+
+
     // Listing löschen
+    @Transactional
     public void deleteListing(Long id) {
         if (listingRepository.existsById(id)) {
             LOGGER.info("Deleting listing with ID: {}", id);

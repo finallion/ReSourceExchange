@@ -71,24 +71,35 @@ public class ListingController {
         return "main";
     }
 
-    /*
-    // GET-Request, um ein bestimmtes Listing anzuzeigen
-    @GetMapping("/view/{id}")
-    public String viewListing(@PathVariable("id") Long id, Model model) {
-        Optional<Listing> listing = listingService.getListingById(id);
-        if (listing.isPresent()) {
-            model.addAttribute("listing", listing.get());
-            return "viewListing";  // Thymeleaf-Template für die Detailansicht eines Listings
-        } else {
-            return "redirect:/listing/list";  // Zurück zur Liste, falls das Listing nicht gefunden wurde
+    @GetMapping("/update/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+        Listing listing = listingService.getListingById(id);
+        List<Material> materials = materialRepository.findAll();
+
+        if (!materials.isEmpty()) {
+            listing.setMaterial(materials.get(0)); // Setze das erste Material als Standard
         }
+
+        model.addAttribute("listing", listing);
+        model.addAttribute("materials", materials);
+
+        return "updateListing";
     }
 
-    // GET-Request, um ein Listing zu löschen
+    @PostMapping("/update/{id}")
+    public String updateListing(@PathVariable("id") Long id, @ModelAttribute Listing listing, RedirectAttributes redirectAttributes) {
+        listing.setId(id);
+        listingService.updateListing(listing);
+        redirectAttributes.addFlashAttribute("message", "Listing updated successfully.");
+        return "redirect:/main";
+    }
+
+
     @GetMapping("/delete/{id}")
     public String deleteListing(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         listingService.deleteListing(id);
-        redirectAttributes.addFlashAttribute("successMessage", "Listing successfully deleted!");
-        return "redirect:/listing/list";
-    }*/
+        redirectAttributes.addFlashAttribute("message", "Listing deleted successfully.");
+        return "redirect:/main";
+    }
+
 }

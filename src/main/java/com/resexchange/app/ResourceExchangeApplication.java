@@ -1,6 +1,8 @@
 package com.resexchange.app;
 
+import com.resexchange.app.model.Company;
 import com.resexchange.app.model.PrivateUser;
+import com.resexchange.app.model.Role;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +12,7 @@ public class ResourceExchangeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ResourceExchangeApplication.class, args);
+
 
 	}
 

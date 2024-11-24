@@ -1,6 +1,12 @@
 package com.resexchange.app.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -10,7 +16,7 @@ public abstract class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String mail;
 
     // encrypted
@@ -19,6 +25,20 @@ public abstract class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<Permission> permissions = new HashSet<>();
+
+    /**
+     * Delete listing on user deletion
+     */
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Listing> listings;
+
+    public User() {
+
+    }
 
     public String getMail() {
         return mail;
@@ -42,6 +62,16 @@ public abstract class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<Permission> permissions) {
+        this.permissions = permissions;
+    }
+    public Long getId() {
+        return id;
     }
 }
 

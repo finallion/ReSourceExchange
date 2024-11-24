@@ -2,6 +2,8 @@ package com.resexchange.app.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Listing {
 
@@ -15,6 +17,13 @@ public class Listing {
 
     private int quantity;
     private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User createdBy;
+
+    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Chat> chats;
 
     public void setId(Long id) {
         this.id = id;
@@ -46,5 +55,21 @@ public class Listing {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Set<Chat> getChats() {
+        return chats;
+    }
+
+    public void setChats(Set<Chat> chats) {
+        this.chats = chats;
     }
 }

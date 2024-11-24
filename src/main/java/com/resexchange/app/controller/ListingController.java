@@ -2,10 +2,13 @@ package com.resexchange.app.controller;
 
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
+import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ListingRepository;
+import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.services.ListingService;
 import com.resexchange.app.repositories.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,19 +21,16 @@ import java.util.List;
 public class ListingController {
 
     @Autowired
-    private final ListingService listingService;
+    private ListingService listingService;
 
     @Autowired
-    private final MaterialRepository materialRepository;
+    private MaterialRepository materialRepository;
 
     @Autowired
-    private final ListingRepository listingRepository;
+    private ListingRepository listingRepository;
 
-    public ListingController(ListingService listingService, MaterialRepository materialRepository, ListingRepository listingRepository) {
-        this.listingService = listingService;
-        this.materialRepository = materialRepository;
-        this.listingRepository = listingRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     // GET-Request, um das Formular für ein neues Listing zu zeigen
     @GetMapping("/create")
@@ -46,7 +46,7 @@ public class ListingController {
 
     // POST-Request, um ein neues Listing zu speichern
     @PostMapping("/create")
-    public String createListing(@ModelAttribute("listing") Listing listing, RedirectAttributes redirectAttributes) {
+    public String createListing(@ModelAttribute("listing") Listing listing, RedirectAttributes redirectAttributes, Authentication authentication) {
         if (listing.getMaterial() == null || listing.getMaterial().getId() == null) {
             redirectAttributes.addFlashAttribute("error", "Material must be selected!");
             return "redirect:/listing/create";
@@ -57,6 +57,10 @@ public class ListingController {
             return "redirect:/listing/create";
         }
 
+        User user = userRepository.findByMail(authentication.getName())
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        listing.setCreatedBy(user);
         listingRepository.save(listing);
         redirectAttributes.addFlashAttribute("success", "Listing successfully created!");
 

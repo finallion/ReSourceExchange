@@ -1,14 +1,13 @@
 package com.resexchange.app.services;
 
-import com.resexchange.app.model.Admin;
-import com.resexchange.app.model.Company;
-import com.resexchange.app.model.PrivateUser;
-import com.resexchange.app.model.Role;
+import com.resexchange.app.model.*;
 import com.resexchange.app.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -24,25 +23,20 @@ public class UserService {
     }
 
     public void registerCompanyUser(Company company) {
-        LOGGER.debug("Register company: %s".formatted(company.getPassword()));
         company.setPassword(passwordEncoder.encode(company.getPassword()));
         company.setRole(Role.COMPANY);
+        company.setPermissions(Set.of(Permission.CHAT, Permission.MANAGE_LISTINGS));
         userRepository.save(company);
     }
 
     public void registerPrivateUser(PrivateUser privateUser) {
-        LOGGER.info("Entered raw password: {}", privateUser.getPassword());
-
         privateUser.setPassword(passwordEncoder.encode(privateUser.getPassword()));
-
-        LOGGER.info("Encoded password saved in the database: {}", privateUser.getPassword());
-
         privateUser.setRole(Role.PRIVATE_USER);
+        privateUser.setPermissions(Set.of(Permission.CHAT, Permission.MANAGE_LISTINGS));
         userRepository.save(privateUser);
     }
 
     public void registerAdmin(Admin admin) {
-        LOGGER.debug("Register admin user: %s".formatted(admin.getPassword()));
         admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         admin.setRole(Role.ADMIN);
         userRepository.save(admin);

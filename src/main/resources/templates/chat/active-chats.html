@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Active Chats</title>
+</head>
+<body>
+    <h1>Your Active Chats</h1>
+    <div>
+        <ul>
+            <li th:each="chat : ${activeChats}">
+                <div>
+                    <strong>Listing:</strong> <span th:text="${chat.listing.material}"></span>
+                    <br />
+                    <strong>Price:</strong> <span th:text="${chat.listing.price}"></span>
+                    <br />
+                    <strong>Quantity:</strong> <span th:text="${chat.listing.quantity}"></span>
+                </div>
+
+                <a th:href="@{/chat/{listingId}/{creatorId}/{initiatorId}(
+                            listingId=${chat.listing.id},
+                            creatorId=${chat.creator.id},
+                            initiatorId=${chat.initiator.id})}">
+                    Chat with
+                    <span th:text="${chat.initiator.mail}" th:if="${chat.initiator.mail != loggedInUser.mail}"></span>
+                    <span th:text="${chat.creator.mail}" th:if="${chat.creator.mail != loggedInUser.mail}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+<div>
+    <button onclick="history.back()" style="margin-bottom: 10px;">Back</button>
+</div>
+</body>
+</html>

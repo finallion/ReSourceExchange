@@ -1,16 +1,24 @@
 package com.resexchange.app.model;
 
-public class Message {
-    private String sender;
-    private String content;
-    private String timestamp;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
-    public String getSender() {
-        return sender;
+@Entity
+public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String content;
+    private String sender;
+    @ManyToOne
+    private Chat chat;
+
+    public Message() {
+
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public Long getId() {
+        return id;
     }
 
     public String getContent() {
@@ -21,11 +29,19 @@ public class Message {
         this.content = content;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getSender() {
+        return sender;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public Chat getChat() {
+        return chat;
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
     }
 }

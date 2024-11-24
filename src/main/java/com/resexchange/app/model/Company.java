@@ -18,4 +18,7 @@ public class Company extends User {
         return companyName;
     }
 
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 }

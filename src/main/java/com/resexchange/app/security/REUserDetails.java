@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -20,15 +22,28 @@ public class REUserDetails implements UserDetails {
         this.user = user;
     }
 
+    public Long getId() {
+        return user.getId();
+    }
+
+    public String getMail() {
+        return user.getMail();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        LOGGER.info("Call getAuthorities for user %s".formatted(user));
-        return Collections.singleton(new SimpleGrantedAuthority(user.getRole().name()));
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+
+        user.getPermissions().forEach(permission ->
+                authorities.add(new SimpleGrantedAuthority(permission.name()))
+        );
+
+        authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        LOGGER.debug("Password: " + user.getPassword());
         return user.getPassword();
     }
 

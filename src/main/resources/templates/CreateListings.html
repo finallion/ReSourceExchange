@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Listing erstellen</title>
+    <title th:text="#{title.create_listing}">Listing erstellen</title>
     <script src="/js/scripts.js"></script>
     <link type="text/css" href="/css/styles.css" rel="stylesheet" />
     <!-- Bootstrap -->
@@ -18,24 +18,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/listing/create}">Create listing</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create listing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Switch language</a>
+                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.switch_language}">Switch language</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}">Profile</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <h1 class="mb-4">Listing erstellen</h1>
+    <h1 class="mb-4" th:text="#{title.create_listing}">Listing erstellen</h1>
 
     <form th:action="@{/listing/create}" th:object="${listing}" method="post">
         <div class="mb-3">
-            <label for="material" class="form-label">Material:</label>
+            <label for="material" class="form-label" th:text="#{form.material}">Material:</label>
             <select th:field="*{material.id}" id="material" class="form-control" required>
                 <option th:each="material : ${materials}"
                         th:value="${material.getId()}"
@@ -44,17 +44,17 @@
         </div>
 
         <div class="mb-3">
-            <label for="quantity" class="form-label">Menge:</label>
+            <label for="quantity" class="form-label" th:text="#{form.quantity}">Menge:</label>
             <input type="number" th:field="*{quantity}" id="quantity" class="form-control" required min="1" />
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label">Preis:</label>
+            <label for="price" class="form-label" th:text="#{form.price}">Preis:</label>
             <input type="number" th:field="*{price}" id="price" class="form-control" required step="0.01" min="0" />
         </div>
 
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" th:text="#{button.save}">Save</button>
         </div>
     </form>
 </div>

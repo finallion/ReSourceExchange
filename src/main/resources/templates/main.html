@@ -95,20 +95,21 @@
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-muted" th:text="${listing.material.name}">Material Type</h6>
                             <p class="card-text">
-                                <span th:text="'Quantity: ' + ${listing.quantity}"></span><br>
-                                <span th:text="'Price: $' + ${listing.price}"></span><br>
+                                <span th:text="#{listing.quantity} + ': ' + ${listing.quantity}"></span><br>
+                                <span th:text="#{listing.price} + ': $' + ${listing.price}"></span><br>
                             </p>
                             <a th:if="${#authentication.name == listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
-                               th:href="@{/listing/update/{id}(id=${listing.id})}" class="card-link">Update</a>
+                               th:href="@{/listing/update/{id}(id=${listing.id})}" class="card-link" th:text="#{listing.update}">Update</a>
                             <a th:if="${#authentication.name == listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
-                               th:href="@{/listing/delete/{id}(id=${listing.id})}" class="card-link">Delete</a>
+                               th:href="@{/listing/delete/{id}(id=${listing.id})}" class="card-link" th:text="#{listing.delete}">Delete</a>
 
-                            <a href="#" class="card-link">Buy</a>
+                            <a href="#" class="card-link" th:text="#{listing.buy}">Buy</a>
                             <a th:if="${#authentication.principal.mail != listing.createdBy.mail}"
                                th:href="@{/chat/{listingId}/{creatorId}/{initiatorId}(
-                                    listingId=${listing.id},
-                                    creatorId=${listing.createdBy.id},
-                                    initiatorId=${#authentication.principal.id})}">
+                            listingId=${listing.id},
+                            creatorId=${listing.createdBy.id},
+                            initiatorId=${#authentication.principal.id})}"
+                               th:text="#{listing.chat}">
                                 Chat
                             </a>
                         </div>

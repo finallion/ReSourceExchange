@@ -1,9 +1,7 @@
 package com.resexchange.app.configuration;
 
 import com.resexchange.app.model.*;
-import com.resexchange.app.repositories.CompanyRepository;
-import com.resexchange.app.repositories.PrivateUserRepository;
-import com.resexchange.app.repositories.UserRepository;
+import com.resexchange.app.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +25,12 @@ public class MockupDataInitializer implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ListingRepository listingRepository;
+
+    @Autowired
+    private MaterialRepository materialRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -97,5 +101,70 @@ public class MockupDataInitializer implements CommandLineRunner {
         } else {
             System.out.println("Company 'Innovative Designs AG' already exists.");
         }
+        // Materials und Listings
+
+        Material material1 = materialRepository.findByName("Holz").orElse(null);
+        if (material1 == null) {
+            material1 = new Material();
+            material1.setName("Holz");
+            material1.setDescription("Ich und mein Holz");
+            materialRepository.save(material1);
+        } else {
+            System.out.println("Material 'Holz' already exists.");
+        }
+
+        if (!listingRepository.existsByMaterial(material1)) {
+            Listing listing1 = new Listing();
+            listing1.setMaterial(material1);
+            listing1.setPrice(3.99);
+            listing1.setQuantity(1);
+            listing1.setCreatedBy(userRepository.findById(1));
+            listingRepository.save(listing1);
+        } else {
+            System.out.println("Listing 'Holz' already exists.");
+        }
+
+        Material material2 = materialRepository.findByName("Beton").orElse(null);
+        if (material2 == null) {
+            material2 = new Material();
+            material2.setName("Beton");
+            material2.setDescription("Toller Beton");
+            materialRepository.save(material2);
+        } else {
+            System.out.println("Material 'Beton' already exists.");
+        }
+
+        if (!listingRepository.existsByMaterial(material2)) {
+            Listing listing2 = new Listing();
+            listing2.setMaterial(material2);
+            listing2.setPrice(10.0);
+            listing2.setQuantity(5);
+            listing2.setCreatedBy(userRepository.findById(2));
+            listingRepository.save(listing2);
+        } else {
+            System.out.println("Listing 'Beton' already exists.");
+        }
+
+        Material material3 = materialRepository.findByName("Bildschirm").orElse(null);
+        if (material3 == null) {
+            material3 = new Material();
+            material3.setName("Bildschirm");
+            material3.setDescription("Mega Bildschirm");
+            materialRepository.save(material3);
+        } else {
+            System.out.println("Material 'Bildschirm' already exists.");
+        }
+
+        if (!listingRepository.existsByMaterial(material3)) {
+            Listing listing3 = new Listing();
+            listing3.setMaterial(material3);
+            listing3.setPrice(50.49);
+            listing3.setQuantity(1);
+            listing3.setCreatedBy(userRepository.findById(3));
+            listingRepository.save(listing3);
+        } else {
+            System.out.println("Listing 'Bildschirm' already exists.");
+        }
+
     }
 }

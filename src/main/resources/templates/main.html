@@ -24,18 +24,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
-                    <button id="toggleMapView" class="btn btn-outline-success me-2" type="button">Switch to map</button>
-                    <li class="nav-item" sec:authorize="hasAuthority('MANAGE_MATERIALS')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/material/create}">Add Material</a>
+                    <button id="toggleMapView" class="btn btn-outline-success me-2" type="button" th:text="#{navbar.map}">Switch to map</button>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link active" aria-current="page" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link active" aria-current="page" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
                     </li>
                     <li class="nav-item" sec:authorize="hasAuthority('MANAGE_LISTINGS')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/listing/create}">Create Listing</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create Listing</a>
                     </li>
-                    <li class="nav-item">
-                        <span th:text="#{lang.change}"></span>:
+                    <li class="nav-item language">
+                        <span th:text="#{navbar.switch_language}"></span>:
                         <select id="locales" onchange="changeLanguage(this.value)">
-                            <option value="en" th:text="#{lang.en}"></option>
-                            <option value="de" th:text="#{lang.de}"></option>
+                            <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
+                            <option value="de" th:text="#{lang.de}" th:selected="${currentLocale == 'de'}"></option>
                         </select>
                         <script>
                             // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
@@ -55,13 +58,13 @@
                         </script>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/chat/active}">Active Chats</a>
+                        <a class="nav-link active" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                        <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}">Profile</a>
                     </li>
                     <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                        <a class="nav-link" th:href="@{/admin/users}">Manage Users</a>
+                        <a class="nav-link" th:href="@{/admin/users}" th:text="#{navbar.manage_users}">Manage Users</a>
                     </li>
                 </ul>
 

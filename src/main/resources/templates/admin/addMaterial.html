@@ -25,29 +25,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Create listing</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Switch language</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}"></a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <h1 class="mb-4">Material erstellen</h1>
+    <h1 class="mb-4" th:text="#{material.header}">Material erstellen</h1>
 
     <form action="#" th:action="@{/material/create}" th:object="${material}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
         <div class="mb-3">
-            <label for="name" class="form-label" th:text="#{name} + ':'"></label>
+            <label for="name" class="form-label" th:text="#{name}"></label>
             <input type="text" th:field="*{name}" id="name" class="form-control" required />
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label" th:text="#{description} + ':'"></label>
+            <label for="description" class="form-label" th:text="#{description}"></label>
             <textarea th:field="*{description}" id="description" class="form-control"></textarea>
         </div>
 

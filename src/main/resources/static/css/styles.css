@@ -92,3 +92,42 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.delete-icon {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete-icon:hover svg {
+    color: darkred;
+}
+
+.chat-icon {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chat-icon:hover {
+    color: darkgreen;
+}
+
+.buy-icon {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buy-icon:hover {
+    color: darkgreen;
+}
+
+.update-icon {
+    color: inherit;
+    text-decoration: none;
+}
+
+.update-icon:hover {
+    color: darkgreen;
+}

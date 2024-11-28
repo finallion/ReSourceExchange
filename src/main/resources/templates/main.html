@@ -57,6 +57,20 @@
                             }
                         </script>
                     </li>
+                    <li class="nav-item language">
+                        <span th:text="#{navbar.switch_currency}"></span>:
+                        <select id="currencySelector" onchange="changeCurrency(this.value)">
+                            <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>
+                            <option value="usd" th:selected="${session.currency == 'usd'}">USD</option>
+                            <option value="gbp" th:selected="${session.currency == 'gbp'}">GBP</option>
+                            <option value="chf" th:selected="${session.currency == 'chf'}">CHF</option>
+                        </select>
+                        <script>
+                            function changeCurrency(currency) {
+                                window.location.href = '/convert-currency?currency=' + currency;
+                            }
+                        </script>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
                     </li>
@@ -99,7 +113,7 @@
                             <h6 class="card-subtitle mb-2 text-muted" th:text="${listing.material.name}">Material Type</h6>
                             <p class="card-text">
                                 <span th:text="#{listing.quantity} + ': ' + ${listing.quantity}"></span><br>
-                                <span th:text="#{listing.price} + ': $' + ${listing.price}"></span><br>
+                                <span th:text="#{listing.price} + ': ' + ${#numbers.formatDecimal(listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span><br>
                             </p>
                             <div class="icon-container">
                             <a th:if="${#authentication.name == listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"

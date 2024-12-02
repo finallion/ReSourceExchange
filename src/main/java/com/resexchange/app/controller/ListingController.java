@@ -90,8 +90,10 @@ public class ListingController {
         Listing listing = listingService.getListingById(id);
         List<Material> materials = materialRepository.findAll();
 
-        if (!materials.isEmpty()) {
-            listing.setMaterial(materials.get(0)); // Setze das erste Material als Standard
+        if (!(listing.getMaterial() == null)) {
+            listing.setMaterial(listing.getMaterial());
+        }else if(!materials.isEmpty()){
+            listing.setMaterial(materials.getFirst()); // Setze das erste Material als Standard
         }
 
         model.addAttribute("listing", listing);
@@ -115,6 +117,7 @@ public class ListingController {
 
         listing.setId(id);
         listing.setCreatedBy(loggedInUser);
+        listing.setChats(listing.getChats());
 
         // Das Listing aktualisieren
         listingService.updateListing(listing);

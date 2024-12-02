@@ -33,7 +33,9 @@
 <div class="container">
     <h1 class="mb-4" th:text="#{title.update_listing}">Listing updaten</h1>
 
-    <form th:action="@{/listing/update/{id}(id=${listing.id})}" th:object="${listing}" method="post">
+    <form th:action="@{/listing/update/{id}/{initiatorId}(id=${listing.id}, initiatorId=${#authentication.getPrincipal().id})}"
+          th:object="${listing}"
+          method="post">
         <div class="mb-3">
             <label for="material" class="form-label" th:text="#{form.material}">Material:</label>
             <select th:field="*{material.id}" id="material" class="form-control" required>

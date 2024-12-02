@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -75,8 +76,17 @@ public class ListingController {
         return "main";
     }
 
-    @GetMapping("/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/update/{id}/{initiatorId}")
+    public String showUpdateForm(@PathVariable("id") Long id,
+                                 @PathVariable("initiatorId") Long initiatorId,
+                                 Model model, Principal principal) {
+
+        User loggedInUser = userRepository.findByMail(principal.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+        if (!loggedInUser.getId().equals(initiatorId)) {
+            throw new SecurityException("Unauthorized access attempt");
+        }
+
         Listing listing = listingService.getListingById(id);
         List<Material> materials = materialRepository.findAll();
 
@@ -90,10 +100,25 @@ public class ListingController {
         return "updateListing";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateListing(@PathVariable("id") Long id, @ModelAttribute Listing listing, RedirectAttributes redirectAttributes) {
+    @PostMapping("/update/{id}/{initiatorId}")
+    public String updateListing(@PathVariable("id") Long id,
+                                @PathVariable("initiatorId") Long initiatorId,
+                                @ModelAttribute Listing listing,
+                                Principal principal,
+                                RedirectAttributes redirectAttributes) {
+
+        User loggedInUser = userRepository.findByMail(principal.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+        if (!loggedInUser.getId().equals(initiatorId)) {
+            throw new SecurityException("Unauthorized update attempt");
+        }
+
         listing.setId(id);
+        listing.setCreatedBy(loggedInUser);
+
+        // Das Listing aktualisieren
         listingService.updateListing(listing);
+
         redirectAttributes.addFlashAttribute("message", "Listing updated successfully.");
         return "redirect:/main";
     }

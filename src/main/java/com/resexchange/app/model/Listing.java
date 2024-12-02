@@ -2,6 +2,7 @@ package com.resexchange.app.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +24,7 @@ public class Listing {
     private User createdBy;
 
     @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Chat> chats;
+    private Set<Chat> chats = new HashSet<>();
 
     public void setId(Long id) {
         this.id = id;

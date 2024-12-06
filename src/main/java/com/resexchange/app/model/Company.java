@@ -21,4 +21,9 @@ public class Company extends User {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    @Override
+    public String getName() {
+        return companyName;
+    }
 }

@@ -16,177 +16,236 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
-                    <button id="toggleMapView" class="btn btn-outline-success me-2" type="button" th:text="#{navbar.map}">Switch to map</button>
-                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
-                    </li>
-                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
-                    </li>
-                    <li class="nav-item" sec:authorize="hasAuthority('MANAGE_LISTINGS')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create Listing</a>
-                    </li>
-                    <li class="nav-item language">
-                        <span th:text="#{navbar.switch_language}"></span>:
-                        <select id="locales" onchange="changeLanguage(this.value)">
-                            <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
-                            <option value="de" th:text="#{lang.de}" th:selected="${currentLocale == 'de'}"></option>
-                        </select>
-                        <script>
-                            // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
-                            const urlParams = new URLSearchParams(window.location.search);
-                            const lang = urlParams.get('lang');  // Der Parameter aus der URL
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
+                <button id="toggleMapView" class="btn btn-outline-success me-2" type="button" th:text="#{navbar.map}">Switch to map</button>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link active" aria-current="page" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link active" aria-current="page" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('MANAGE_LISTINGS')">
+                    <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create Listing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="bookmarksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Meine Bookmarks
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="bookmarksDropdown">
+                        <!-- Iteriere über die Bookmarks des Benutzers -->
+                        <li th:each="bookmark : ${userBookmarks}">
+                            <div class="dropdown-item">
+                                <!-- Zeige den Materialnamen und den Ersteller an -->
+                                <span th:text="${bookmark.listing.material.name} + ' - ' + ${bookmark.listing.createdBy.name}"></span>
 
-                            // Wenn ein Wert gefunden wird, setze ihn im select-Feld
-                            if (lang) {
-                                document.getElementById("locales").value = lang;
-                            }
+                                <div class="bookmark-actions">
+                                    <!-- Details Button mit Icon -->
+                                    <a class="card-link details-icon"
+                                       th:href="@{/bookmark/{id}(id=${bookmark.id})}"
+                                       title="View Details">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"/>
+                                        </svg>
+                                    </a>
 
-                            // Funktion, um die Sprache zu ändern
-                            function changeLanguage(language) {
-                                // Sprache in der URL ändern (z.B. ?lang=en)
-                                window.location.href = window.location.pathname + "?lang=" + language;
-                            }
-                        </script>
-                    </li>
-                    <li class="nav-item language">
-                        <span th:text="#{navbar.switch_currency}"></span>:
-                        <select id="currencySelector" onchange="changeCurrency(this.value)">
-                            <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>
-                            <option value="usd" th:selected="${session.currency == 'usd'}">USD</option>
-                            <option value="gbp" th:selected="${session.currency == 'gbp'}">GBP</option>
-                            <option value="chf" th:selected="${session.currency == 'chf'}">CHF</option>
-                        </select>
-                        <script>
-                            function changeCurrency(currency) {
-                                window.location.href = '/convert-currency?currency=' + currency;
-                            }
-                        </script>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}">Profile</a>
-                    </li>
-                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                        <a class="nav-link" th:href="@{/admin/users}" th:text="#{navbar.manage_users}">Manage Users</a>
-                    </li>
-                </ul>
+                                    <a th:href="@{/bookmark/delete/{id}(id=${bookmark.id})}" class="card-link delete-icon" title="Delete">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Wenn keine Bookmarks vorhanden sind -->
+                        <li th:if="${#lists.isEmpty(userBookmarks)}">
+                            <a class="dropdown-item disabled" href="#">Keine Bookmarks vorhanden</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item language">
+                    <span th:text="#{navbar.switch_language}"></span>:
+                    <select id="locales" onchange="changeLanguage(this.value)">
+                        <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
+                        <option value="de" th:text="#{lang.de}" th:selected="${currentLocale == 'de'}"></option>
+                    </select>
+                    <script>
+                        // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const lang = urlParams.get('lang');  // Der Parameter aus der URL
 
+                        // Wenn ein Wert gefunden wird, setze ihn im select-Feld
+                        if (lang) {
+                            document.getElementById("locales").value = lang;
+                        }
+
+                        // Funktion, um die Sprache zu ändern
+                        function changeLanguage(language) {
+                            // Sprache in der URL ändern (z.B. ?lang=en)
+                            window.location.href = window.location.pathname + "?lang=" + language;
+                        }
+                    </script>
+                </li>
+                <li class="nav-item language">
+                    <span th:text="#{navbar.switch_currency}"></span>:
+                    <select id="currencySelector" onchange="changeCurrency(this.value)">
+                        <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>
+                        <option value="usd" th:selected="${session.currency == 'usd'}">USD</option>
+                        <option value="gbp" th:selected="${session.currency == 'gbp'}">GBP</option>
+                        <option value="chf" th:selected="${session.currency == 'chf'}">CHF</option>
+                    </select>
+                    <script>
+                        function changeCurrency(currency) {
+                            window.location.href = '/convert-currency?currency=' + currency;
+                        }
+                    </script>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}">Profile</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" th:href="@{/admin/users}" th:text="#{navbar.manage_users}">Manage Users</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="main-page">
+    <div class="side-bar">
+        <div class="main-page-content">
+
+            <p>Filter-Options</p>
+            <p>Filter für Request/Listing</p>
+            <p>Filter nach Material</p>
+            <p>Filter nach Entfernung</p>
+            <p>Filter nach Favoriten/Bookmarked</p>
+            <div id="search-div">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
-    </nav>
+    </div>
 
-    <div class="main-page">
-        <div class="side-bar">
-            <div class="main-page-content">
+    <div class="listings">
+        <div class="main-page-content" id="listings" style="display: block;">
+            <div class="cards-container">
+                <div th:each="listing : ${listings}" class="card">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h5 class="card-subtitle mb-2 text-muted" th:text="${listing.material.name}">Material Type</h5>
+                            <h5 class="created-by mb-2 text-muted" th:text="${listing.createdBy.name}" data-tooltip="${listing.createdBy.name}"></h5>
+                        </div>
 
-                <p>Filter-Options</p>
-                <p>Filter für Request/Listing</p>
-                <p>Filter nach Material</p>
-                <p>Filter nach Entfernung</p>
-                <p>Filter nach Favoriten/Bookmarked</p>
-                <div id="search-div">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+                        <p class="card-text">
+                            <span th:text="#{listing.quantity} + ': ' + ${listing.quantity}"></span><br>
+                            <span th:text="#{listing.price} + ': ' + ${#numbers.formatDecimal(listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span><br>
+                        </p>
+                        <div class="icon-row">
 
-        <div class="listings">
-            <div class="main-page-content" id="listings" style="display: block;">
-                <div class="cards-container">
-                    <!-- Thymeleaf-Schleife für Listings -->
-                    <div th:each="listing : ${listings}" class="card" style="width: 18rem; margin-bottom: 20px;">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted" th:text="${listing.material.name}">Material Type</h6>
-                            <p class="card-text">
-                                <span th:text="#{listing.quantity} + ': ' + ${listing.quantity}"></span><br>
-                                <span th:text="#{listing.price} + ': ' + ${#numbers.formatDecimal(listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span><br>
-                            </p>
-                            <div class="icon-container">
+                            <div class="icon-group">
                                 <a th:if="${#authentication.name == listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
                                    th:href="@{/listing/update/{id}/{initiatorId}(
-                                         id=${listing.id},
-                                         initiatorId=${#authentication.principal.id})}"
+                                    id=${listing.id},
+                                    initiatorId=${#authentication.principal.id})}"
                                    class="card-link update-icon"
                                    title="#{listing.update}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                                     </svg>
                                 </a>
-                            <a th:if="${#authentication.name == listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
-                               th:href="@{/listing/delete/{id}(id=${listing.id})}" class="card-link delete-icon" title="#{listing.delete}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                                </svg>
-                            </a>
 
-                            <a href="#" class="card-link buy-icon" title="#{listing.buy}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                                </svg>
-                            </a>
-                            <a th:if="${#authentication.principal.mail != listing.createdBy.mail}"
-                               th:href="@{/chat/{listingId}/{creatorId}/{initiatorId}(
-                            listingId=${listing.id},
-                            creatorId=${listing.createdBy.id},
-                            initiatorId=${#authentication.principal.id})}"
-                               class="chat-icon"
-                               title="#{listing.chat}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                    <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-                                    <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2"/>
-                                </svg>
-                            </a>
+                                <a th:if="${#authentication.name == listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
+                                   th:href="@{/listing/delete/{id}(id=${listing.id})}"
+                                   class="card-link delete-icon"
+                                   title="#{listing.delete}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                    </svg>
+                                </a>
+
+                                <a th:if="${#authentication.name != listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
+                                   th:href="@{/listing/buy/{id}(id=${listing.id})}"
+                                   class="card-link buy-icon"
+                                   title="#{listing.buy}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                                    </svg>
+                                </a>
+
+                                <a th:if="${#authentication.name != listing.createdBy.mail}"
+                                   th:href="@{/chat/{listingId}/{creatorId}/{initiatorId}(
+                                        listingId=${listing.id},
+                                        creatorId=${listing.createdBy.id},
+                                        initiatorId=${#authentication.principal.id})}"
+                                   class="chat-icon"
+                                   title="#{listing.chat}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                        <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                        <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2"/>
+                                    </svg>
+                                </a>
                             </div>
+
+                            <a th:if="${#authentication.name != listing.createdBy.mail}"
+                               th:href="@{/listing/bookmark/{id}/{initiatorId}(id=${listing.id}, initiatorId=${#authentication.principal.id})}"
+                               class="card-link bookmark-icon"
+                               title="#{listing.bookmark}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="main-page-content" id="map" style="display: none;">
-                <p>I'm the map!</p>
-            </div>
         </div>
     </div>
-
-    <p>Logged-in user authorities: <span th:text="${#authentication.authorities}"></span></p>
-    <div>
-        <h3>Your Chats</h3>
-        <ul>
-            <li th:each="chat : ${activeChats}">
-                <a th:href="@{/chat/{chatId}(chatId=${chat.id})}">Chat with [[${chat.user1.mail}]]</a>
-            </li>
-        </ul>
+    <div class="main-page-content" id="map" style="display: none;">
+        <p>I'm the map!</p>
     </div>
+</div>
+</div>
 
-    <script>
-        // toggle for map view / listing
-        document.getElementById("toggleMapView").addEventListener("click", function () {
-            const section1 = document.getElementById("listings");
-            const section2 = document.getElementById("map");
+<p>Logged-in user authorities: <span th:text="${#authentication.authorities}"></span></p>
+<div>
+    <h3>Your Chats</h3>
+    <ul>
+        <li th:each="chat : ${activeChats}">
+            <a th:href="@{/chat/{chatId}(chatId=${chat.id})}">Chat with [[${chat.user1.mail}]]</a>
+        </li>
+    </ul>
+</div>
 
-            if (section1.style.display === "block") {
-                section1.style.display = "none";
-                section2.style.display = "block";
-            } else {
-                section1.style.display = "block";
-                section2.style.display = "none";
-            }
-        });
-    </script>
+<script>
+    // toggle for map view / listing
+    document.getElementById("toggleMapView").addEventListener("click", function () {
+        const section1 = document.getElementById("listings");
+        const section2 = document.getElementById("map");
+
+        if (section1.style.display === "block") {
+            section1.style.display = "none";
+            section2.style.display = "block";
+        } else {
+            section1.style.display = "block";
+            section2.style.display = "none";
+        }
+    });
+</script>
 
 
 </body>

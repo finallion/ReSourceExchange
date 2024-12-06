@@ -73,5 +73,8 @@ public abstract class User {
     public Long getId() {
         return id;
     }
+
+    public abstract String getName();
+
 }
 

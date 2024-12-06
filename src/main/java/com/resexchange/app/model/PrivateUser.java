@@ -11,6 +11,9 @@ public class PrivateUser extends User {
     @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = false, unique = true)
+    private String displayName;
+
     public PrivateUser() {
 
     }
@@ -29,5 +32,18 @@ public class PrivateUser extends User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
+    public String getName() {
+        return displayName;
     }
 }

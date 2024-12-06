@@ -5,6 +5,7 @@ import com.resexchange.app.model.Material;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.UserRepository;
+import com.resexchange.app.services.BookmarkService;
 import com.resexchange.app.services.ListingService;
 import com.resexchange.app.repositories.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class ListingController {
 
     @Autowired
     private ListingService listingService;
+
+    @Autowired
+    private BookmarkService bookmarkService;
 
     @Autowired
     private MaterialRepository materialRepository;
@@ -131,6 +135,23 @@ public class ListingController {
     public String deleteListing(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         listingService.deleteListing(id);
         redirectAttributes.addFlashAttribute("message", "Listing deleted successfully.");
+        return "redirect:/main";
+    }
+
+    @GetMapping("/bookmark/{id}/{initiatorId}")
+    public String addBookmark(@PathVariable Long id, @PathVariable Long initiatorId, Principal principal, Authentication authentication,RedirectAttributes redirectAttributes) {
+        Listing listing = listingService.getListingById(id);
+        User loggedInUser = userRepository.findByMail(principal.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+
+        if (bookmarkService.BookmarkExist(loggedInUser, listing)) {
+            // Falls das Bookmark bereits existiert, mache nichts und leite zurück
+            redirectAttributes.addFlashAttribute("message", "You have already bookmarked this listing.");
+            return "redirect:/main";  // Oder zeige eine Nachricht an, dass das Listing schon ein Bookmark ist
+        }
+
+        bookmarkService.addBookmark(loggedInUser, listing);
+
         return "redirect:/main";
     }
 

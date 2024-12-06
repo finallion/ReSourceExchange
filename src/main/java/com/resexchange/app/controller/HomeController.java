@@ -1,8 +1,12 @@
 package com.resexchange.app.controller;
 
+import com.resexchange.app.model.Bookmark;
 import com.resexchange.app.model.Listing;
+import com.resexchange.app.model.User;
+import com.resexchange.app.repositories.BookmarkRepository;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.security.REUserDetails;
+import com.resexchange.app.services.BookmarkService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +23,11 @@ import java.util.Locale;
 @Controller
 public class HomeController {
 
-    // Repository für Listings wird hier durch Dependency Injection eingefügt
     @Autowired
     private ListingRepository listingRepository ;
+
+    @Autowired
+    private BookmarkRepository bookmarkRepository;
 
     // GET-Methoden für das Abrufen der Listings und Anzeigen im Template
     @GetMapping("/main")
@@ -42,9 +48,12 @@ public class HomeController {
         }
         model.addAttribute("currency", currency);
 
-        // Abrufen der Listings aus der Datenbank
-        List<Listing> listings = listingRepository.findAll();  // 'findAll()' ist eine Instanzmethode
-        model.addAttribute("listings", listings);  // Listings ins Model setzen
+        List<Listing> listings = listingRepository.findAll();
+        model.addAttribute("listings", listings);
+
+        Long userId = userDetails.getId();  // Holen der Benutzer-ID
+        List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);
+        model.addAttribute("userBookmarks", userBookmarks);
 
         return "main";  // Weiterleitung zur 'main.html'-Seite
     }

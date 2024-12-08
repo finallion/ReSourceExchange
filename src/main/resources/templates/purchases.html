@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Purchases</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">My Purchases</h1>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <div th:if="${!purchasedListings.isEmpty()}">
+                <div class="row">
+                    <div class="col-md-4 mb-4" th:each="listing : ${purchasedListings}">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${listing.material.name}">Material Name</h5>
+                                <p class="card-text">
+                                    <strong>Description:</strong> <span th:text="${listing.description}">Description</span><br>
+                                    <strong>Quantity:</strong> <span th:text="${listing.quantity}">0</span><br>
+                                    <strong>Price:</strong> $<span th:text="${listing.price}">0.00</span>
+                                </p>
+                                <p class="text-muted">
+                                    <strong>Sold By:</strong> <span th:text="${listing.createdBy.name}">Seller</span><br>
+                                    <strong>Buyer:</strong> <span th:text="${listing.buyer.name}">Buyer</span>
+                                </p>
+                                <a class="btn btn-primary w-100" th:href="@{/listing/{id}(id=${listing.id})}">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
+    </div>
+</div>
+</body>

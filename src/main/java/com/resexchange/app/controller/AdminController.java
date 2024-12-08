@@ -45,7 +45,7 @@ public class AdminController {
         return "admin/manage-users";
     }
 
-    @PostMapping("/users/{id}/permissions")
+    @PostMapping("admin/users/{id}/permissions")
     public String updatePermissions(@PathVariable Long id, @RequestParam Set<Permission> permissions) {
         User user = userRepository
                 .findById(id)

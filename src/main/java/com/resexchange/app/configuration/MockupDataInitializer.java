@@ -43,7 +43,6 @@ public class MockupDataInitializer implements CommandLineRunner {
             privateUser1.setFirstName("Max");
             privateUser1.setLastName("Mustermann");
             privateUser1.setMail("max.mustermann@example.com");
-            privateUser1.setDisplayName("Max Mustermann");
             privateUser1.setPassword(passwordEncoder.encode("password123"));
             privateUser1.setRole(Role.PRIVATE_USER);
             privateUser1.setPermissions(Set.of(
@@ -60,7 +59,6 @@ public class MockupDataInitializer implements CommandLineRunner {
             privateUser2.setFirstName("Erika");
             privateUser2.setLastName("Musterfrau");
             privateUser2.setMail("erika.musterfrau@example.com");
-            privateUser2.setDisplayName("Erika Musterfrau");
             privateUser2.setPassword(passwordEncoder.encode("password456"));
             privateUser2.setRole(Role.PRIVATE_USER);
             privateUser2.setPermissions(Set.of(
@@ -121,6 +119,7 @@ public class MockupDataInitializer implements CommandLineRunner {
             listing1.setPrice(3.99);
             listing1.setQuantity(1);
             listing1.setCreatedBy(userRepository.findById(1));
+            listing1.setDescription("Richtig gutes Holz - mein Holz.");
             listingRepository.save(listing1);
         } else {
             System.out.println("Listing 'Holz' already exists.");
@@ -141,6 +140,7 @@ public class MockupDataInitializer implements CommandLineRunner {
             listing2.setMaterial(material2);
             listing2.setPrice(10.0);
             listing2.setQuantity(5);
+            listing2.setDescription("Der allerbeste Beton,");
             listing2.setCreatedBy(userRepository.findById(2));
             listingRepository.save(listing2);
         } else {
@@ -162,6 +162,7 @@ public class MockupDataInitializer implements CommandLineRunner {
             listing3.setMaterial(material3);
             listing3.setPrice(50.49);
             listing3.setQuantity(1);
+            listing3.setDescription("Hat sogar Pixel.");
             listing3.setCreatedBy(userRepository.findById(3));
             listingRepository.save(listing3);
         } else {

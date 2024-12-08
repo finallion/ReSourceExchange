@@ -1,5 +1,6 @@
 package com.resexchange.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -16,14 +17,23 @@ public class Listing {
     @JoinColumn(name = "material_id", nullable = false)
     private Material material;
 
+    private String description;
+
     private int quantity;
     private double price;
+
+    private boolean sold;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User createdBy;
 
+    @ManyToOne
+    @JoinColumn(name = "buyer_user_id")
+    private User buyer;
+
     @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private Set<Chat> chats = new HashSet<>();
 
     public void setId(Long id) {
@@ -72,5 +82,29 @@ public class Listing {
 
     public void setChats(Set<Chat> chats) {
         this.chats = chats;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
+    }
+
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
     }
 }

@@ -19,19 +19,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}"></a>
-                </li>
-            </ul>
-        </div>
     </div>
 </nav>
 <div class="container">
@@ -54,6 +41,9 @@
             <button type="submit" class="btn btn-primary" th:text="#{save}"></button>
         </div>
     </form>
+    <div class="text-center mt-3">
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
+    </div>
 </div>
 </body>
 </html>

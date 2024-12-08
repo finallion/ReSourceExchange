@@ -6,7 +6,9 @@ import com.resexchange.app.model.Message;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ChatRepository;
 import com.resexchange.app.repositories.ListingRepository;
+import com.resexchange.app.repositories.MessageRepository;
 import com.resexchange.app.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -23,15 +25,18 @@ import java.util.List;
 @RequestMapping("/chat")
 public class ChatController {
 
-    private final ChatRepository chatRepository;
-    private final UserRepository userRepository;
-    private final ListingRepository listingRepository;
+    @Autowired
+    private ChatRepository chatRepository;
 
-    public ChatController(ChatRepository chatRepository, UserRepository userRepository, ListingRepository listingRepository) {
-        this.chatRepository = chatRepository;
-        this.userRepository = userRepository;
-        this.listingRepository = listingRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ListingRepository listingRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
 
     @GetMapping("/{listingId}/{creatorId}/{initiatorId}")
     public String openChat(@PathVariable Long listingId,
@@ -65,8 +70,11 @@ public class ChatController {
                     return chatRepository.save(newChat);
                 });
 
+        List<Message> messages = messageRepository.findByChatIdOrderByIdAsc(chat.getId());
+
         model.addAttribute("chatId", chat.getId());
         model.addAttribute("loggedInUser", loggedInUser);
+        model.addAttribute("messages", messages);
 
         return "chat/chat";
     }

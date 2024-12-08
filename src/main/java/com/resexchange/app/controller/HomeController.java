@@ -48,7 +48,7 @@ public class HomeController {
         }
         model.addAttribute("currency", currency);
 
-        List<Listing> listings = listingRepository.findAll();
+        List<Listing> listings = listingRepository.findBySoldFalse();
         model.addAttribute("listings", listings);
 
         Long userId = userDetails.getId();  // Holen der Benutzer-ID

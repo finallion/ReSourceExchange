@@ -13,6 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@5.0.0/bundles/stomp.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.0/dist/sockjs.min.js"></script>
 
+    <!-- Paypal -->
+    <script src="https://www.paypal.com/sdk/js?
+    client-id=AQgT_HsnGaYjZy8iPv-rNJ7o-XL022wlKE46TIbyZXtudLs4pbE0Pbz5wNbA_GoRxtf_Gnkgt8fBuoAc&
+    currency=USD"
+    ></script>
+
+
+
 
 </head>
 <body>
@@ -35,28 +43,32 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create Listing</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="bookmarksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Meine Bookmarks
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.profile}">
+                        Profile
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="bookmarksDropdown">
-                        <!-- Iteriere über die Bookmarks des Benutzers -->
-                        <li th:each="bookmark : ${userBookmarks}">
-                            <div class="dropdown-item">
-                                <!-- Zeige den Materialnamen und den Ersteller an -->
-                                <span th:text="${bookmark.listing.material.name} + ' - ' + ${bookmark.listing.createdBy.name}"></span>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
 
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li><h6 class="dropdown-header">Meine Bookmarks</h6></li>
+                        <li th:if="${#lists.isEmpty(userBookmarks)}">
+                            <a class="dropdown-item disabled" href="#">Keine Bookmarks vorhanden</a>
+                        </li>
+                        <li th:each="bookmark : ${userBookmarks}">
+                            <div class="dropdown-item d-flex justify-content-between align-items-center">
+                                <span th:text="${bookmark.listing.material.name} + ' - ' + ${bookmark.listing.createdBy.name}"></span>
                                 <div class="bookmark-actions">
-                                    <!-- Details Button mit Icon -->
                                     <a class="card-link details-icon"
                                        th:href="@{/bookmark/{id}(id=${bookmark.id})}"
                                        title="View Details">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"/>
                                         </svg>
                                     </a>
-
                                     <a th:href="@{/bookmark/delete/{id}(id=${bookmark.id})}" class="card-link delete-icon" title="Delete">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                             fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                         </svg>
@@ -64,54 +76,69 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- Wenn keine Bookmarks vorhanden sind -->
-                        <li th:if="${#lists.isEmpty(userBookmarks)}">
-                            <a class="dropdown-item disabled" href="#">Keine Bookmarks vorhanden</a>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li class="dropdown-item-text" th:text="#{navbar.switch_language}">Switch language</li>
+                        <li class="px-3">
+                            <select class="form-select form-select-sm" id="locales" onchange="changeLanguage(this.value)">
+                                <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
+                                <option value="de" th:text="#{lang.de}" th:selected="${currentLocale == 'de'}"></option>
+                            </select>
+                            <script>
+                                // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const lang = urlParams.get('lang');  // Der Parameter aus der URL
+
+                                // Wenn ein Wert gefunden wird, setze ihn im select-Feld
+                                if (lang) {
+                                    document.getElementById("locales").value = lang;
+                                }
+
+                                // Funktion, um die Sprache zu ändern
+                                function changeLanguage(language) {
+                                    // Sprache in der URL ändern (z.B. ?lang=en)
+                                    window.location.href = window.location.pathname + "?lang=" + language;
+                                }
+                            </script>
                         </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li class="dropdown-item-text" th:text="#{navbar.switch_currency}">Switch currency</li>
+                        <li class="px-3">
+                            <select class="form-select form-select-sm" id="currencySelector" onchange="changeCurrency(this.value)">
+                                <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>
+                                <option value="usd" th:selected="${session.currency == 'usd'}">USD</option>
+                                <option value="gbp" th:selected="${session.currency == 'gbp'}">GBP</option>
+                                <option value="chf" th:selected="${session.currency == 'chf'}">CHF</option>
+                            </select>
+                            <script>
+                                function changeCurrency(currency) {
+                                    window.location.href = '/convert-currency?currency=' + currency;
+                                }
+                            </script>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <a class="dropdown-item" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <a class="dropdown-item" th:href="@{/listing/purchases}">Purchases</a>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <div class="dropdown-item" th:each="auth : ${#authentication.authorities}" th:text="${auth}"></div>
+                        </li>
+
                     </ul>
-                </li>
-                <li class="nav-item language">
-                    <span th:text="#{navbar.switch_language}"></span>:
-                    <select id="locales" onchange="changeLanguage(this.value)">
-                        <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
-                        <option value="de" th:text="#{lang.de}" th:selected="${currentLocale == 'de'}"></option>
-                    </select>
-                    <script>
-                        // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const lang = urlParams.get('lang');  // Der Parameter aus der URL
-
-                        // Wenn ein Wert gefunden wird, setze ihn im select-Feld
-                        if (lang) {
-                            document.getElementById("locales").value = lang;
-                        }
-
-                        // Funktion, um die Sprache zu ändern
-                        function changeLanguage(language) {
-                            // Sprache in der URL ändern (z.B. ?lang=en)
-                            window.location.href = window.location.pathname + "?lang=" + language;
-                        }
-                    </script>
-                </li>
-                <li class="nav-item language">
-                    <span th:text="#{navbar.switch_currency}"></span>:
-                    <select id="currencySelector" onchange="changeCurrency(this.value)">
-                        <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>
-                        <option value="usd" th:selected="${session.currency == 'usd'}">USD</option>
-                        <option value="gbp" th:selected="${session.currency == 'gbp'}">GBP</option>
-                        <option value="chf" th:selected="${session.currency == 'chf'}">CHF</option>
-                    </select>
-                    <script>
-                        function changeCurrency(currency) {
-                            window.location.href = '/convert-currency?currency=' + currency;
-                        }
-                    </script>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}">Profile</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" th:href="@{/admin/users}" th:text="#{navbar.manage_users}">Manage Users</a>
@@ -145,12 +172,14 @@
             <div class="cards-container">
                 <div th:each="listing : ${listings}" class="card">
                     <div class="card-body">
-                        <div class="card-header">
-                            <h5 class="card-subtitle mb-2 text-muted" th:text="${listing.material.name}">Material Type</h5>
-                            <h5 class="created-by mb-2 text-muted" th:text="${listing.createdBy.name}" data-tooltip="${listing.createdBy.name}"></h5>
+                        <div class="card-header d-flex justify-content-between align-items-center text-break">
+                            <h6 class="mb-2 text-muted" th:text="${listing.material.name}"></h6>
+                        </div>
+                        <div class="card-header d-flex justify-content-between align-items-center text-break">
+                            <h6 class="mb-2 text-muted" th:text="${listing.createdBy.name}" data-tooltip="${listing.createdBy.name}"></h6>
                         </div>
 
-                        <p class="card-text">
+                        <p class="card-text justify-content-between align-items-center">
                             <span th:text="#{listing.quantity} + ': ' + ${listing.quantity}"></span><br>
                             <span th:text="#{listing.price} + ': ' + ${#numbers.formatDecimal(listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span><br>
                         </p>
@@ -179,7 +208,7 @@
                                 </a>
 
                                 <a th:if="${#authentication.name != listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
-                                   th:href="@{/listing/buy/{id}(id=${listing.id})}"
+                                   th:href="@{/listing/{id}(id=${listing.id})}"
                                    class="card-link buy-icon"
                                    title="#{listing.buy}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
@@ -187,7 +216,7 @@
                                     </svg>
                                 </a>
 
-                                <a th:if="${#authentication.name != listing.createdBy.mail}"
+                                <a sec:authorize="hasAuthority('CHAT')" th:if="${#authentication.name != listing.createdBy.mail}"
                                    th:href="@{/chat/{listingId}/{creatorId}/{initiatorId}(
                                         listingId=${listing.id},
                                         creatorId=${listing.createdBy.id},
@@ -221,15 +250,8 @@
 </div>
 </div>
 
-<p>Logged-in user authorities: <span th:text="${#authentication.authorities}"></span></p>
-<div>
-    <h3>Your Chats</h3>
-    <ul>
-        <li th:each="chat : ${activeChats}">
-            <a th:href="@{/chat/{chatId}(chatId=${chat.id})}">Chat with [[${chat.user1.mail}]]</a>
-        </li>
-    </ul>
-</div>
+
+
 
 <script>
     // toggle for map view / listing

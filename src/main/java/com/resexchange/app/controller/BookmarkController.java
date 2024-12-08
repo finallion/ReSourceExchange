@@ -31,8 +31,8 @@ public class BookmarkController {
         model.addAttribute("bookmark", bookmark);
         model.addAttribute("listing", listing);
 
-        // Die Details-Seite zurückgeben
-        return "listingDetails"; // Details-HTML-Seite
+
+        return "listing-detail";
     }
 
     @GetMapping ("/delete/{id}")

@@ -12,22 +12,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create listing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.switch_language}">Switch language</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" th:text="#{navbar.profile}">Profile</a>
-                </li>
-            </ul>
-        </div>
     </div>
 </nav>
 <div class="container">
@@ -53,10 +37,18 @@
             <input type="number" th:field="*{price}" id="price" class="form-control" required step="0.01" min="0" />
         </div>
 
+        <div class="mb-3">
+            <label for="description" class="form-label" th:text="#{form.description}">Beschreibung:</label>
+            <input type="text" th:field="*{description}" id="description" class="form-control" />
+        </div>
+
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary" th:text="#{button.save}">Save</button>
         </div>
     </form>
+    <div class="text-center mt-3">
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
+    </div>
 </div>
 </body>
 </html>

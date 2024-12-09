@@ -1,5 +1,6 @@
 package com.resexchange.app.security;
 
+import com.resexchange.app.model.Address;
 import com.resexchange.app.model.User;
 import com.resexchange.app.services.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -29,6 +30,10 @@ public class REUserDetails implements UserDetails {
     public String getMail() {
         return user.getMail();
     }
+
+    public Address getAddress() {return user.getAddress();}
+
+    public User getUser() {return user;}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

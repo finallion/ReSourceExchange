@@ -89,14 +89,7 @@ public class ListingController {
         User user = userRepository.findByMail(authentication.getName())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        Address address = userService.getAddressFromUser(user);
-
-        String street = address.getStreet();
-        String city = address.getCity();
-        String postalCode = address.getPostalCode();
-        String country = address.getCountry();
-
-        double[] coordinates = GeocodingService.getCoordinatesFromAddress(street, city, postalCode, country);
+        double[] coordinates = userService.getGeocodedAddressFromUser(user);
 
         if (coordinates != null) {
             listing.setLatitude(coordinates[0]);
@@ -154,14 +147,7 @@ public class ListingController {
         listing.setCreatedBy(loggedInUser);
         listing.setChats(listing.getChats());
 
-        Address address = userService.getAddressFromUser(loggedInUser);
-
-        String street = address.getStreet();
-        String city = address.getCity();
-        String postalCode = address.getPostalCode();
-        String country = address.getCountry();
-
-        double[] coordinates = GeocodingService.getCoordinatesFromAddress(street, city, postalCode, country);
+        double[] coordinates = userService.getGeocodedAddressFromUser(loggedInUser);
 
         if (coordinates != null) {
             listing.setLatitude(coordinates[0]);

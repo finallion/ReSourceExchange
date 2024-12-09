@@ -1,17 +1,22 @@
 package com.resexchange.app.controller;
 
+import com.resexchange.app.model.Address;
 import com.resexchange.app.model.Bookmark;
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.BookmarkRepository;
 import com.resexchange.app.repositories.ListingRepository;
+import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.security.REUserDetails;
 import com.resexchange.app.services.BookmarkService;
+import com.resexchange.app.services.GeocodingService;
+import com.resexchange.app.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +33,14 @@ public class HomeController {
 
     @Autowired
     private BookmarkRepository bookmarkRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    private UserService userService = new UserService(userRepository,passwordEncoder);
 
     // GET-Methoden für das Abrufen der Listings und Anzeigen im Template
     @GetMapping("/main")
@@ -54,6 +67,17 @@ public class HomeController {
         Long userId = userDetails.getId();  // Holen der Benutzer-ID
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);
         model.addAttribute("userBookmarks", userBookmarks);
+
+        double[] coordinates = userService.getGeocodedAddressFromUser(userDetails.getUser());
+
+        if (coordinates != null) {
+            model.addAttribute("userLatitude", coordinates[0]);
+            model.addAttribute("userLongitude", coordinates[1]);
+        } else {
+            // Fallback Berlin
+            model.addAttribute("userLatitude", 52.520008);
+            model.addAttribute("userLongitude", 13.404954);
+        }
 
         return "main";  // Weiterleitung zur 'main.html'-Seite
     }

@@ -57,15 +57,20 @@ public class UserService {
         userRepository.save(admin);
     }
 
-    public Address getAddressFromUser(User user) {
+    public double[] getGeocodedAddressFromUser(User user) {
+        Address address = null;
         if (user instanceof PrivateUser) {
-            return ((PrivateUser) user).getAddress();
-        } else if (user instanceof Company) {
-            return ((Company) user).getAddress();
-        } else if (user instanceof Admin) {
-            return ((Admin) user).getAddress();
-        } else {
+            address = ((PrivateUser) user).getAddress();
+        }
+        else if (user instanceof Company) {
+             address = ((Company) user).getAddress();
+        }
+        else if (user instanceof Admin) {
+             address = ((Admin) user).getAddress();
+        }
+        else {
             throw new IllegalArgumentException("Unknown user type: " + user.getClass().getName());
         }
+        return GeocodingService.getCoordinatesFromAddress(address.getStreet(), address.getCity(), address.getPostalCode(), address.getCountry());
     }
 }

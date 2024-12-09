@@ -250,64 +250,84 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let map;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ol/6.15.1/ol.js"></script>
 
-        // Funktion zur Initialisierung der Karte
-        function initMap() {
-            if (!map) {
-                map = new ol.Map({
-                    target: 'map', // ID des Map-Divs
-                    layers: [
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM(), // OpenStreetMap-Tiles
-                        }),
-                    ],
-                    view: new ol.View({
-                        center: ol.proj.fromLonLat([13.404954, 52.520008]), // Beispiel: Berlin
-                        zoom: 10, // Startzoom
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var latitude = /*[[${userLatitude}]]*/ 52.520008;
+    var longitude = /*[[${userLongitude}]]*/ 13.404954;
+    var listings = /*[[${listings}]]*/ []; // Liste der Listings mit Koordinaten
+
+    let map;
+    let markers = [];
+
+    function initMap() {
+        if (!map) {
+            map = new ol.Map({
+                target: 'map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM(),
                     }),
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([longitude, latitude]),
+                    zoom: 12,
+                }),
+            });
+
+            // Marker für Listings hinzufügen
+            listings.forEach(function(listing) {
+                var lon = listing.longitude;
+                var lat = listing.latitude;
+
+                var marker = new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])),
                 });
-            }
-        }
 
-        // Button und Container-Elemente nach dem DOM-Content laden überprüfen
-        const toggleMapButton = document.getElementById('toggleMapButton');
-        const listingsContainer = document.getElementById('listings');
-        const mapContainer = document.getElementById('map-container');
+                marker.setStyle(new ol.style.Style({
+                    image: new ol.style.Icon({
+                        src: 'https://openlayers.org/en/v6.15.1/examples/data/icon.png', // Icon-URL
+                        scale: 0.7,
+                    }),
+                }));
 
-        // Überprüfen, ob die Elemente existieren
-        if (!toggleMapButton) {
-            console.error("Der Button 'toggleMapButton' wurde nicht gefunden.");
-            return;
-        }
-        if (!listingsContainer) {
-            console.error("Das Element 'listings' wurde nicht gefunden.");
-            return;
-        }
-        if (!mapContainer) {
-            console.error("Das Element 'map-container' wurde nicht gefunden.");
-            return;
-        }
+                markers.push(marker);
+            });
 
-        // Event Listener für den Toggle-Button
-        toggleMapButton.addEventListener('click', () => {
-            if (listingsContainer.style.display === 'block' || listingsContainer.style.display === '') {
-                // Wechsel zu Kartenansicht
-                listingsContainer.style.display = 'none';
-                mapContainer.style.display = 'block';
-                initMap(); // Initialisiere die Karte, wenn die Kartenansicht angezeigt wird
-                toggleMapButton.textContent = 'Zurück zu den Listings'; // Button-Text ändern
-            } else {
-                // Zurück zu Listings
-                listingsContainer.style.display = 'block';
-                mapContainer.style.display = 'none';
-                toggleMapButton.textContent = 'Zur Karte wechseln'; // Button-Text ändern
-            }
-        });
+            var vectorSource = new ol.source.Vector({
+                features: markers,
+            });
+
+            var markerLayer = new ol.layer.Vector({
+                source: vectorSource,
+            });
+
+            map.addLayer(markerLayer);
+        }
+    }
+
+    const toggleMapButton = document.getElementById('toggleMapButton');
+    const listingsContainer = document.getElementById('listings');
+    const mapContainer = document.getElementById('map-container');
+
+    toggleMapButton.addEventListener('click', () => {
+        if (listingsContainer.style.display === 'block' || listingsContainer.style.display === '') {
+            listingsContainer.style.display = 'none';
+            mapContainer.style.display = 'block';
+            initMap();
+            toggleMapButton.textContent = 'Zurück zu den Listings';
+        } else {
+            listingsContainer.style.display = 'block';
+            mapContainer.style.display = 'none';
+            toggleMapButton.textContent = 'Zur Karte wechseln';
+        }
     });
+    /*]]>*/
 </script>
+
+
+
 
 </body>
 </html>

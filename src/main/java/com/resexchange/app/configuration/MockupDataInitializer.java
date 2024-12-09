@@ -2,6 +2,8 @@ package com.resexchange.app.configuration;
 
 import com.resexchange.app.model.*;
 import com.resexchange.app.repositories.*;
+import com.resexchange.app.services.GeocodingService;
+import com.resexchange.app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -34,6 +36,8 @@ public class MockupDataInitializer implements CommandLineRunner {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    private UserService userService = new UserService(userRepository,passwordEncoder);
 
     @Override
     public void run(String... args) {
@@ -74,9 +78,9 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.MANAGE_LISTINGS
             ));
             Address address2 = new Address();
-            address2.setStreet("Seybothstraße 2");
+            address2.setStreet("Hans-Hayder-Straße 2");
             address2.setCity("Regensburg");
-            address2.setPostalCode("93053");
+            address2.setPostalCode("93059");
             address2.setCountry("Germany");
             privateUser2.setAddress(address2);
             privateUserRepository.save(privateUser2);
@@ -96,9 +100,9 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.MANAGE_MATERIALS
             ));
             Address address = new Address();
-            address.setStreet("Seybothstraße 4");
+            address.setStreet("Weichser Weg 5");
             address.setCity("Regensburg");
-            address.setPostalCode("93053");
+            address.setPostalCode("93059");
             address.setCountry("Germany");
             company1.setAddress(address);
             companyRepository.save(company1);
@@ -118,7 +122,7 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.MANAGE_MATERIALS
             ));
             Address address = new Address();
-            address.setStreet("Seybothstraße 6");
+            address.setStreet("Franz-Josef-Strauß-Allee 22");
             address.setCity("Regensburg");
             address.setPostalCode("93053");
             address.setCountry("Germany");
@@ -144,7 +148,17 @@ public class MockupDataInitializer implements CommandLineRunner {
             listing1.setMaterial(material1);
             listing1.setPrice(3.99);
             listing1.setQuantity(1);
-            listing1.setCreatedBy(userRepository.findById(1));
+            User user1 = userRepository.findById(1);
+            if (user1 != null) {
+                listing1.setCreatedBy(user1);
+
+                double[] coordinates = userService.getGeocodedAddressFromUser(user1);
+
+                if (coordinates != null) {
+                    listing1.setLatitude(coordinates[0]); // Latitude
+                    listing1.setLongitude(coordinates[1]); // Longitude
+                }
+            }
             listing1.setDescription("Richtig gutes Holz - mein Holz.");
             listingRepository.save(listing1);
         } else {
@@ -167,7 +181,17 @@ public class MockupDataInitializer implements CommandLineRunner {
             listing2.setPrice(10.0);
             listing2.setQuantity(5);
             listing2.setDescription("Der allerbeste Beton,");
-            listing2.setCreatedBy(userRepository.findById(2));
+            User user2 = userRepository.findById(2);
+            if (user2 != null) {
+                listing2.setCreatedBy(user2);
+
+                 double[] coordinates = userService.getGeocodedAddressFromUser(user2);
+
+                if (coordinates != null) {
+                    listing2.setLatitude(coordinates[0]); // Latitude
+                    listing2.setLongitude(coordinates[1]); // Longitude
+                }
+            }
             listingRepository.save(listing2);
         } else {
             System.out.println("Listing 'Beton' already exists.");
@@ -189,7 +213,17 @@ public class MockupDataInitializer implements CommandLineRunner {
             listing3.setPrice(50.49);
             listing3.setQuantity(1);
             listing3.setDescription("Hat sogar Pixel.");
-            listing3.setCreatedBy(userRepository.findById(3));
+            User user3 = userRepository.findById(3);
+            if (user3 != null) {
+                listing3.setCreatedBy(user3);
+
+                double[] coordinates = userService.getGeocodedAddressFromUser(user3);
+
+                if (coordinates != null) {
+                    listing3.setLatitude(coordinates[0]); // Latitude
+                    listing3.setLongitude(coordinates[1]); // Longitude
+                }
+            }
             listingRepository.save(listing3);
         } else {
             System.out.println("Listing 'Bildschirm' already exists.");

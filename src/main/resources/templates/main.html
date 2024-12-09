@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Welcome</title>
+    <title>ReSourceExchange</title>
 
     <script src="/js/scripts.js"></script>
     <link type="text/css" href="/css/styles.css" rel="stylesheet" />
@@ -19,8 +19,9 @@
     currency=USD"
     ></script>
 
-
-
+    <!-- OpenStreetMap -->
+    <script src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.css">
 
 </head>
 <body>
@@ -32,7 +33,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
-                <button id="toggleMapView" class="btn btn-outline-success me-2" type="button" th:text="#{navbar.map}">Switch to map</button>
                 <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link active" aria-current="page" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
                 </li>
@@ -144,6 +144,7 @@
                     <a class="nav-link" th:href="@{/admin/users}" th:text="#{navbar.manage_users}">Manage Users</a>
                 </li>
             </ul>
+            <button id="toggleMapButton" class="btn btn-primary" type="button">Zur Karte wechseln</button>
 
         </div>
     </div>
@@ -243,32 +244,70 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="main-page-content" id="map" style="display: none;">
-        <p>I'm the map!</p>
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
     </div>
 </div>
-</div>
-
-
-
 
 <script>
-    // toggle for map view / listing
-    document.getElementById("toggleMapView").addEventListener("click", function () {
-        const section1 = document.getElementById("listings");
-        const section2 = document.getElementById("map");
+    document.addEventListener('DOMContentLoaded', function() {
+        let map;
 
-        if (section1.style.display === "block") {
-            section1.style.display = "none";
-            section2.style.display = "block";
-        } else {
-            section1.style.display = "block";
-            section2.style.display = "none";
+        // Funktion zur Initialisierung der Karte
+        function initMap() {
+            if (!map) {
+                map = new ol.Map({
+                    target: 'map', // ID des Map-Divs
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM(), // OpenStreetMap-Tiles
+                        }),
+                    ],
+                    view: new ol.View({
+                        center: ol.proj.fromLonLat([13.404954, 52.520008]), // Beispiel: Berlin
+                        zoom: 10, // Startzoom
+                    }),
+                });
+            }
         }
+
+        // Button und Container-Elemente nach dem DOM-Content laden überprüfen
+        const toggleMapButton = document.getElementById('toggleMapButton');
+        const listingsContainer = document.getElementById('listings');
+        const mapContainer = document.getElementById('map-container');
+
+        // Überprüfen, ob die Elemente existieren
+        if (!toggleMapButton) {
+            console.error("Der Button 'toggleMapButton' wurde nicht gefunden.");
+            return;
+        }
+        if (!listingsContainer) {
+            console.error("Das Element 'listings' wurde nicht gefunden.");
+            return;
+        }
+        if (!mapContainer) {
+            console.error("Das Element 'map-container' wurde nicht gefunden.");
+            return;
+        }
+
+        // Event Listener für den Toggle-Button
+        toggleMapButton.addEventListener('click', () => {
+            if (listingsContainer.style.display === 'block' || listingsContainer.style.display === '') {
+                // Wechsel zu Kartenansicht
+                listingsContainer.style.display = 'none';
+                mapContainer.style.display = 'block';
+                initMap(); // Initialisiere die Karte, wenn die Kartenansicht angezeigt wird
+                toggleMapButton.textContent = 'Zurück zu den Listings'; // Button-Text ändern
+            } else {
+                // Zurück zu Listings
+                listingsContainer.style.display = 'block';
+                mapContainer.style.display = 'none';
+                toggleMapButton.textContent = 'Zur Karte wechseln'; // Button-Text ändern
+            }
+        });
     });
 </script>
-
 
 </body>
 </html>

@@ -63,7 +63,7 @@
     border-radius: 10px;
 }
 
-.listings {
+.listings, #map-container {
     width: 80%;
     height: 800px;                      <!-- REMOVE -->
     border: 1px solid grey;
@@ -231,4 +231,17 @@
     overflow: visible;
     text-overflow: clip;
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+#map-container {
+    display: none;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.listings {
+    display: block;
 }

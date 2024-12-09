@@ -49,6 +49,14 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.CHAT,
                     Permission.MANAGE_LISTINGS
             ));
+
+            Address address1 = new Address();
+            address1.setStreet("Jägergasse 9");
+            address1.setCity("Ergolding");
+            address1.setPostalCode("84030");
+            address1.setCountry("Germany");
+            privateUser1.setAddress(address1);
+
             privateUserRepository.save(privateUser1);
         } else {
             System.out.println("User 'Max Mustermann' already exists.");
@@ -65,6 +73,12 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.CHAT,
                     Permission.MANAGE_LISTINGS
             ));
+            Address address2 = new Address();
+            address2.setStreet("Seybothstraße 2");
+            address2.setCity("Regensburg");
+            address2.setPostalCode("93053");
+            address2.setCountry("Germany");
+            privateUser2.setAddress(address2);
             privateUserRepository.save(privateUser2);
         } else {
             System.out.println("User 'Erika Musterfrau' already exists.");
@@ -81,6 +95,12 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.MANAGE_LISTINGS,
                     Permission.MANAGE_MATERIALS
             ));
+            Address address = new Address();
+            address.setStreet("Seybothstraße 4");
+            address.setCity("Regensburg");
+            address.setPostalCode("93053");
+            address.setCountry("Germany");
+            company1.setAddress(address);
             companyRepository.save(company1);
         } else {
             System.out.println("Company 'Tech Solutions GmbH' already exists.");
@@ -97,6 +117,12 @@ public class MockupDataInitializer implements CommandLineRunner {
                     Permission.MANAGE_LISTINGS,
                     Permission.MANAGE_MATERIALS
             ));
+            Address address = new Address();
+            address.setStreet("Seybothstraße 6");
+            address.setCity("Regensburg");
+            address.setPostalCode("93053");
+            address.setCountry("Germany");
+            company2.setAddress(address);
             companyRepository.save(company2);
         } else {
             System.out.println("Company 'Innovative Designs AG' already exists.");

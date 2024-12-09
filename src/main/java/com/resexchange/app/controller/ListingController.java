@@ -3,15 +3,15 @@ package com.resexchange.app.controller;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
+import com.resexchange.app.model.Address;
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
+import com.resexchange.app.model.PrivateUser;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.UserRepository;
-import com.resexchange.app.services.BookmarkService;
-import com.resexchange.app.services.ListingService;
+import com.resexchange.app.services.*;
 import com.resexchange.app.repositories.MaterialRepository;
-import com.resexchange.app.services.PaypalService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -31,6 +31,9 @@ public class ListingController {
 
     @Autowired
     private ListingService listingService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private BookmarkService bookmarkService;
@@ -86,12 +89,27 @@ public class ListingController {
         User user = userRepository.findByMail(authentication.getName())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
+        Address address = userService.getAddressFromUser(user);
+
+        String street = address.getStreet();
+        String city = address.getCity();
+        String postalCode = address.getPostalCode();
+        String country = address.getCountry();
+
+        double[] coordinates = GeocodingService.getCoordinatesFromAddress(street, city, postalCode, country);
+
+        if (coordinates != null) {
+            listing.setLatitude(coordinates[0]);
+            listing.setLongitude(coordinates[1]);
+        }
+
         listing.setCreatedBy(user);
         listingRepository.save(listing);
         redirectAttributes.addFlashAttribute("success", "Listing successfully created!");
 
         return "redirect:/main";
     }
+
 
     @GetMapping("/update/{id}/{initiatorId}")
     public String showUpdateForm(@PathVariable("id") Long id,
@@ -135,6 +153,20 @@ public class ListingController {
         listing.setId(id);
         listing.setCreatedBy(loggedInUser);
         listing.setChats(listing.getChats());
+
+        Address address = userService.getAddressFromUser(loggedInUser);
+
+        String street = address.getStreet();
+        String city = address.getCity();
+        String postalCode = address.getPostalCode();
+        String country = address.getCountry();
+
+        double[] coordinates = GeocodingService.getCoordinatesFromAddress(street, city, postalCode, country);
+
+        if (coordinates != null) {
+            listing.setLatitude(coordinates[0]);
+            listing.setLongitude(coordinates[1]);
+        }
 
         // Das Listing aktualisieren
         listingService.updateListing(listing);

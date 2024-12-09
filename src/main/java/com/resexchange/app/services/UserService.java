@@ -23,6 +23,11 @@ public class UserService {
     }
 
     public void registerCompanyUser(Company company) {
+        Address address = company.getAddress();
+        if (address != null) {
+            company.setAddress(new Address(address.getStreet(), address.getCity(),
+                    address.getPostalCode(), address.getCountry()));
+        }
         company.setPassword(passwordEncoder.encode(company.getPassword()));
         company.setRole(Role.COMPANY);
         company.setPermissions(Set.of(Permission.CHAT, Permission.MANAGE_LISTINGS));
@@ -30,6 +35,11 @@ public class UserService {
     }
 
     public void registerPrivateUser(PrivateUser privateUser) {
+        Address address = privateUser.getAddress();
+        if (address != null) {
+            privateUser.setAddress(new Address(address.getStreet(), address.getCity(),
+                    address.getPostalCode(), address.getCountry()));
+        }
         privateUser.setPassword(passwordEncoder.encode(privateUser.getPassword()));
         privateUser.setRole(Role.PRIVATE_USER);
         privateUser.setPermissions(Set.of(Permission.CHAT, Permission.MANAGE_LISTINGS));
@@ -37,8 +47,25 @@ public class UserService {
     }
 
     public void registerAdmin(Admin admin) {
+        Address address = admin.getAddress();
+        if (address != null) {
+            admin.setAddress(new Address(address.getStreet(), address.getCity(),
+                    address.getPostalCode(), address.getCountry()));
+        }
         admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         admin.setRole(Role.ADMIN);
         userRepository.save(admin);
+    }
+
+    public Address getAddressFromUser(User user) {
+        if (user instanceof PrivateUser) {
+            return ((PrivateUser) user).getAddress();
+        } else if (user instanceof Company) {
+            return ((Company) user).getAddress();
+        } else if (user instanceof Admin) {
+            return ((Admin) user).getAddress();
+        } else {
+            throw new IllegalArgumentException("Unknown user type: " + user.getClass().getName());
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.resexchange.app.configuration;
 
+import com.resexchange.app.model.Address;
 import com.resexchange.app.model.Admin;
 import com.resexchange.app.model.Permission;
 import com.resexchange.app.model.Role;
@@ -47,6 +48,12 @@ public class AdminInitializer implements CommandLineRunner {
                     Permission.MANAGE_MATERIALS,
                     Permission.MANAGE_LISTINGS
             ));
+            Address address = new Address();
+            address.setStreet("Seybothstraße 6");
+            address.setCity("Regensburg");
+            address.setPostalCode("93053");
+            address.setCountry("Germany");
+            admin.setAddress(address);
             userRepository.save(admin);
         }
     }

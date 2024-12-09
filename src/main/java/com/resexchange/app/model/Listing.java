@@ -24,6 +24,9 @@ public class Listing {
 
     private boolean sold;
 
+    private double longitude;
+    private double latitude;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User createdBy;
@@ -106,5 +109,21 @@ public class Listing {
 
     public void setBuyer(User buyer) {
         this.buyer = buyer;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }

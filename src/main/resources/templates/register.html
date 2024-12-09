@@ -12,7 +12,6 @@
 <h2 class="title">Create Account</h2>
 <div class="split-page-div">
 
-    <!-- Private User Form -->
     <div id="privateForm" class="form-div">
         <form th:action="@{/register/private}" method="post">
 
@@ -41,31 +40,69 @@
                 <input type="password" class="form-control" id="password-id" aria-describedby="basic-addon3" name="password">
             </div>
 
+            <!-- Adressfelder hinzufügen -->
+            <label for="street-id" class="form-label">Street:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="street-id" aria-describedby="basic-addon3" name="address.street">
+            </div>
+
+            <label for="city-id" class="form-label">City:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="city-id" aria-describedby="basic-addon3" name="address.city">
+            </div>
+
+            <label for="postal-code-id" class="form-label">Postal Code:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="postal-code-id" aria-describedby="basic-addon3" name="address.postalCode">
+            </div>
+
+            <label for="country-id" class="form-label">Country:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="country-id" aria-describedby="basic-addon3" name="address.country">
+            </div>
+
             <div class="center-div">
                 <button type="submit" class="btn btn-primary btn-block mb-4 register-btn">Register as private user</button>
             </div>
         </form>
     </div>
 
-    <!-- Company Form -->
     <div id="companyForm" class="form-div">
         <form th:action="@{/register/company}" method="post">
             <label for="company-name-id" class="form-label">Company name:</label>
             <div class="input-group mb-3">
-                <!-- name must match the entities attribute name -->
                 <input type="text" class="form-control" id="company-name-id" aria-describedby="basic-addon3" name="companyName">
             </div>
 
             <label for="company-mail-id" class="form-label">E-Mail: </label>
             <div class="input-group mb-3">
-                <!-- name must match the entities attribute name -->
                 <input type="email" class="form-control" id="company-mail-id" aria-describedby="basic-addon3" name="mail">
             </div>
 
             <label for="company-password-id" class="form-label">Password:</label>
             <div class="input-group mb-3">
-                <!-- name must match the entities attribute name -->
                 <input type="password" class="form-control" id="company-password-id" aria-describedby="basic-addon3" name="password">
+            </div>
+
+            <!-- Company Address Fields -->
+            <label for="company-street-id" class="form-label">Company Street:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="company-street-id" aria-describedby="basic-addon3" name="companyAddress.street">
+            </div>
+
+            <label for="company-city-id" class="form-label">Company City:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="company-city-id" aria-describedby="basic-addon3" name="companyAddress.city">
+            </div>
+
+            <label for="company-postal-code-id" class="form-label">Company Postal Code:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="company-postal-code-id" aria-describedby="basic-addon3" name="companyAddress.postalCode">
+            </div>
+
+            <label for="company-country-id" class="form-label">Company Country:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="company-country-id" aria-describedby="basic-addon3" name="companyAddress.country">
             </div>
 
             <div class="center-div">

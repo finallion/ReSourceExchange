@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 1024)
@@ -22,6 +22,12 @@ public class Address {
     private String country;
 
     public Address() {}
+    public Address(String street, String city, String postalCode, String country) {
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
 
     public String getStreet() {
         return street;

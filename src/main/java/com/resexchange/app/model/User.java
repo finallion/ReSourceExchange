@@ -75,6 +75,8 @@ public abstract class User {
     }
 
     public abstract String getName();
+    public abstract Address getAddress();
+    public abstract void setAddress(Address address);
 
 }
 

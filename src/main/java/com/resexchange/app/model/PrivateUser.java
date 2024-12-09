@@ -11,6 +11,19 @@ public class PrivateUser extends User {
     @Column(nullable = false)
     private String lastName;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @Override
+    public Address getAddress() {
+        return address;
+    }
+    @Override
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public PrivateUser() {
 
     }

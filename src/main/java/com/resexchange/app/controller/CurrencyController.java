@@ -13,6 +13,9 @@ import java.util.Map;
 @Controller
 public class CurrencyController {
 
+    /**
+     * Function to get the desired Currency from the Api and display the new Currency
+     */
     @GetMapping("/convert-currency")
     public String convertCurrency(@RequestParam String currency, Model model, HttpSession session) {
         /** API: https://github.com/fawazahmed0/exchange-api **/

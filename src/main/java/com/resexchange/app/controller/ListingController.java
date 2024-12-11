@@ -52,6 +52,8 @@ public class ListingController {
 
     @Autowired
     private PaypalService paypalService;
+    @Autowired
+    private MaterialService materialService;
 
     // GET-Request, um das Formular für ein neues Listing zu zeigen
     @GetMapping("/create")
@@ -270,4 +272,65 @@ public class ListingController {
         return "cancel";
     }
 
+    /**
+     * Method to Filter Listings with a few Parameters
+     */
+    @GetMapping
+    public String getFilteredListings(
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) Long materialId,
+            @RequestParam(required = false) Boolean sold,
+            @RequestParam(required = false) Boolean bookmarked,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) Integer minQuantity,
+            @RequestParam(required = false) Integer maxQuantity,
+            Model model,
+            Principal principal
+    ) {
+
+        List<Listing> listings;
+
+        User loggedInUser = userRepository.findByMail(principal.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+        Long userId = loggedInUser.getId();
+
+        // Wenn ein suchwort eingegeben ist soll nach Suchwort gesucht werden ansonst werden die Filter angewendet
+        if(keyword != null && !keyword.isEmpty()) {
+            listings = listingService.getSearchedListings(keyword);
+        } else {
+
+            // Wenn der "Bookmarked" Filter nicht angewendet wird ist die userId irrelevant und muss null gesetzt werden
+            if(bookmarked == null) {
+                userId = null;
+            }
+            // Wenn der "Sold" Filter nicht gesetzt ist soll nach noch nicht verkauften Listings gesucht werden
+            if(sold == null) {
+                sold = false;
+            }
+
+            listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity);
+
+            if(sold) {
+                model.addAttribute("selectedSold", sold);
+            } else {
+                model.addAttribute("selectedSold", false);
+            }
+
+        }
+
+        List<Material> materials = materialService.getAllMaterials();
+
+        model.addAttribute("listings", listings);
+        model.addAttribute("materials", materials);
+        model.addAttribute("selectedMaterialId", materialId);
+        model.addAttribute("selectedBookmarked", bookmarked);
+        model.addAttribute("selectedKeyword", keyword);
+        model.addAttribute("selectedMinPrice", minPrice);
+        model.addAttribute("selectedMaxPrice", maxPrice);
+        model.addAttribute("selectedMinQuantity", minQuantity);
+        model.addAttribute("selectedMaxQuantity", maxQuantity);
+
+        return "main";
+    }
 }

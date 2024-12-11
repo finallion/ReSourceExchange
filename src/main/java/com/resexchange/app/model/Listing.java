@@ -6,6 +6,18 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Die Listing-Entität repräsentiert ein Angebot oder eine Anzeige in der Anwendung.
+ *
+ * Ein Listing enthält Details zu einem Produkt oder einer Dienstleistung, die zum Verkauf angeboten wird.
+ * Es speichert Informationen wie den Preis, die Menge, das zugehörige Material und den Ersteller des Listings.
+ * Darüber hinaus enthält es Angaben darüber, ob das Listing verkauft wurde oder nicht und welcher Benutzer es erstellt hat.
+ *
+ * Die Entität ist mit einem User verbunden, der das Listing erstellt hat, und einem Material,
+ * das das Produkt oder die Dienstleistung beschreibt, die angeboten wird.
+ *
+ * @author Dominik
+ */
 @Entity
 public class Listing {
 

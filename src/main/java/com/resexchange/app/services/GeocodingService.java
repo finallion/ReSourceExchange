@@ -9,19 +9,43 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
 
+/**
+ * Service-Klasse, die eine Methode zur Geocodierung von Adressen mit der Nominatim API bereitstellt.
+ * Diese Klasse verwendet die OpenStreetMap Nominatim API, um geographische Koordinaten (Breiten- und Längengrad)
+ * aus einer gegebenen Adresse zu extrahieren.
+ *
+ * @author Dominik
+ */
 public class GeocodingService {
 
     // Nominatim API URL
     private static final String NOMINATIM_API_URL = "https://nominatim.openstreetmap.org/search";
 
+    /**
+     * Ruft die geographischen Koordinaten (Breiten- und Längengrad) für eine gegebene Adresse ab.
+     *
+     * Diese Methode nutzt die Nominatim API von OpenStreetMap, um eine Adresse in geographische Koordinaten
+     * umzuwandeln. Die Adresse wird durch die Kombination von Straßenname, Stadt, Postleitzahl und Land
+     * gebildet. Falls die API eine Adresse findet, gibt die Methode die entsprechenden Koordinaten zurück.
+     *
+     * @param street    die Straße der Adresse
+     * @param city      die Stadt der Adresse
+     * @param postalCode die Postleitzahl der Adresse
+     * @param country   das Land der Adresse
+     * @return ein Array mit zwei Werten: dem Breiten- und dem Längengrad der Adresse,
+     *         oder null, wenn keine Koordinaten gefunden wurden
+     * @author Dominik
+     */
     public static double[] getCoordinatesFromAddress(String street, String city, String postalCode, String country) {
         try {
             String address = street + ", " + city + ", " + postalCode + ", " + country;
 
+            // Kodiert die Adresse für die URL
             String encodedAddress = java.net.URLEncoder.encode(address, "UTF-8");
 
             String urlString = NOMINATIM_API_URL + "?q=" + encodedAddress + "&format=json&addressdetails=1";
 
+            // Öffnet die Verbindung zur Nominatim API
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
@@ -38,6 +62,7 @@ public class GeocodingService {
             // JSON-Antwort parsen
             JSONArray jsonResponse = new JSONArray(response.toString());
 
+            // Prüft, ob Ergebnisse zurückgegeben wurden
             if (jsonResponse.length() > 0) {
                 // Nimm das erste Ergebnis aus der Antwort
                 JSONObject firstResult = jsonResponse.getJSONObject(0);
@@ -46,7 +71,6 @@ public class GeocodingService {
 
                 return new double[]{lat, lng};
             } else {
-                // Wenn keine Ergebnisse gefunden wurden
                 System.out.println("Keine Koordinaten für die Adresse gefunden.");
                 return null;
             }

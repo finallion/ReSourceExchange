@@ -23,6 +23,15 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Der HomeController ist ein Spring MVC-Controller, der für die Verwaltung der Startseite der Anwendung zuständig ist.
+ *
+ * Diese Klasse enthält Endpunkte, die für das Rendern der Startseite oder der Hauptansicht verantwortlich sind.
+ * Der Controller verarbeitet die grundlegenden Anfragen und sorgt dafür, dass die Benutzer mit der Homepage
+ * oder anderen allgemeinen Seiten der Anwendung verbunden werden.
+ *
+ * @author Dominik, Lion, Stefan
+ */
 @Controller
 public class HomeController {
 
@@ -44,7 +53,20 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    // GET-Methoden für das Abrufen der Listings und Anzeigen im Template
+    /**
+     * Controller-Methode zur Behandlung von GET-Anfragen auf die Hauptseite der Anwendung.
+     *
+     * Diese Methode zeigt die Willkommensseite des Benutzers an und liefert alle erforderlichen Daten,
+     * um die Benutzeroberfläche korrekt darzustellen. Sie enthält Informationen über den angemeldeten Benutzer,
+     * die aktuelle Sprache, die ausgewählte Währung, die Listings auf der Plattform und die gespeicherten Bookmarks des Benutzers.
+     * Außerdem wird der Benutzerstandort abgerufen und auf der Seite angezeigt, falls verfügbar.
+     *
+     * @author Dominik, Lion, Stefan
+     * @param model das Spring Model, das die Daten für die View enthält
+     * @param request das HttpServletRequest-Objekt, das Informationen zur aktuellen Anfrage enthält
+     * @param session die aktuelle HttpSession, um Benutzerspezifische Daten zu verwalten
+     * @return der Name der View, die die Hauptseite darstellt ("main")
+     */
     @GetMapping("/main")
     public String welcomePage(Model model, HttpServletRequest request, HttpSession session) {
         // Abrufen des Benutzernamens aus dem Security Context
@@ -63,6 +85,7 @@ public class HomeController {
         }
         model.addAttribute("currency", currency);
 
+        // Abrufen der nicht verkauften Listings und Hinzufügen zum Model
         List<Listing> listings = listingRepository.findBySoldFalse();
         List<Material> materials = materialRepository.findAll();
         model.addAttribute("listings", listings);
@@ -72,6 +95,7 @@ public class HomeController {
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);
         model.addAttribute("userBookmarks", userBookmarks);
 
+        // Abrufen der Geokoordinaten des Benutzers
         double[] coordinates = userService.getGeocodedAddressFromUser(userDetails.getUser());
 
         if (coordinates != null) {

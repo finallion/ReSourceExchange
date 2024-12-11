@@ -2,6 +2,17 @@ package com.resexchange.app.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Die Bookmark-Entität stellt ein Lesezeichen dar, das ein Benutzer für ein bestimmtes Listing gesetzt hat.
+ *
+ * Diese Klasse wird in der Datenbank gespeichert und enthält die Informationen über das Lesezeichen,
+ * wie das Listing, das mit dem Lesezeichen verknüpft ist, sowie den Benutzer, der das Lesezeichen gesetzt hat.
+ *
+ * Jedes Lesezeichen verweist auf ein Listing und einen Benutzer, sodass das Lesezeichen eindeutig einem Benutzer
+ * und einem bestimmten Listing zugeordnet ist.
+ *
+ * @author Dominik
+ */
 @Entity
 public class Bookmark {
 

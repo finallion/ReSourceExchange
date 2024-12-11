@@ -12,6 +12,13 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service-Klasse, die verschiedene Operationen für Listings (Angebote) durchführt.
+ * Diese Klasse verwaltet das Hinzufügen, Abrufen, Aktualisieren und Löschen von Listings,
+ * die mit Materialien verknüpft sind.
+ *
+ * @author Dominik
+ */
 @Service
 public class ListingService {
 
@@ -25,7 +32,17 @@ public class ListingService {
         this.materialRepository = materialRepository;
     }
 
-    // Neuen Listing-Eintrag hinzufügen
+
+    /**
+     * Fügt ein neues Listing hinzu.
+     * Wenn das angegebene Material existiert, wird ein neues Listing mit dem angegebenen Material,
+     * der Menge und dem Preis erstellt.
+     *
+     * @param materialId Die ID des Materials, das mit dem Listing verknüpft werden soll
+     * @param quantity Die Menge des Materials im Listing
+     * @param price Der Preis des Listings
+     * @author Dominik
+     */
     public void addListing(Long materialId, int quantity, double price) {
         Optional<Material> materialOptional = materialRepository.findById(materialId);
 
@@ -44,13 +61,24 @@ public class ListingService {
         }
     }
 
-    // Alle Listings abrufen
+    /**
+     * Ruft alle Listings ab.
+     *
+     * @return eine Liste von allen Listings
+     * @author Dominik
+     */
     public List<Listing> getAllListings() {
         LOGGER.info("Retrieving all listings");
         return listingRepository.findAll();
     }
 
-    //Listing updaten
+    /**
+     * Aktualisiert ein bestehendes Listing.
+     * Wenn das Listing existiert, wird es mit den neuen Daten gespeichert.
+     *
+     * @param listing Das Listing, das aktualisiert werden soll
+     * @author Dominik
+     */
     public void updateListing(Listing listing) {
         if (listingRepository.existsById(listing.getId())) {
             listingRepository.save(listing);  // Speichert das Listing (update)
@@ -59,13 +87,27 @@ public class ListingService {
         }
     }
 
+    /**
+     * Ruft ein Listing anhand seiner ID ab.
+     * Gibt null zurück, wenn das Listing nicht gefunden wird.
+     *
+     * @param id Die ID des Listings
+     * @return Das gefundene Listing oder null, wenn nicht vorhanden
+     * @author Dominik
+     */
     public Listing getListingById(Long id) {
         return listingRepository.findById(id)
                 .orElse(null);  // Gibt null zurück, wenn das Listing nicht gefunden wird
     }
 
 
-    // Listing löschen
+    /**
+     * Löscht ein Listing anhand seiner ID.
+     * Diese Methode wird in einer Transaktion ausgeführt.
+     *
+     * @param id Die ID des Listings, das gelöscht werden soll
+     * @author Dominik
+     */
     @Transactional
     public void deleteListing(Long id) {
         if (listingRepository.existsById(id)) {

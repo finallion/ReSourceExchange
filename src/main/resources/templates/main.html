@@ -182,6 +182,7 @@
                             <label for="minPrice" th:text="#{form.price}">:</label>
                             <input type="number" name="minPrice" id="minPrice"
                                    class="form-control"
+                                   min="0"
                                    th:placeholder="'Min' + #{form.price}"
                                    th:value="${selectedMinPrice != null ? selectedMinPrice : ''}">
                         </div>
@@ -189,6 +190,7 @@
                             <label for="maxPrice"></label>
                             <input type="number" name="maxPrice" id="maxPrice"
                                    class="form-control"
+                                   min="0"
                                    th:placeholder="'Max' + #{form.price}"
                                    th:value="${selectedMaxPrice != null ? selectedMaxPrice : ''}">
                         </div>
@@ -198,6 +200,7 @@
                             <label for="minQuantity" th:text="#{form.quantity}">:</label>
                             <input type="number" name="minQuantity" id="minQuantity"
                                    class="form-control"
+                                   min="0"
                                    th:placeholder="'Min' + #{form.quantity}"
                                    th:value="${selectedMinQuantity != null ? selectedMinQuantity : ''}">
                         </div>
@@ -205,6 +208,7 @@
                             <label for="maxQuantity"></label>
                             <input type="number" name="maxQuantity" id="maxQuantity"
                                    class="form-control"
+                                   min="0"
                                    th:placeholder="'Max' + #{form.quantity}"
                                    th:value="${selectedMaxQuantity != null ? selectedMaxQuantity : ''}">
                         </div>

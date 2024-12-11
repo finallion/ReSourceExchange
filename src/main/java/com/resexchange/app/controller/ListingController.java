@@ -454,6 +454,7 @@ public class ListingController {
             @RequestParam(required = false) Double maxPrice,
             @RequestParam(required = false) Integer minQuantity,
             @RequestParam(required = false) Integer maxQuantity,
+            @RequestParam(required = false) Boolean own,
             Model model,
             Principal principal
     ) {
@@ -478,7 +479,13 @@ public class ListingController {
                 sold = false;
             }
 
-            listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity);
+            if(own != null && own) {
+                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, true);
+            } else {
+                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, false);
+            }
+
+            //listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity);
 
             if(sold) {
                 model.addAttribute("selectedSold", sold);

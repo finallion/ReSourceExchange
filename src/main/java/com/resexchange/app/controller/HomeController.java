@@ -95,6 +95,9 @@ public class HomeController {
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);
         model.addAttribute("userBookmarks", userBookmarks);
 
+        List<Listing> userListings = listingRepository.findByCreatedById(userId);
+        model.addAttribute("userListings", userListings);
+
         // Abrufen der Geokoordinaten des Benutzers
         double[] coordinates = userService.getGeocodedAddressFromUser(userDetails.getUser());
 

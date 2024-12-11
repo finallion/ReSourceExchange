@@ -72,6 +72,11 @@ public class ListingService {
         return listingRepository.findAll();
     }
 
+    public List<Listing> getListingsByUser(Long userId) {
+        LOGGER.info("Retrieving all listings for user ID: {}", userId);
+        return listingRepository.findByCreatedById(userId);
+    }
+
     /**
      * Aktualisiert ein bestehendes Listing.
      * Wenn das Listing existiert, wird es mit den neuen Daten gespeichert.
@@ -121,9 +126,9 @@ public class ListingService {
     /**
      * Get Filtered Listings from the Database
      */
-    public List<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity) {
+    public List<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity,Boolean own) {
 
-        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity);
+        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity,own);
     }
 
     /**

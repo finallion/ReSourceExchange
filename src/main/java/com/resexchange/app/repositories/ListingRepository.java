@@ -14,6 +14,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
 
     List<Listing> findBySoldFalse();
 
+    List<Listing> findByCreatedById(Long userId);
+
     List<Listing> findByBuyerMail(String mail);
 
     /**
@@ -26,7 +28,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
             "(:minPrice IS NULL OR l.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR l.price <= :maxPrice) AND " +
             "(:minQuantity IS NULL OR l.quantity >= :minQuantity) AND " +
-            "(:maxQuantity IS NULL OR l.quantity <= :maxQuantity)")
+            "(:maxQuantity IS NULL OR l.quantity <= :maxQuantity) AND " +
+            "(:own IS NULL OR l.createdBy.id = :userId)")
     List<Listing> findByFilters(@Param("materialId") Long materialId,
                                 @Param("sold") Boolean sold,
                                 @Param("bookmarked") Boolean bookmarked,
@@ -34,7 +37,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
                                 @Param("minPrice") Double minPrice,
                                 @Param("maxPrice") Double maxPrice,
                                 @Param("minQuantity") Integer minQuantity,
-                                @Param("maxQuantity") Integer maxQuantity
+                                @Param("maxQuantity") Integer maxQuantity,
+                                @Param("own") Boolean own
     );
 
     /**

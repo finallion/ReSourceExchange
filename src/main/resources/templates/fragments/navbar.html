@@ -21,8 +21,44 @@
                     <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                         <a class="nav-link active" aria-current="page" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
                     </li>
-                    <li class="nav-item" sec:authorize="hasAuthority('MANAGE_LISTINGS')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">Create Listing</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="listingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.listings}">
+                            Listings
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="listingsDropdown">
+                            <li><h6 class="dropdown-header">Meine Listings</h6></li>
+                            <li th:if="${#lists.isEmpty(userListings)}">
+                                <a class="dropdown-item disabled" href="#">Keine Listings vorhanden</a>
+                            </li>
+                            <li th:each="listing : ${userListings}">
+                                <div class="dropdown-item d-flex justify-content-between align-items-center">
+                                    <span th:text="${listing.material.name} + ' - ' + ${listing.createdBy.name}"></span>
+                                    <div class="listing-actions">
+                                        <a class="card-link details-icon"
+                                           th:href="@{/listing/{id}(id=${listing.id})}"
+                                           title="View Details">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z" />
+                                            </svg>
+                                        </a>
+                                        <a th:href="@{/listing/delete/{id}(id=${listing.id})}" class="card-link delete-icon" title="Delete">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="nav-item" sec:authorize="hasAuthority('MANAGE_LISTINGS')">
+                                <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">
+                                    Create Listing
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.profile}">

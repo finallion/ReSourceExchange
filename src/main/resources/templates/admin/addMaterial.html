@@ -16,11 +16,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
-    </div>
-</nav>
+<div th:replace="fragments/navbar :: navbar"></div>
 <div class="container">
     <h1 class="mb-4" th:text="#{material.header}">Material erstellen</h1>
 

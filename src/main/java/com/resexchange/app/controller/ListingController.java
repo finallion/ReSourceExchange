@@ -53,6 +53,9 @@ public class ListingController {
     @Autowired
     private PaypalService paypalService;
 
+    @Autowired
+    private MailService mailService;
+
     // GET-Request, um das Formular für ein neues Listing zu zeigen
     @GetMapping("/create")
     public String showListingForm(Model model) {
@@ -252,6 +255,12 @@ public class ListingController {
                 listing.setBuyer(buyer);
                 listing.setSold(true);
                 listingRepository.save(listing);
+
+                mailService.sendEmail(
+                        buyer.getMail(),
+                        "Successfully bought at ReSource Exchange!",
+                        "You bought: " + listing.getMaterial() + ":" + listing.getQuantity() + " for " + listing.getPrice()
+                );
 
                 return "success";
             } else {

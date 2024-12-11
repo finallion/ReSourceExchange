@@ -27,6 +27,10 @@
     border-radius: 10px;
 }
 
+#toggleMapButton {
+    height: 60px;
+}
+
 .center-div {
     display: flex;
     justify-content: center;

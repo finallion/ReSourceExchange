@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -17,9 +18,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    private final MailService mailService;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, MailService mailService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.mailService = mailService;
     }
 
     public void registerCompanyUser(Company company) {
@@ -29,9 +33,19 @@ public class UserService {
                     address.getPostalCode(), address.getCountry()));
         }
         company.setPassword(passwordEncoder.encode(company.getPassword()));
+        company.setVerified(false);
+        String token = UUID.randomUUID().toString();
+        company.setVerificationToken(token);
         company.setRole(Role.COMPANY);
         company.setPermissions(Set.of(Permission.CHAT, Permission.MANAGE_LISTINGS));
         userRepository.save(company);
+
+        String link = "http://localhost:8080/verify?token=" + token;
+        mailService.sendEmail(
+                company.getMail(),
+                "Email Verification",
+                "Click the following link to verify your email: " + link
+        );
     }
 
     public void registerPrivateUser(PrivateUser privateUser) {
@@ -41,9 +55,27 @@ public class UserService {
                     address.getPostalCode(), address.getCountry()));
         }
         privateUser.setPassword(passwordEncoder.encode(privateUser.getPassword()));
+        privateUser.setVerified(false);
+        String token = UUID.randomUUID().toString();
+        privateUser.setVerificationToken(token);
         privateUser.setRole(Role.PRIVATE_USER);
         privateUser.setPermissions(Set.of(Permission.CHAT, Permission.MANAGE_LISTINGS));
         userRepository.save(privateUser);
+
+        String link = "http://localhost:8080/verify?token=" + token;
+        mailService.sendEmail(
+                privateUser.getMail(),
+                "Email Verification",
+                "Click the following link to verify your email: " + link
+        );
+    }
+
+    public void verifyUser(String token) {
+        User user = userRepository.findByVerificationToken(token)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid token"));
+        user.setVerified(true);
+        user.setVerificationToken(null);
+        userRepository.save(user);
     }
 
     public void registerAdmin(Admin admin) {

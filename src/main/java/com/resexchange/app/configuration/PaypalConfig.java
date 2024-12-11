@@ -27,6 +27,12 @@ public class PaypalConfig {
         return new OAuthTokenCredential(clientId, clientSecret, sdkConfig);
     }
 
+    /**
+     * Defines the "receiver" of the paypal transaction
+     * This bean is injected into the paypal service
+     * @return
+     * @throws PayPalRESTException
+     */
     @Bean
     public APIContext apiContext() throws PayPalRESTException {
         APIContext apiContext = new APIContext(authTokenCredential().getAccessToken());

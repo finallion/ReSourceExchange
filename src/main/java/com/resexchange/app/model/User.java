@@ -30,6 +30,9 @@ public abstract class User {
     @Enumerated(EnumType.STRING)
     private Set<Permission> permissions = new HashSet<>();
 
+    private boolean isVerified;
+    private String verificationToken;
+
     /**
      * Delete listing on user deletion
      */
@@ -74,9 +77,26 @@ public abstract class User {
         return id;
     }
 
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
+    }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
+    }
+
     public abstract String getName();
     public abstract Address getAddress();
     public abstract void setAddress(Address address);
+
 
 }
 

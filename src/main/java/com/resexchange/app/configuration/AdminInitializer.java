@@ -41,6 +41,7 @@ public class AdminInitializer implements CommandLineRunner {
         if (userRepository.findUserByMail(adminEmail).isEmpty()) {
             Admin admin = new Admin();
             admin.setMail(adminEmail);
+            admin.setVerified(true);
             admin.setPassword(passwordEncoder.encode(adminPassword));
             admin.setRole(Role.ADMIN);
             admin.setPermissions(Set.of(

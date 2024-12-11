@@ -1,12 +1,13 @@
 package com.resexchange.app.services;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class GeocodingService {
 

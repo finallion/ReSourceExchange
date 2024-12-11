@@ -37,13 +37,15 @@ public class MockupDataInitializer implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private UserService userService = new UserService(userRepository,passwordEncoder);
+    @Autowired
+    private UserService userService;
 
     @Override
     public void run(String... args) {
 
         if (!userRepository.existsByMail("max.mustermann@example.com")) {
             PrivateUser privateUser1 = new PrivateUser();
+            privateUser1.setVerified(true);
             privateUser1.setFirstName("Max");
             privateUser1.setLastName("Mustermann");
             privateUser1.setMail("max.mustermann@example.com");
@@ -68,6 +70,7 @@ public class MockupDataInitializer implements CommandLineRunner {
 
         if (!userRepository.existsByMail("erika.musterfrau@example.com")) {
             PrivateUser privateUser2 = new PrivateUser();
+            privateUser2.setVerified(true);
             privateUser2.setFirstName("Erika");
             privateUser2.setLastName("Musterfrau");
             privateUser2.setMail("erika.musterfrau@example.com");
@@ -90,6 +93,7 @@ public class MockupDataInitializer implements CommandLineRunner {
 
         if (!userRepository.existsByMail("info@techsolutions.com")) {
             Company company1 = new Company();
+            company1.setVerified(true);
             company1.setCompanyName("Tech Solutions GmbH");
             company1.setMail("info@techsolutions.com");
             company1.setPassword(passwordEncoder.encode("password789"));
@@ -112,6 +116,7 @@ public class MockupDataInitializer implements CommandLineRunner {
 
         if (!userRepository.existsByMail("contact@innodesigns.com")) {
             Company company2 = new Company();
+            company2.setVerified(true);
             company2.setCompanyName("Innovative Designs AG");
             company2.setMail("contact@innodesigns.com");
             company2.setPassword(passwordEncoder.encode("password101112"));

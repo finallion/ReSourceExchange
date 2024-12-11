@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class PaypalService {
 
+
     @Autowired
     private APIContext apiContext;
 
@@ -43,8 +44,6 @@ public class PaypalService {
 
         payment.setTransactions(List.of(transaction));
 
-
-        // Create payment
         return payment.create(apiContext);
     }
 

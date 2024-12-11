@@ -40,7 +40,8 @@ public class HomeController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private UserService userService = new UserService(userRepository,passwordEncoder);
+    @Autowired
+    private UserService userService;
 
     // GET-Methoden für das Abrufen der Listings und Anzeigen im Template
     @GetMapping("/main")

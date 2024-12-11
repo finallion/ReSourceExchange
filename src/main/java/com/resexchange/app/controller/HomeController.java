@@ -1,11 +1,9 @@
 package com.resexchange.app.controller;
 
-import com.resexchange.app.model.Address;
-import com.resexchange.app.model.Bookmark;
-import com.resexchange.app.model.Listing;
-import com.resexchange.app.model.User;
+import com.resexchange.app.model.*;
 import com.resexchange.app.repositories.BookmarkRepository;
 import com.resexchange.app.repositories.ListingRepository;
+import com.resexchange.app.repositories.MaterialRepository;
 import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.security.REUserDetails;
 import com.resexchange.app.services.BookmarkService;
@@ -41,6 +39,9 @@ public class HomeController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private MaterialRepository materialRepository;
+
+    @Autowired
     private UserService userService;
 
     // GET-Methoden für das Abrufen der Listings und Anzeigen im Template
@@ -63,7 +64,9 @@ public class HomeController {
         model.addAttribute("currency", currency);
 
         List<Listing> listings = listingRepository.findBySoldFalse();
+        List<Material> materials = materialRepository.findAll();
         model.addAttribute("listings", listings);
+        model.addAttribute("materials", materials);
 
         Long userId = userDetails.getId();  // Holen der Benutzer-ID
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);

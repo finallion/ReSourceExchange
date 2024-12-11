@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MaterialService {
 
@@ -21,8 +23,18 @@ public class MaterialService {
         this.materialRepository = materialRepository;
     }
 
+    /**
+     * Add Material to the Database
+     */
     public void addMaterial(Material material) {
         LOGGER.info("Material has been added: {}", material.getName());
         materialRepository.save(material);
+    }
+
+    /**
+     * Get every Material from the Database
+     */
+    public List<Material> getAllMaterials() {
+        return materialRepository.findAll();
     }
 }

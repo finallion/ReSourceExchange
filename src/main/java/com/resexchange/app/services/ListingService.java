@@ -75,4 +75,21 @@ public class ListingService {
             LOGGER.warn("Listing with ID: {} not found", id);
         }
     }
+
+    /**
+     * Get Filtered Listings from the Database
+     */
+    public List<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity) {
+
+        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity);
+    }
+
+    /**
+     * Get Searched Listings from the Database
+     */
+    public List<Listing> getSearchedListings(String keyword) {
+
+        return listingRepository.searchByKeyword(keyword);
+    }
+
 }

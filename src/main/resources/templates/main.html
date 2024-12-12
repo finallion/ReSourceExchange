@@ -242,6 +242,9 @@
         </div>
         <div id="map-container">
             <div id="map"></div>
+            <div id="popup">
+                <div id="popup-content"></div>
+            </div>
         </div>
     </div>
     <div>
@@ -255,10 +258,11 @@
     /*<![CDATA[*/
     var latitude = /*[[${userLatitude}]]*/ 52.520008;
     var longitude = /*[[${userLongitude}]]*/ 13.404954;
-    var listings = /*[[${listings}]]*/ []; // Liste der Listings mit Koordinaten
+    var listings = /*[[${listings}]]*/ [];
 
     let map;
     let markers = [];
+    let hoverTimeout = null; // Timer für das Verzögern des Hover-Ereignisses
 
     function initMap() {
         if (!map) {
@@ -266,7 +270,7 @@
                 target: 'map',
                 layers: [
                     new ol.layer.Tile({
-                        source: new ol.source.OSM(),
+                        source: new ol.source.OSM(), // OpenStreetMap Tile
                     }),
                 ],
                 view: new ol.View({
@@ -275,25 +279,35 @@
                 }),
             });
 
-            // Marker für Listings hinzufügen
             listings.forEach(function(listing) {
                 var lon = listing.longitude;
                 var lat = listing.latitude;
 
                 var marker = new ol.Feature({
                     geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])),
+                    listingId: listing.id,
+                    name: listing.material.name,
+                    price: listing.price,
+                    quantity: listing.quantity,
                 });
+
+                var svgIcon = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ff0000" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg>
+                `;
 
                 marker.setStyle(new ol.style.Style({
                     image: new ol.style.Icon({
-                        src: 'https://openlayers.org/en/v6.15.1/examples/data/icon.png', // Icon-URL
-                        scale: 0.7,
+                        src: 'data:image/svg+xml;base64,' + btoa(svgIcon), // Icon für Marker
+                        scale: 1.0,
                     }),
                 }));
 
                 markers.push(marker);
             });
 
+            // Vektorschicht für Marker
             var vectorSource = new ol.source.Vector({
                 features: markers,
             });
@@ -303,6 +317,49 @@
             });
 
             map.addLayer(markerLayer);
+
+            var overlay = new ol.Overlay({
+                element: document.getElementById('popup'),
+                offset: [0, -10],
+                positioning: 'bottom-center',
+            });
+            map.addOverlay(overlay);
+
+
+            map.on('pointermove', function(evt) {
+                var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+                    return feature;
+                });
+
+                if (feature) {
+                    var listingId = feature.get('listingId');
+                    var listing = listings.find(listing => listing.id === listingId); // Das passende Listing finden
+
+                    var content = `
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="mb-2 text-muted">${listing.material.name}</h6>
+                    </div>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="mb-2 text-muted">${listing.createdBy.name}</h6>
+                    </div>
+                    <p class="card-text">
+                        <span>Verfügbarkeit: ${listing.quantity}</span><br>
+                        <span>Preis: ${listing.price}</span><br>
+                    </p>
+                </div>
+            </div>
+        `;
+
+                    document.getElementById('popup-content').innerHTML = content;
+
+                    overlay.setPosition(evt.coordinate);
+                    document.getElementById('popup').style.display = 'block'; // Popup anzeigen
+                } else {
+                    document.getElementById('popup').style.display = 'none';
+                }
+            });
         }
     }
 
@@ -314,7 +371,7 @@
         if (listingsContainer.style.display === 'block' || listingsContainer.style.display === '') {
             listingsContainer.style.display = 'none';
             mapContainer.style.display = 'block';
-            initMap();
+            initMap(); // Karte initialisieren
             toggleMapButton.textContent = 'Zurück zu den Listings';
         } else {
             listingsContainer.style.display = 'block';
@@ -324,7 +381,6 @@
     });
     /*]]>*/
 </script>
-
 
 
 

@@ -2,6 +2,8 @@ package com.resexchange.app.repositories;
 
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,11 +14,11 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
     // Hier werden alle Listing-Operationen definiert
     boolean existsByMaterial(Material material);
 
-    List<Listing> findBySoldFalse();
-
     List<Listing> findByCreatedById(Long userId);
 
     List<Listing> findByBuyerMail(String mail);
+
+    Page<Listing> findBySoldFalse(Pageable pageable);
 
     /**
      * Query to apply Filters on given Parameters
@@ -28,9 +30,9 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
             "(:minPrice IS NULL OR l.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR l.price <= :maxPrice) AND " +
             "(:minQuantity IS NULL OR l.quantity >= :minQuantity) AND " +
-            "(:maxQuantity IS NULL OR l.quantity <= :maxQuantity) AND " +
-            "(:own IS NULL OR l.createdBy.id = :userId)")
-    List<Listing> findByFilters(@Param("materialId") Long materialId,
+            "(:maxQuantity IS NULL OR l.quantity <= :maxQuantity)  " )
+       //     "(:own IS NULL OR l.createdBy.id = :userId)")
+    Page<Listing> findByFilters(@Param("materialId") Long materialId,
                                 @Param("sold") Boolean sold,
                                 @Param("bookmarked") Boolean bookmarked,
                                 @Param("userId") Long userId,
@@ -38,7 +40,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
                                 @Param("maxPrice") Double maxPrice,
                                 @Param("minQuantity") Integer minQuantity,
                                 @Param("maxQuantity") Integer maxQuantity,
-                                @Param("own") Boolean own
+                               // @Param("own") Boolean own,
+                                Pageable pageable
     );
 
     /**
@@ -53,5 +56,5 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
             "OR LOWER(pu.firstName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(pu.lastName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(c.companyName) LIKE LOWER(CONCAT('%', :keyword, '%'))")
-    List<Listing> searchByKeyword(@Param("keyword") String keyword);
+    Page<Listing> searchByKeyword(@Param("keyword") String keyword, Pageable pageable);
 }

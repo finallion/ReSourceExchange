@@ -12,12 +12,16 @@ import com.resexchange.app.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.util.List;
@@ -62,13 +66,19 @@ public class HomeController {
      * Außerdem wird der Benutzerstandort abgerufen und auf der Seite angezeigt, falls verfügbar.
      *
      * @author Dominik, Lion, Stefan
+     * @param page die Seite welche mittels Pagination angezeigt soll
      * @param model das Spring Model, das die Daten für die View enthält
      * @param request das HttpServletRequest-Objekt, das Informationen zur aktuellen Anfrage enthält
      * @param session die aktuelle HttpSession, um Benutzerspezifische Daten zu verwalten
      * @return der Name der View, die die Hauptseite darstellt ("main")
      */
     @GetMapping("/main")
-    public String welcomePage(Model model, HttpServletRequest request, HttpSession session) {
+    public String welcomePage(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            Model model,
+            HttpServletRequest request,
+            HttpSession session
+    ) {
         // Abrufen des Benutzernamens aus dem Security Context
         Locale locale = RequestContextUtils.getLocale(request);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -86,10 +96,14 @@ public class HomeController {
         model.addAttribute("currency", currency);
 
         // Abrufen der nicht verkauften Listings und Hinzufügen zum Model
-        List<Listing> listings = listingRepository.findBySoldFalse();
+        Pageable pageable = PageRequest.of(page - 1,8);
+        Page<Listing> listingPage = listingRepository.findBySoldFalse(pageable);
         List<Material> materials = materialRepository.findAll();
-        model.addAttribute("listings", listings);
+
+        model.addAttribute("listings", listingPage.getContent());
         model.addAttribute("materials", materials);
+        model.addAttribute("currentPage", listingPage.getNumber() + 1);
+        model.addAttribute("totalPages", listingPage.getTotalPages());
 
         Long userId = userDetails.getId();  // Holen der Benutzer-ID
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);

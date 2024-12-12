@@ -10,6 +10,11 @@ import org.springframework.web.client.RestTemplate;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Der CurrencyController ist für die Verwaltung der Währungen und das Abrufen der API zuständig
+ *
+ * @author Stefan
+ */
 @Controller
 public class CurrencyController {
 

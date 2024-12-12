@@ -12,6 +12,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service-Klasse, die verschiedene Operationen für Materialien durchführt.
+ * Diese Klasse verwaltet das Hinzufügen, Abrufen, Aktualisieren und Löschen von Materialien,
+ * welche mit Listings verknüpft werden können
+ *
+ * @author Stefan
+ */
 @Service
 public class MaterialService {
 

@@ -4,6 +4,9 @@ import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.MaterialRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -126,17 +129,24 @@ public class ListingService {
     /**
      * Get Filtered Listings from the Database
      */
-    public List<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity,Boolean own) {
-
-        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity,own);
+    public Page<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity, Boolean own, Pageable pageable) {
+        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, pageable);
     }
 
     /**
      * Get Searched Listings from the Database
      */
-    public List<Listing> getSearchedListings(String keyword) {
-
-        return listingRepository.searchByKeyword(keyword);
+    public Page<Listing> getSearchedListings(String keyword, Pageable pageable) {
+        return listingRepository.searchByKeyword(keyword, pageable);
     }
 
+    /**
+     * Hilfsmethode um Anzahl der Pages zu berechnen
+     * @param pageSize Anzahl der Listings die auf einer Seite dargestellt werden sollen
+     * @return Berechnete Anzahl an Seiten
+     */
+    public int getTotalPages(int pageSize) {
+        long totalListings = listingRepository.count();
+        return (int) Math.ceil((double) totalListings / pageSize);
+    }
 }

@@ -14,7 +14,11 @@ import com.resexchange.app.services.*;
 import com.resexchange.app.repositories.MaterialRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +38,7 @@ import java.util.Optional;
  * und Beschreibungen enthalten. Der Controller enthält Methoden zur Anzeige von Formularen, zur Verarbeitung von
  * Formulareingaben sowie zur Verwaltung von Nutzerdaten und Zahlungen.
  *
- * @author Dominik, Lion
+ * @author Dominik, Lion, Stefan
  */
 @Controller
 @RequestMapping("/listing")
@@ -442,7 +446,20 @@ public class ListingController {
     }
 
     /**
-     * Method to Filter Listings with a few Parameters
+     * @author Stefan
+     * @author Dominik
+     * @param keyword Das Keyword das in die Suche eingegeben wird
+     * @param materialId Die MaterialId welche beim Filtern ausgesucht werden kann
+     * @param sold Der Wert der Checkbox "Sold" beim Filtern
+     * @param bookmarked Der Wert der Checkbox "Bookmarked" beim Filtern
+     * @param minPrice Minimalpreis nach dem gefiltert werden soll
+     * @param maxPrice Maximalpreis nach dem gefiltert werden soll
+     * @param minQuantity Minimalquantität nach der gefiltert werden soll
+     * @param maxQuantity Maximalquantität nach der gefiltert werden soll
+     * @param own Der Wert der Checkbox "Own" beim Filtern"
+     * @param model das Spring Model, um die Parameter als Attribute an die Ansicht zu übergeben
+     * @param principal das Principal-Objekt, das die Authentifizierungsdaten des aktuellen Benutzers enthält
+     * @return Ansicht der Mainsite mit gefilterten Listings
      */
     @GetMapping
     public String getFilteredListings(
@@ -455,11 +472,15 @@ public class ListingController {
             @RequestParam(required = false) Integer minQuantity,
             @RequestParam(required = false) Integer maxQuantity,
             @RequestParam(required = false) Boolean own,
+            @RequestParam(defaultValue = "1") int page,
             Model model,
             Principal principal
     ) {
+        int pageIndex = page - 1;
+        int pageSize = 8;
 
-        List<Listing> listings;
+        Pageable pageable = PageRequest.of(pageIndex, pageSize);
+        Page<Listing> listings;
 
         User loggedInUser = userRepository.findByMail(principal.getName())
                 .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
@@ -467,7 +488,7 @@ public class ListingController {
 
         // Wenn ein suchwort eingegeben ist soll nach Suchwort gesucht werden ansonst werden die Filter angewendet
         if(keyword != null && !keyword.isEmpty()) {
-            listings = listingService.getSearchedListings(keyword);
+            listings = listingService.getSearchedListings(keyword, pageable);
         } else {
 
             // Wenn der "Bookmarked" Filter nicht angewendet wird ist die userId irrelevant und muss null gesetzt werden
@@ -480,12 +501,12 @@ public class ListingController {
             }
 
             if(own != null && own) {
-                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, true);
+                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, true, pageable);
+                model.addAttribute("own", true);
             } else {
-                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, false);
+                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, false, pageable);
+                model.addAttribute("own", false);
             }
-
-            //listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity);
 
             if(sold) {
                 model.addAttribute("selectedSold", sold);
@@ -506,6 +527,9 @@ public class ListingController {
         model.addAttribute("selectedMaxPrice", maxPrice);
         model.addAttribute("selectedMinQuantity", minQuantity);
         model.addAttribute("selectedMaxQuantity", maxQuantity);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", listings.getTotalPages());
+        model.addAttribute("totalElements", listings.getTotalElements());
 
         return "main";
     }

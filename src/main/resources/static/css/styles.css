@@ -267,3 +267,9 @@
 .dropdown-item .bookmark-actions a {
     margin-left: 16px;
 }
+
+.no-listings {
+    display: flex;
+    justify-content: center; /* Horizontale Zentrierung */
+    align-items: center; /* Vertikale Zentrierung */
+}

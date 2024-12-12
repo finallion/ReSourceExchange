@@ -1,6 +1,7 @@
 package com.resexchange.app.controller;
 
 import com.resexchange.app.model.Material;
+import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.MaterialRepository;
 import com.resexchange.app.services.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -21,6 +23,8 @@ public class MaterialController {
     private MaterialRepository materialRepository;
 
     private final MaterialService materialService;
+    @Autowired
+    private ListingRepository listingRepository;
 
     public MaterialController(MaterialService materialService) {this.materialService = materialService;}
 
@@ -47,7 +51,16 @@ public class MaterialController {
 
     // Material löschen
     @GetMapping("/delete/{id}")
-    public String deleteMaterial(@PathVariable Long id) {
+    public String deleteMaterial(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+
+        boolean isMaterialUsed = listingRepository.existsByMaterial(materialRepository.getReferenceById(id));
+
+        if (isMaterialUsed) {
+            // Fehlermeldung hinzufügen
+            redirectAttributes.addFlashAttribute("error", "Material cannot be deleted because it is used in one or more listings.");
+            return "redirect:/material/overview";
+        }
+
         materialRepository.deleteById(id);
         return "redirect:/material/overview"; // Nach dem Löschen zur Übersicht umleiten
     }

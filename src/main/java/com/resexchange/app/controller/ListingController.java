@@ -485,6 +485,7 @@ public class ListingController {
         User loggedInUser = userRepository.findByMail(principal.getName())
                 .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
         Long userId = loggedInUser.getId();
+        Long ownedId = userId;
 
         // Wenn ein suchwort eingegeben ist soll nach Suchwort gesucht werden ansonst werden die Filter angewendet
         if(keyword != null && !keyword.isEmpty()) {
@@ -501,11 +502,11 @@ public class ListingController {
             }
 
             if(own != null && own) {
-                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, true, pageable);
-                model.addAttribute("own", true);
+                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, true, ownedId, pageable);
+                model.addAttribute("selectedOwn", true);
             } else {
-                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, false, pageable);
-                model.addAttribute("own", false);
+                listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, false, ownedId, pageable);
+                model.addAttribute("selectedOwn", false);
             }
 
             if(sold) {

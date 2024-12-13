@@ -129,8 +129,8 @@ public class ListingService {
     /**
      * Get Filtered Listings from the Database
      */
-    public Page<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity, Boolean own, Pageable pageable) {
-        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, pageable);
+    public Page<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity, Boolean own, Long ownedId, Pageable pageable) {
+        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, own, ownedId, pageable);
     }
 
     /**

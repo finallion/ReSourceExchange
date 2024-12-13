@@ -206,7 +206,7 @@
                 maxPrice=${selectedMaxPrice},
                 minQuantity=${selectedMinQuantity},
                 maxQuantity=${selectedMaxQuantity},
-                own=${own})}" aria-label="Previous">
+                own=${selectedOwn})}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -221,7 +221,7 @@
                 maxPrice=${selectedMaxPrice},
                 minQuantity=${selectedMinQuantity},
                 maxQuantity=${selectedMaxQuantity},
-                own=${own})}" th:text="${pageNum}"></a>
+                own=${selectedOwn})}" th:text="${pageNum}"></a>
                     </li>
                     <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
                         <a class="page-link" th:href="@{/listing(page=${currentPage + 1},
@@ -233,7 +233,7 @@
                 maxPrice=${selectedMaxPrice},
                 minQuantity=${selectedMinQuantity},
                 maxQuantity=${selectedMaxQuantity},
-                own=${own})}" aria-label="Next">
+                own=${selectedOwn})}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

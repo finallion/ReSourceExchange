@@ -30,8 +30,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
             "(:minPrice IS NULL OR l.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR l.price <= :maxPrice) AND " +
             "(:minQuantity IS NULL OR l.quantity >= :minQuantity) AND " +
-            "(:maxQuantity IS NULL OR l.quantity <= :maxQuantity)  " )
-       //     "(:own IS NULL OR l.createdBy.id = :userId)")
+            "(:maxQuantity IS NULL OR l.quantity <= :maxQuantity)  AND " +
+            "(:own = false OR (:own = true AND l.createdBy.id = :ownedId))")
     Page<Listing> findByFilters(@Param("materialId") Long materialId,
                                 @Param("sold") Boolean sold,
                                 @Param("bookmarked") Boolean bookmarked,
@@ -40,7 +40,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
                                 @Param("maxPrice") Double maxPrice,
                                 @Param("minQuantity") Integer minQuantity,
                                 @Param("maxQuantity") Integer maxQuantity,
-                               // @Param("own") Boolean own,
+                                @Param("own") Boolean own,
+                                @Param("ownedId") Long ownedId,
                                 Pageable pageable
     );
 

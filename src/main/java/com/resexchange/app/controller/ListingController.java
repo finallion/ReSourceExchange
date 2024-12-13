@@ -519,7 +519,7 @@ public class ListingController {
 
         List<Material> materials = materialService.getAllMaterials();
 
-        model.addAttribute("listings", listings);
+        model.addAttribute("listings", listings.getContent());
         model.addAttribute("materials", materials);
         model.addAttribute("selectedMaterialId", materialId);
         model.addAttribute("selectedBookmarked", bookmarked);
@@ -531,6 +531,17 @@ public class ListingController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", listings.getTotalPages());
         model.addAttribute("totalElements", listings.getTotalElements());
+
+        double[] coordinates = userService.getGeocodedAddressFromUser(loggedInUser);
+
+        if (coordinates != null) {
+            model.addAttribute("userLatitude", coordinates[0]);
+            model.addAttribute("userLongitude", coordinates[1]);
+        } else {
+            // Fallback Berlin
+            model.addAttribute("userLatitude", 52.520008);
+            model.addAttribute("userLongitude", 13.404954);
+        }
 
         return "main";
     }

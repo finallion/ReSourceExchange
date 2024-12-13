@@ -262,7 +262,15 @@
 
     let map;
     let markers = [];
+    let markerLayer;
     let hoverTimeout = null; // Timer für das Verzögern des Hover-Ereignisses
+
+    function clearMarkers() {
+        if (markerLayer) {
+            map.removeLayer(markerLayer);
+        }
+        markers = [];
+    }
 
     function initMap() {
         if (!map) {
@@ -270,7 +278,7 @@
                 target: 'map',
                 layers: [
                     new ol.layer.Tile({
-                        source: new ol.source.OSM(), // OpenStreetMap Tile
+                        source: new ol.source.OSM(),
                     }),
                 ],
                 view: new ol.View({
@@ -278,6 +286,9 @@
                     zoom: 12,
                 }),
             });
+        } else {
+            clearMarkers();
+        }
 
             listings.forEach(function(listing) {
                 var lon = listing.longitude;
@@ -312,11 +323,12 @@
                 features: markers,
             });
 
-            var markerLayer = new ol.layer.Vector({
-                source: vectorSource,
-            });
+        markerLayer = new ol.layer.Vector({
+            source: vectorSource,
+        });
 
-            map.addLayer(markerLayer);
+
+        map.addLayer(markerLayer);
 
             var overlay = new ol.Overlay({
                 element: document.getElementById('popup'),
@@ -361,7 +373,6 @@
                 }
             });
         }
-    }
 
     const toggleMapButton = document.getElementById('toggleMapButton');
     const listingsContainer = document.getElementById('listings');

@@ -243,13 +243,24 @@
         <div id="map-container">
             <div id="map"></div>
             <div id="popup">
-                <div id="popup-content"></div>
+                <div id="popup-content">
+                </div>
             </div>
         </div>
     </div>
     <div>
-        <button id="toggleMapButton" class="btn btn-primary" type="button">Zur Karte wechseln</button>
+        <button id="toggleMapButton" class="btn btn-primary" type="button"
+                th:text="#{button.toggleMapText}"
+                th:attr="data-toggle-map-text=#{button.toggleMapText},data-toggle-back-text=#{button.toggleBackToListings}">
+        </button>
     </div>
+</div>
+
+<div id="translations"
+     th:attr="data-quantity-msg=#{listing.quantity},
+              data-price-msg=#{listing.price},
+              data-exchange-rate=${session.exchange_rate},
+              data-currency=${session.currency}">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ol/6.15.1/ol.js"></script>
@@ -263,7 +274,6 @@
     let map;
     let markers = [];
     let markerLayer;
-    let hoverTimeout = null; // Timer für das Verzögern des Hover-Ereignisses
 
     function clearMarkers() {
         if (markerLayer) {
@@ -347,6 +357,14 @@
                     var listingId = feature.get('listingId');
                     var listing = listings.find(listing => listing.id === listingId); // Das passende Listing finden
 
+                    var translations = document.getElementById('translations');
+                    var quantityLabel = translations.getAttribute('data-quantity-msg');
+                    var priceLabel = translations.getAttribute('data-price-msg');
+                    var exchangeRate = parseFloat(translations.getAttribute('data-exchange-rate'));
+                    var currency = translations.getAttribute('data-currency').toUpperCase();
+
+                    var formattedPrice = (listing.price * exchangeRate).toFixed(2);
+
                     var content = `
             <div class="card">
                 <div class="card-body">
@@ -357,8 +375,8 @@
                         <h6 class="mb-2 text-muted">${listing.createdBy.name}</h6>
                     </div>
                     <p class="card-text">
-                        <span>Verfügbarkeit: ${listing.quantity}</span><br>
-                        <span>Preis: ${listing.price}</span><br>
+                         <span>${quantityLabel}: ${listing.quantity}</span><br>
+                         <span>${priceLabel}: ${formattedPrice} ${currency}</span><br>
                     </p>
                 </div>
             </div>
@@ -372,22 +390,37 @@
                     document.getElementById('popup').style.display = 'none';
                 }
             });
+
+        map.on('singleclick', function (evt) {
+            var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+                return feature;
+            });
+
+            if (feature) {
+                var listingId = feature.get('listingId');
+                var url = `/listing/${listingId}`;
+                window.location.href = url;
+            }
+        });
         }
 
     const toggleMapButton = document.getElementById('toggleMapButton');
     const listingsContainer = document.getElementById('listings');
     const mapContainer = document.getElementById('map-container');
 
+    const toggleMapText = toggleMapButton.getAttribute('data-toggle-map-text');
+    const toggleBackText = toggleMapButton.getAttribute('data-toggle-back-text');
+
     toggleMapButton.addEventListener('click', () => {
         if (listingsContainer.style.display === 'block' || listingsContainer.style.display === '') {
             listingsContainer.style.display = 'none';
             mapContainer.style.display = 'block';
             initMap(); // Karte initialisieren
-            toggleMapButton.textContent = 'Zurück zu den Listings';
+            toggleMapButton.textContent = toggleBackText;
         } else {
             listingsContainer.style.display = 'block';
             mapContainer.style.display = 'none';
-            toggleMapButton.textContent = 'Zur Karte wechseln';
+            toggleMapButton.textContent = toggleMapText;
         }
     });
     /*]]>*/

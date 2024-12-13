@@ -15,11 +15,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
-                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
-                    </li>
-                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                        <a class="nav-link active" aria-current="page" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
+                    <li class="nav-item dropdown" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="#" id="materialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.materials}">
+                            Materials
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="materialDropdown">
+                            <li>
+                                <a class="dropdown-item" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="listingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.listings}">
@@ -97,7 +104,7 @@
 
                             <li><hr class="dropdown-divider"></li>
 
-                            <li class="dropdown-item-text" th:text="#{navbar.switch_language}">Switch language</li>
+                            <li class="dropdown-item-text" th:text="#{navbar.switch_language}">Language</li>
                             <li class="px-3">
                                 <select class="form-select form-select-sm" id="locales" onchange="changeLanguage(this.value)">
                                     <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
@@ -121,9 +128,7 @@
                                 </script>
                             </li>
 
-                            <li><hr class="dropdown-divider"></li>
-
-                            <li class="dropdown-item-text" th:text="#{navbar.switch_currency}">Switch currency</li>
+                            <li class="dropdown-item-text" th:text="#{navbar.switch_currency}">Currency</li>
                             <li class="px-3">
                                 <select class="form-select form-select-sm" id="currencySelector" onchange="changeCurrency(this.value)">
                                     <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>

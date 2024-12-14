@@ -1,5 +1,6 @@
 package com.resexchange.app.configuration;
 
+import com.resexchange.app.security.TwoFactorAuthHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -31,6 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/verify-2fa", "/process-2fa").authenticated()
                         .requestMatchers("/verify").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/register/**", "/login").permitAll()
@@ -43,7 +45,8 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .usernameParameter("mail") // must match name="" field for mail input in /login
                         .passwordParameter("password") // must match name="" field for password input in /login
-                        .defaultSuccessUrl("/main", true)
+                        .successHandler(authSuccessHandler())
+                        //.defaultSuccessUrl("/main", true)
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )
@@ -55,5 +58,10 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public TwoFactorAuthHandler authSuccessHandler() {
+        return new TwoFactorAuthHandler();
     }
 }

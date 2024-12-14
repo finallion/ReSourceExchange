@@ -33,6 +33,8 @@ public abstract class User {
     private boolean isVerified;
     private String verificationToken;
 
+    private boolean has2FA;
+
     /**
      * Delete listing on user deletion
      */
@@ -91,6 +93,15 @@ public abstract class User {
 
     public void setVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
+    }
+
+
+    public boolean has2FA() {
+        return has2FA;
+    }
+
+    public void setHas2FA(boolean has2FA) {
+        this.has2FA = has2FA;
     }
 
     public abstract String getName();

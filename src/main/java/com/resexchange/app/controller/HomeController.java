@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Locale;
 
@@ -77,8 +79,22 @@ public class HomeController {
             @RequestParam(value = "page", defaultValue = "1") int page,
             Model model,
             HttpServletRequest request,
+            Principal principal,
             HttpSession session
     ) {
+
+        String user = principal.getName();
+        User loggedInUser = userRepository.findByMail(user)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        if (loggedInUser.has2FA()) {
+            Boolean tfaPassed = (Boolean) session.getAttribute("2fa_passed");
+            if (tfaPassed == null || !tfaPassed) {
+                return "redirect:/verify-2fa";
+            }
+        }
+
+
         // Abrufen des Benutzernamens aus dem Security Context
         Locale locale = RequestContextUtils.getLocale(request);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

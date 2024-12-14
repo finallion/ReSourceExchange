@@ -4,6 +4,11 @@
     margin-right: 40%;
 }
 
+#navbarSupportedContent {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+}
+
 .title {
     max-width: fit-content;
     margin-left: auto;

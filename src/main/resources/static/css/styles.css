@@ -124,14 +124,16 @@
 
 .icon-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    margin-top: auto;
+    width: 100%;
 }
 
 .icon-group {
     display: flex;
     gap: 10px;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .card-link {
@@ -322,8 +324,6 @@
     font-size: 1em;
     margin: 10px 0;
 }
-
-
 
 .no-listings {
     display: flex;

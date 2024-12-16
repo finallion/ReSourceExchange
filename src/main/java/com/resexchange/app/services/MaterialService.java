@@ -34,8 +34,21 @@ public class MaterialService {
      * Add Material to the Database
      */
     public void addMaterial(Material material) {
-        LOGGER.info("Material has been added: {}", material.getName());
-        materialRepository.save(material);
+        LOGGER.info("Attempting to add material: {}", material.getName());
+
+        try {
+            if (material.getName() == null) {
+                LOGGER.warn("Attempted to add null material");
+                throw new IllegalArgumentException("Material cannot be null");
+            }
+
+            materialRepository.save(material);
+
+            LOGGER.info("Material successfully added: {}", material.getName());
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while adding material: {}", material.getName() != null ? material.getName() : "null", e);
+            throw new RuntimeException("Error occurred while adding material", e); // Optional: Exception weiterwerfen
+        }
     }
 
     /**

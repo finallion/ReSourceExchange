@@ -4,6 +4,8 @@ import com.resexchange.app.model.Bookmark;
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.BookmarkRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import org.springframework.stereotype.Service;
         @Autowired
         private BookmarkRepository bookmarkRepository;
 
+        private static final Logger LOGGER = LoggerFactory.getLogger(BookmarkService.class);
+
     /**
      * Fügt ein neues Bookmark für einen Benutzer und ein Listing hinzu.
      *
@@ -29,12 +33,19 @@ import org.springframework.stereotype.Service;
      * @author Dominik
      */
         public void addBookmark(User user, Listing listing) {
-            Bookmark bookmark = new Bookmark(listing, user);
-            bookmark.setUser(user);
-            bookmark.setListing(listing);
-            bookmarkRepository.save(bookmark);
+            LOGGER.info("Attempting to add a bookmark for user: {} and listing: {}", user.getId(), listing.getId());
+            try {
+                Bookmark bookmark = new Bookmark(listing, user);
+                bookmark.setUser(user);
+                bookmark.setListing(listing);
+                LOGGER.debug("Created Bookmark object: {}", bookmark);
 
-         }
+                bookmarkRepository.save(bookmark);
+                LOGGER.info("Successfully saved bookmark for user: {} and listing: {}", user.getId(), listing.getId());
+            } catch (Exception e) {
+                LOGGER.error("Error while adding bookmark for user: {} and listing: {}", user.getId(), listing.getId(), e);
+            }
+        }
 
     /**
      * Sucht ein Bookmark anhand seiner ID.
@@ -44,9 +55,22 @@ import org.springframework.stereotype.Service;
      * @throws IllegalArgumentException wenn kein Bookmark mit der angegebenen ID gefunden wird
      * @author Dominik
      */
-        public Bookmark findById(Long id) {
-            return bookmarkRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Bookmark not found with id: " + id));
+    public Bookmark findById(Long id) {
+        LOGGER.info("Looking for bookmark with id: {}", id);
+
+        try {
+            Bookmark bookmark = bookmarkRepository.findById(id)
+                    .orElseThrow(() -> {
+                        LOGGER.warn("Bookmark not found with id(search): {}", id);
+                        return new IllegalArgumentException("Bookmark not found with id: " + id);
+                    });
+
+            LOGGER.info("Successfully found bookmark with id: {}", id);
+            return bookmark;
+        } catch (IllegalArgumentException e) {
+            LOGGER.error("Error occurred while finding bookmark with id: {}", id, e);
+            throw e;
+        }
     }
 
     /**
@@ -57,11 +81,21 @@ import org.springframework.stereotype.Service;
      * @author Dominik
      */
     public void deleteBookmark(Long id) {
+        LOGGER.info("Attempting to delete bookmark with id: {}", id);
+
+        try {
             if (!bookmarkRepository.existsById(id)) {
+                LOGGER.warn("Bookmark not found with id(delete): {}", id);
                 throw new IllegalArgumentException("Bookmark not found with id: " + id);
             }
+
             bookmarkRepository.deleteById(id);
+            LOGGER.info("Successfully deleted bookmark with id: {}", id);
+        } catch (IllegalArgumentException e) {
+            LOGGER.error("Error occurred while attempting to delete bookmark with id: {}", id, e);
+            throw e;
         }
+    }
 
     /**
      * Überprüft, ob ein bestimmtes Listing bereits als Bookmark für einen Benutzer gespeichert wurde.
@@ -71,7 +105,17 @@ import org.springframework.stereotype.Service;
      * @return true, wenn das Listing bereits als Bookmark für den Benutzer existiert, andernfalls false
      * @author Dominik
      */
-        public boolean BookmarkExist(User user, Listing listing) {
-            return bookmarkRepository.existsByUserAndListing(user, listing);
+    public boolean BookmarkExist(User user, Listing listing) {
+        LOGGER.info("Checking if bookmark exists for user: {} and listing: {}", user.getId(), listing.getId());
+
+        boolean exists = bookmarkRepository.existsByUserAndListing(user, listing);
+
+        if (exists) {
+            LOGGER.info("Bookmark exists for user: {} and listing: {}", user.getId(), listing.getId());
+        } else {
+            LOGGER.warn("No bookmark found for user: {} and listing: {}", user.getId(), listing.getId());
         }
+
+        return exists;
+    }
 }

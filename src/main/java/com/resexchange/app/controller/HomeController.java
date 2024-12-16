@@ -11,6 +11,8 @@ import com.resexchange.app.services.GeocodingService;
 import com.resexchange.app.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +42,7 @@ import java.util.Locale;
  */
 @Controller
 public class HomeController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
     @Autowired
     private ListingRepository listingRepository ;
@@ -82,37 +85,38 @@ public class HomeController {
             Principal principal,
             HttpSession session
     ) {
-
         String user = principal.getName();
         User loggedInUser = userRepository.findByMail(user)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> {
+                    LOGGER.error("User not found: {}", user);
+                    return new ResourceNotFoundException("User not found");
+                });
+        LOGGER.info("Logged in user: {}", user);
 
         if (loggedInUser.has2FA()) {
             Boolean tfaPassed = (Boolean) session.getAttribute("2fa_passed");
             if (tfaPassed == null || !tfaPassed) {
+                LOGGER.info("2FA not passed for user: {}", user);
                 return "redirect:/verify-2fa";
             }
         }
 
-
-        // Abrufen des Benutzernamens aus dem Security Context
         Locale locale = RequestContextUtils.getLocale(request);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         REUserDetails userDetails = (REUserDetails) authentication.getPrincipal();
         model.addAttribute("name", userDetails.getUsername());
         model.addAttribute("currentLocale", locale.getLanguage());
 
-        /** Wenn keine Währung festgelegt ist soll Euro angezeigt werden **/
         String currency = (String) session.getAttribute("currency");
         if (currency == null) {
-            currency = "eur"; // Standardwährung
+            currency = "eur";
             session.setAttribute("currency", currency);
             session.setAttribute("exchange_rate", 1);
+            LOGGER.info("No currency set. Defaulting to: {}", currency);
         }
         model.addAttribute("currency", currency);
 
-        // Abrufen der nicht verkauften Listings und Hinzufügen zum Model
-        Pageable pageable = PageRequest.of(page - 1,8);
+        Pageable pageable = PageRequest.of(page - 1, 8);
         Page<Listing> listingPage = listingRepository.findBySoldFalse(pageable);
         List<Material> materials = materialRepository.findAll();
 
@@ -121,25 +125,25 @@ public class HomeController {
         model.addAttribute("currentPage", listingPage.getNumber() + 1);
         model.addAttribute("totalPages", listingPage.getTotalPages());
 
-        Long userId = userDetails.getId();  // Holen der Benutzer-ID
+        Long userId = userDetails.getId();
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);
         model.addAttribute("userBookmarks", userBookmarks);
 
         List<Listing> userListings = listingRepository.findByCreatedById(userId);
         model.addAttribute("userListings", userListings);
 
-        // Abrufen der Geokoordinaten des Benutzers
         double[] coordinates = userService.getGeocodedAddressFromUser(userDetails.getUser());
 
         if (coordinates != null) {
             model.addAttribute("userLatitude", coordinates[0]);
             model.addAttribute("userLongitude", coordinates[1]);
+            LOGGER.info("Geocoded address for user {}: latitude = {}, longitude = {}", user, coordinates[0], coordinates[1]);
         } else {
-            // Fallback Berlin
-            model.addAttribute("userLatitude", 52.520008);
+            model.addAttribute("userLatitude", 52.520008); // Berlin fallback
             model.addAttribute("userLongitude", 13.404954);
+            LOGGER.warn("Could not retrieve geocoded address for user: {}. Using fallback coordinates.", user);
         }
 
-        return "main";  // Weiterleitung zur 'main.html'-Seite
+        return "main";
     }
 }

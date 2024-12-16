@@ -1,0 +1,764 @@
+2024-12-16 10:06:08 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.5 with PID 19568 (C:\Users\domin\IdeaProjects\ReSourceExchange\target\classes started by domin in C:\Users\domin\IdeaProjects\ReSourceExchange)
+2024-12-16 10:06:08 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-16 10:06:09 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-16 10:06:09 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 8 JPA repository interfaces.
+2024-12-16 10:06:10 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-16 10:06:10 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-16 10:06:10 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-16 10:06:10 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-16 10:06:10 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-16 10:06:10 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1666 ms
+2024-12-16 10:06:10 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-16 10:06:10 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2024-12-16 10:06:10 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-16 10:06:11 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-16 10:06:11 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-16 10:06:33 WARN  [main] o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2024-12-16 10:06:33 ERROR [main] o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2024-12-16 10:06:33 WARN  [main] o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:755)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:442)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1364)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1353)
+	at com.resexchange.app.ResourceExchangeApplication.main(ResourceExchangeApplication.java:14)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:165)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:55)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:845)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:420)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:238)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 35 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:156)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:79)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:140)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:969)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:833)
+	... 48 common frames omitted
+Caused by: java.net.ConnectException: Connection timed out: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:144)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53)
+	... 51 common frames omitted
+2024-12-16 10:06:33 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-16 10:06:33 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2024-12-16 10:06:34 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-16 10:06:34 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-16 10:06:48 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.5 with PID 9212 (C:\Users\domin\IdeaProjects\ReSourceExchange\target\classes started by domin in C:\Users\domin\IdeaProjects\ReSourceExchange)
+2024-12-16 10:06:48 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-16 10:06:49 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-16 10:06:49 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 8 JPA repository interfaces.
+2024-12-16 10:06:50 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-16 10:06:50 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-16 10:06:50 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-16 10:06:50 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-16 10:06:50 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-16 10:06:50 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1835 ms
+2024-12-16 10:06:50 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-16 10:06:50 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2024-12-16 10:06:50 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-16 10:06:51 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-16 10:06:51 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-16 10:06:51 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b2da3a5
+2024-12-16 10:06:51 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-16 10:06:52 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-12-16 10:06:52 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-16 10:06:52 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2024-12-16 10:06:53 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-16 10:06:55 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 10:06:56 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-16 10:06:58 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-16 10:06:58 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2024-12-16 10:06:59 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2024-12-16 10:06:59 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@12734eb5]]
+2024-12-16 10:06:59 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2024-12-16 10:06:59 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-16 10:06:59 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-16 10:06:59 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 11.744 seconds (process running for 12.56)
+2024-12-16 10:07:16 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-16 10:07:16 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-16 10:07:16 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-16 10:07:23 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:07:24 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:07:24 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:07:30 INFO  [http-nio-8080-exec-1] c.r.app.services.BookmarkService - Checking if bookmark exists for user: 5 and listing: 3
+2024-12-16 10:07:30 INFO  [http-nio-8080-exec-1] c.r.app.services.BookmarkService - Bookmark exists for user: 5 and listing: 3
+2024-12-16 10:07:31 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:07:33 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:07:33 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:07:38 INFO  [http-nio-8080-exec-5] c.r.app.services.BookmarkService - Attempting to delete bookmark with id: 1
+2024-12-16 10:07:38 INFO  [http-nio-8080-exec-5] c.r.app.services.BookmarkService - Successfully deleted bookmark with id: 1
+2024-12-16 10:07:39 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:07:42 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:07:42 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:07:46 INFO  [http-nio-8080-exec-7] c.r.app.services.BookmarkService - Looking for bookmark with id: 2
+2024-12-16 10:07:46 INFO  [http-nio-8080-exec-7] c.r.app.services.BookmarkService - Successfully found bookmark with id: 2
+2024-12-16 10:07:46 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:07:50 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:07:52 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:07:52 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:07:59 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2024-12-16 10:08:07 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@12734eb5]]
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-16 10:08:07 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-16 10:13:57 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.5 with PID 6516 (C:\Users\domin\IdeaProjects\ReSourceExchange\target\classes started by domin in C:\Users\domin\IdeaProjects\ReSourceExchange)
+2024-12-16 10:13:57 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-16 10:13:58 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-16 10:13:58 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 8 JPA repository interfaces.
+2024-12-16 10:13:59 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-16 10:13:59 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-16 10:13:59 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-16 10:13:59 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-16 10:13:59 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-16 10:13:59 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1807 ms
+2024-12-16 10:13:59 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-16 10:13:59 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2024-12-16 10:13:59 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-16 10:14:00 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-16 10:14:00 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-16 10:14:01 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22002459
+2024-12-16 10:14:01 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-16 10:14:01 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-12-16 10:14:01 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-16 10:14:01 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2024-12-16 10:14:02 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-16 10:14:10 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 10:14:10 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-16 10:14:15 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-16 10:14:15 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2024-12-16 10:14:17 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2024-12-16 10:14:17 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@275cb78f]]
+2024-12-16 10:14:17 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2024-12-16 10:14:17 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-16 10:14:17 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-16 10:14:17 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 20.642 seconds (process running for 22.146)
+2024-12-16 10:14:50 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-16 10:14:50 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-16 10:14:50 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-16 10:14:57 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:14:58 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:14:58 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:15:04 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][CreateListings] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template CreateListings, line 12, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:15:08 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:15:09 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:15:10 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 10:15:13 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 10:15:13 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 10:15:17 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-12-16 10:45:17 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2024-12-16 11:02:03 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@275cb78f]]
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-16 11:02:03 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-16 11:23:19 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.5 with PID 15024 (C:\Users\domin\IdeaProjects\ReSourceExchange\target\classes started by domin in C:\Users\domin\IdeaProjects\ReSourceExchange)
+2024-12-16 11:23:19 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-16 11:23:20 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-16 11:23:20 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65 ms. Found 8 JPA repository interfaces.
+2024-12-16 11:23:20 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-16 11:23:20 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-16 11:23:20 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-16 11:23:20 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-16 11:23:20 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-16 11:23:20 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1445 ms
+2024-12-16 11:23:21 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-16 11:23:21 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2024-12-16 11:23:21 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-16 11:23:21 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-16 11:23:21 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-16 11:23:22 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6eaf030c
+2024-12-16 11:23:22 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-16 11:23:22 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-12-16 11:23:22 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-16 11:23:22 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2024-12-16 11:23:23 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-16 11:23:26 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 11:23:26 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-16 11:23:29 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-16 11:23:29 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2024-12-16 11:23:30 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2024-12-16 11:23:30 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@14eaec27]]
+2024-12-16 11:23:30 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2024-12-16 11:23:30 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-16 11:23:30 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-16 11:23:30 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 11.503 seconds (process running for 12.175)
+2024-12-16 11:24:01 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-16 11:24:01 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-16 11:24:01 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-12-16 11:24:01 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2024-12-16 11:24:03 INFO  [http-nio-8080-exec-4] c.r.app.controller.AuthController - Accessing the registration page
+2024-12-16 11:24:03 INFO  [http-nio-8080-exec-4] c.r.app.controller.AuthController - Registration page populated with new PrivateUser and Company objects
+2024-12-16 11:24:30 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-12-16 11:24:50 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Attempting to register private user with email: test7@email.com
+2024-12-16 11:24:50 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Registering new private user: test7@email.com
+2024-12-16 11:24:50 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for private user test7@email.com set successfully
+2024-12-16 11:24:51 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Password for private user test7@email.com has been encoded
+2024-12-16 11:24:51 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Generated verification token for private user test7@email.com: 156c8df9-9bf3-4b49-ab45-ad286b53e0d1
+2024-12-16 11:24:51 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Set role and permissions for private user test7@email.com: PRIVATE_USER - [CHAT, MANAGE_LISTINGS]
+2024-12-16 11:24:51 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Private user test7@email.com saved successfully
+2024-12-16 11:24:51 INFO  [http-nio-8080-exec-6] c.r.app.services.MailService - Preparing to send email to: test7@email.com with subject: Email Verification
+2024-12-16 11:24:54 INFO  [http-nio-8080-exec-6] c.r.app.services.MailService - Email successfully sent to: test7@email.com
+2024-12-16 11:24:54 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Verification email sent to private user test7@email.com
+2024-12-16 11:24:54 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Private user with email: test7@email.com successfully registered
+2024-12-16 11:24:54 INFO  [http-nio-8080-exec-7] c.r.app.controller.AuthController - Accessing the login page
+2024-12-16 11:25:30 INFO  [http-nio-8080-exec-10] c.r.app.controller.AuthController - Accessing the registration page
+2024-12-16 11:25:30 INFO  [http-nio-8080-exec-10] c.r.app.controller.AuthController - Registration page populated with new PrivateUser and Company objects
+2024-12-16 11:25:52 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Attempting to register company with email: testC1@test.com
+2024-12-16 11:25:52 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Registering new company user: testC1@test.com
+2024-12-16 11:25:52 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Password for company testC1@test.com has been encoded
+2024-12-16 11:25:52 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Generated verification token for company testC1@test.com: 5e0aac7a-49af-46f2-bcb7-36bc76fa2b46
+2024-12-16 11:25:52 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Set role and permissions for company testC1@test.com: COMPANY - [CHAT, MANAGE_LISTINGS]
+2024-12-16 11:25:53 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Company user testC1@test.com saved successfully
+2024-12-16 11:25:53 INFO  [http-nio-8080-exec-2] c.r.app.services.MailService - Preparing to send email to: testC1@test.com with subject: Email Verification
+2024-12-16 11:25:56 INFO  [http-nio-8080-exec-2] c.r.app.services.MailService - Email successfully sent to: testC1@test.com
+2024-12-16 11:25:56 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Verification email sent to company testC1@test.com
+2024-12-16 11:25:56 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Company with email: testC1@test.com successfully registered
+2024-12-16 11:25:56 INFO  [http-nio-8080-exec-3] c.r.app.controller.AuthController - Accessing the login page
+2024-12-16 11:26:13 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:26:13 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2024-12-16 11:26:14 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:26:14 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:26:14 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:26:14 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:26:14 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:26:14 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:27:10 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - User admin@admin.com attempting to update listing with ID: 7
+2024-12-16 11:27:10 INFO  [http-nio-8080-exec-9] c.r.app.services.ListingService - Retrieving listing with ID: 7
+2024-12-16 11:27:11 INFO  [http-nio-8080-exec-9] c.r.app.services.ListingService - Successfully retrieved listing with ID: 7
+2024-12-16 11:27:11 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Listing with ID 7 found, preparing for update.
+2024-12-16 11:27:11 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Listing material is set: Holz
+2024-12-16 11:27:11 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][updateListing] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template updateListing, line 12, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - User admin@admin.com attempting to update listing with ID: 7
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - Geocoded coordinates for user admin@admin.com set: Latitude = 49.004007256048666, Longitude = 12.094070385728322
+2024-12-16 11:27:29 INFO  [http-nio-8080-exec-3] c.r.app.services.ListingService - Attempting to update listing with ID: 7
+2024-12-16 11:27:30 INFO  [http-nio-8080-exec-3] c.r.app.services.ListingService - Successfully updated listing with ID: 7
+2024-12-16 11:27:30 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - Listing with ID 7 successfully updated by user admin@admin.com
+2024-12-16 11:27:30 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:27:31 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:27:31 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:27:31 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:27:32 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:27:32 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:27:32 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:27:55 INFO  [http-nio-8080-exec-7] c.r.app.controller.ListingController - Attempting to delete listing with ID: 7
+2024-12-16 11:27:55 INFO  [http-nio-8080-exec-7] c.r.app.services.ListingService - Attempting to delete listing with ID: 7
+2024-12-16 11:27:56 INFO  [http-nio-8080-exec-7] c.r.app.services.ListingService - Successfully deleted listing with ID: 7
+2024-12-16 11:27:56 INFO  [http-nio-8080-exec-7] c.r.app.controller.ListingController - Listing with ID 7 successfully deleted
+2024-12-16 11:27:56 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:27:57 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:27:57 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:27:57 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:27:57 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:27:57 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:27:57 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:28:21 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 4
+2024-12-16 11:28:21 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 4
+2024-12-16 11:28:21 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:28:32 INFO  [http-nio-8080-exec-2] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:28:33 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:28:33 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:28:33 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:28:34 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:28:34 INFO  [http-nio-8080-exec-2] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:28:34 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:28:46 INFO  [http-nio-8080-exec-5] c.r.a.controller.BookmarkController - Attempting to delete bookmark with ID: 3
+2024-12-16 11:28:46 INFO  [http-nio-8080-exec-5] c.r.app.services.BookmarkService - Attempting to delete bookmark with id: 3
+2024-12-16 11:28:47 INFO  [http-nio-8080-exec-5] c.r.app.services.BookmarkService - Successfully deleted bookmark with id: 3
+2024-12-16 11:28:47 INFO  [http-nio-8080-exec-5] c.r.a.controller.BookmarkController - Bookmark with ID: 3 successfully deleted
+2024-12-16 11:28:47 INFO  [http-nio-8080-exec-8] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:28:47 INFO  [http-nio-8080-exec-8] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:28:47 INFO  [http-nio-8080-exec-8] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:28:47 INFO  [http-nio-8080-exec-8] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:28:48 INFO  [http-nio-8080-exec-8] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:28:48 INFO  [http-nio-8080-exec-8] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:28:48 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:29:04 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Displaying the create listing form
+2024-12-16 11:29:04 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Loaded 3 materials for listing creation
+2024-12-16 11:29:04 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][CreateListings] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template CreateListings, line 12, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:29:11 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Creating listing with material: null
+2024-12-16 11:29:11 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:29:11 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:29:11 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:29:12 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:29:12 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Geocoded coordinates for user admin@admin.com: Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:29:12 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Listing created successfully by user admin@admin.com
+2024-12-16 11:29:12 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:29:13 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:29:13 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:29:13 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:29:13 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:29:13 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:29:13 WARN  [http-nio-8080-exec-3] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:29:58 INFO  [http-nio-8080-exec-8] c.r.app.controller.ChatController - Creating new chat for Listing ID: 1, Creator ID: 1, Initiator ID: 5
+2024-12-16 11:29:58 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:30:02 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:30:03 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:30:03 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:30:03 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:30:05 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:30:05 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:30:05 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:30:06 INFO  [http-nio-8080-exec-5] c.r.app.controller.CartController - Attempting to add listing with ID: 1 to cart
+2024-12-16 11:30:07 INFO  [http-nio-8080-exec-5] c.r.app.controller.CartController - Listing with ID: 1 successfully added to the cart
+2024-12-16 11:30:07 INFO  [http-nio-8080-exec-8] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:30:08 INFO  [http-nio-8080-exec-8] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:30:08 INFO  [http-nio-8080-exec-8] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:30:08 INFO  [http-nio-8080-exec-8] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:30:08 INFO  [http-nio-8080-exec-8] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:30:08 INFO  [http-nio-8080-exec-8] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:30:08 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:30:12 INFO  [http-nio-8080-exec-9] c.r.app.controller.CartController - Attempting to add listing with ID: 1 to cart
+2024-12-16 11:30:12 WARN  [http-nio-8080-exec-9] c.r.app.controller.CartController - Listing with ID: 1 is already in the cart
+2024-12-16 11:30:15 INFO  [http-nio-8080-exec-2] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:30:16 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:30:16 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:30:16 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:30:16 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:30:16 INFO  [http-nio-8080-exec-2] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:30:16 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:30:33 INFO  [http-nio-8080-exec-4] c.r.app.controller.CartController - Attempting to add listing with ID: 2 to cart
+2024-12-16 11:30:33 INFO  [http-nio-8080-exec-4] c.r.app.controller.CartController - Listing with ID: 2 successfully added to the cart
+2024-12-16 11:30:33 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:30:34 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:30:34 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:30:34 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:30:35 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:30:35 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:30:35 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:30:37 INFO  [http-nio-8080-exec-7] c.r.app.controller.CartController - Attempting to add listing with ID: 3 to cart
+2024-12-16 11:30:37 INFO  [http-nio-8080-exec-7] c.r.app.controller.CartController - Listing with ID: 3 successfully added to the cart
+2024-12-16 11:30:37 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:30:38 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:30:38 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:30:38 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:30:39 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:30:39 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:30:39 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:30:40 INFO  [http-nio-8080-exec-1] c.r.app.controller.CartController - Attempting to add listing with ID: 3 to cart
+2024-12-16 11:30:41 WARN  [http-nio-8080-exec-1] c.r.app.controller.CartController - Listing with ID: 3 is already in the cart
+2024-12-16 11:30:43 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:30:44 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:30:44 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:30:44 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:30:44 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:30:44 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:30:44 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:31:14 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Attempting to delete listing with ID: 8
+2024-12-16 11:31:14 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Attempting to delete listing with ID: 8
+2024-12-16 11:31:15 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Successfully deleted listing with ID: 8
+2024-12-16 11:31:15 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Listing with ID 8 successfully deleted
+2024-12-16 11:31:15 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:31:16 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:31:16 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:31:16 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:31:17 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:31:17 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:31:17 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:31:23 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Attempting to bookmark listing with ID: 3 by user: admin@admin.com
+2024-12-16 11:31:23 INFO  [http-nio-8080-exec-2] c.r.app.services.ListingService - Retrieving listing with ID: 3
+2024-12-16 11:31:24 INFO  [http-nio-8080-exec-2] c.r.app.services.ListingService - Successfully retrieved listing with ID: 3
+2024-12-16 11:31:24 INFO  [http-nio-8080-exec-2] c.r.app.services.BookmarkService - Checking if bookmark exists for user: 5 and listing: 3
+2024-12-16 11:31:24 WARN  [http-nio-8080-exec-2] c.r.app.services.BookmarkService - No bookmark found for user: 5 and listing: 3
+2024-12-16 11:31:24 INFO  [http-nio-8080-exec-2] c.r.app.services.BookmarkService - Attempting to add a bookmark for user: 5 and listing: 3
+2024-12-16 11:31:25 INFO  [http-nio-8080-exec-2] c.r.app.services.BookmarkService - Successfully saved bookmark for user: 5 and listing: 3
+2024-12-16 11:31:25 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - User admin@admin.com successfully bookmarked the listing with ID: 3
+2024-12-16 11:31:25 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:31:26 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:31:26 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:31:26 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:31:27 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:31:27 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:31:27 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:31:32 INFO  [http-nio-8080-exec-5] c.r.a.controller.BookmarkController - Attempting to delete bookmark with ID: 4
+2024-12-16 11:31:32 INFO  [http-nio-8080-exec-5] c.r.app.services.BookmarkService - Attempting to delete bookmark with id: 4
+2024-12-16 11:31:34 INFO  [http-nio-8080-exec-5] c.r.app.services.BookmarkService - Successfully deleted bookmark with id: 4
+2024-12-16 11:31:34 INFO  [http-nio-8080-exec-5] c.r.a.controller.BookmarkController - Bookmark with ID: 4 successfully deleted
+2024-12-16 11:31:34 INFO  [http-nio-8080-exec-8] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:31:36 INFO  [http-nio-8080-exec-8] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:31:36 INFO  [http-nio-8080-exec-8] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:31:36 INFO  [http-nio-8080-exec-8] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:31:36 INFO  [http-nio-8080-exec-8] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:31:36 INFO  [http-nio-8080-exec-8] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:31:36 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:31:39 INFO  [http-nio-8080-exec-10] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:31:39 INFO  [http-nio-8080-exec-10] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:31:47 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:31:47 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:31:47 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:31:47 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:31:48 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:31:48 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:31:48 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:31:51 INFO  [http-nio-8080-exec-5] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:31:51 INFO  [http-nio-8080-exec-5] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:31:53 INFO  [http-nio-8080-exec-7] c.r.a.controller.MaterialController - Attempting to delete material with ID: 1
+2024-12-16 11:31:53 WARN  [http-nio-8080-exec-7] c.r.a.controller.MaterialController - Material with ID: 1 cannot be deleted because it is in use in one or more listings.
+2024-12-16 11:31:53 INFO  [http-nio-8080-exec-10] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:31:53 INFO  [http-nio-8080-exec-10] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:32:01 INFO  [http-nio-8080-exec-1] c.r.a.controller.MaterialController - Attempting to edit material with ID: 1
+2024-12-16 11:32:02 INFO  [http-nio-8080-exec-1] c.r.a.controller.MaterialController - Material with ID: 1 found, loading the edit form.
+2024-12-16 11:32:02 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][admin/addMaterial] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template admin/addMaterial, line 19, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:32:03 INFO  [http-nio-8080-exec-5] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:32:04 INFO  [http-nio-8080-exec-5] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:32:07 INFO  [http-nio-8080-exec-7] c.r.a.controller.MaterialController - Attempting to edit material with ID: 1
+2024-12-16 11:32:08 INFO  [http-nio-8080-exec-7] c.r.a.controller.MaterialController - Material with ID: 1 found, loading the edit form.
+2024-12-16 11:32:08 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][admin/addMaterial] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template admin/addMaterial, line 19, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:32:12 INFO  [http-nio-8080-exec-9] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:32:12 INFO  [http-nio-8080-exec-9] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:32:13 INFO  [http-nio-8080-exec-4] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:32:13 INFO  [http-nio-8080-exec-4] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:32:15 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:32:16 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:32:16 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:32:16 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:32:17 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:32:17 INFO  [http-nio-8080-exec-6] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:32:17 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:32:22 INFO  [http-nio-8080-exec-10] c.r.a.controller.MaterialController - Displaying material creation form
+2024-12-16 11:32:22 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][admin/addMaterial] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template admin/addMaterial, line 19, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:32:33 INFO  [http-nio-8080-exec-3] c.r.a.controller.MaterialController - Saving material: Eisen
+2024-12-16 11:32:33 INFO  [http-nio-8080-exec-3] c.r.app.services.MaterialService - Attempting to add material: Eisen
+2024-12-16 11:32:33 INFO  [http-nio-8080-exec-3] c.r.app.services.MaterialService - Material successfully added: Eisen
+2024-12-16 11:32:33 INFO  [http-nio-8080-exec-3] c.r.a.controller.MaterialController - Material saved successfully: Eisen
+2024-12-16 11:32:33 INFO  [http-nio-8080-exec-4] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:32:34 INFO  [http-nio-8080-exec-4] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:33:53 INFO  [http-nio-8080-exec-2] c.r.a.controller.MaterialController - Displaying material creation form
+2024-12-16 11:33:53 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][admin/addMaterial] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template admin/addMaterial, line 19, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:33:56 INFO  [http-nio-8080-exec-1] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:33:56 INFO  [http-nio-8080-exec-1] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:35:33 INFO  [http-nio-8080-exec-7] c.r.a.controller.MaterialController - Displaying material creation form
+2024-12-16 11:35:33 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][admin/addMaterial] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template admin/addMaterial, line 19, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:35:34 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:35:35 INFO  [http-nio-8080-exec-10] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:35:35 INFO  [http-nio-8080-exec-10] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:35:35 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:35:35 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:35:35 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:35:35 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=true, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=true, minPrice=null, maxPrice=null
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=true, userId=5, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.services.ListingService - Successfully retrieved 1 listings with applied filters
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:35:46 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:35:46 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:35:51 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:35:52 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:35:52 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:35:55 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=true, page=1
+2024-12-16 11:35:55 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Fetching own listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:35:55 INFO  [http-nio-8080-exec-2] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=true, ownedId=5
+2024-12-16 11:35:55 INFO  [http-nio-8080-exec-2] c.r.app.services.ListingService - Successfully retrieved 1 listings with applied filters
+2024-12-16 11:35:56 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:35:56 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:35:56 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:35:56 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:35:56 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:36:02 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:36:03 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:36:03 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=9.0, maxPrice=10.0, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=9.0, maxPrice=10.0
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=9.0, maxPrice=10.0, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.services.ListingService - Successfully retrieved 2 listings with applied filters
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:36:43 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:36:44 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:36:44 WARN  [http-nio-8080-exec-3] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:36:53 INFO  [http-nio-8080-exec-7] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:36:53 INFO  [http-nio-8080-exec-7] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:36:53 INFO  [http-nio-8080-exec-7] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:36:54 INFO  [http-nio-8080-exec-7] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:36:54 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:36:54 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:36:54 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:36:54 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:36:54 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:37:47 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 4
+2024-12-16 11:37:47 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 4
+2024-12-16 11:37:47 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:37:49 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:37:49 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:37:49 INFO  [http-nio-8080-exec-1] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:37:49 INFO  [http-nio-8080-exec-1] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:37:50 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:37:50 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:37:50 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:37:50 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:37:50 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:38:36 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 3
+2024-12-16 11:38:36 INFO  [http-nio-8080-exec-3] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 3
+2024-12-16 11:38:36 WARN  [http-nio-8080-exec-3] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:38:48 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:38:49 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:38:49 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:15 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 3
+2024-12-16 11:39:16 INFO  [http-nio-8080-exec-2] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 3
+2024-12-16 11:39:16 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:23 INFO  [http-nio-8080-exec-10] c.r.app.controller.CartController - Attempting to add listing with ID: 3 to cart
+2024-12-16 11:39:24 WARN  [http-nio-8080-exec-10] c.r.app.controller.CartController - Listing with ID: 3 is already in the cart
+2024-12-16 11:39:25 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 3
+2024-12-16 11:39:25 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 3
+2024-12-16 11:39:25 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:30 INFO  [http-nio-8080-exec-4] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:39:30 INFO  [http-nio-8080-exec-4] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:39:30 INFO  [http-nio-8080-exec-4] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:39:30 INFO  [http-nio-8080-exec-4] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:39:31 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:39:31 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:39:31 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:39:31 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:39:31 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:35 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 2
+2024-12-16 11:39:36 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 2
+2024-12-16 11:39:36 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:38 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:39:38 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:39:38 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:39:39 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:39:39 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:39:39 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:39:39 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:39:40 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:39:40 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:44 INFO  [http-nio-8080-exec-10] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 4
+2024-12-16 11:39:45 INFO  [http-nio-8080-exec-10] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 4
+2024-12-16 11:39:45 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:39:48 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:39:48 INFO  [http-nio-8080-exec-9] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:39:48 INFO  [http-nio-8080-exec-9] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:39:49 INFO  [http-nio-8080-exec-9] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:39:49 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:39:49 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:39:49 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:39:50 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:39:50 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:40:57 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Attempting to retrieve listing with ID: 4
+2024-12-16 11:40:58 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Successfully retrieved listing with ID: 4
+2024-12-16 11:40:58 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][listing-detail] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template listing-detail, line 13, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:41:01 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=null, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=1
+2024-12-16 11:41:01 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2024-12-16 11:41:01 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=5
+2024-12-16 11:41:03 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Successfully retrieved 4 listings with applied filters
+2024-12-16 11:41:04 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:41:04 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:41:04 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:41:06 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:41:06 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:41:10 INFO  [http-nio-8080-exec-10] c.r.app.controller.AdminController - Retrieving all users for management
+2024-12-16 11:41:16 INFO  [http-nio-8080-exec-10] c.r.app.controller.AdminController - Found 3 companies and 4 private users
+2024-12-16 11:41:16 INFO  [http-nio-8080-exec-10] c.r.app.controller.AdminController - Successfully added users to model for display
+2024-12-16 11:41:16 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][admin/manage-users] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template admin/manage-users, line 12, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:42:45 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:42:47 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:42:47 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:42:47 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:42:49 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:42:49 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:42:49 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:42:57 INFO  [http-nio-8080-exec-5] c.r.a.controller.MaterialController - Fetching all materials for overview
+2024-12-16 11:42:58 INFO  [http-nio-8080-exec-5] c.r.a.controller.MaterialController - Materials fetched successfully
+2024-12-16 11:43:00 INFO  [http-nio-8080-exec-2] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:43:03 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:43:03 INFO  [http-nio-8080-exec-2] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:43:03 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:43:04 INFO  [http-nio-8080-exec-2] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:43:04 INFO  [http-nio-8080-exec-2] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:43:04 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:44:15 INFO  [http-nio-8080-exec-8] c.r.app.controller.CartController - Attempting to checkout cart
+2024-12-16 11:44:15 INFO  [http-nio-8080-exec-8] c.r.app.services.PaypalService - Creating payment with intent: sale, payerId: paypal, currency: EUR, total: 64.48, description: Purchase of multiple items
+2024-12-16 11:44:15 INFO  [http-nio-8080-exec-8] c.r.app.services.PaypalService - Sending request to PayPal API to create payment...
+2024-12-16 11:44:16 INFO  [http-nio-8080-exec-8] c.r.app.services.PaypalService - Payment created successfully with ID: PAYID-M5QAJAA46768066FM800340U
+2024-12-16 11:44:24 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:44:25 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:44:25 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:44:25 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:44:25 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:44:25 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:44:25 WARN  [http-nio-8080-exec-3] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2024-12-16 11:46:45 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@14eaec27]]
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-16 11:46:45 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-16 11:47:04 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.5 with PID 15144 (C:\Users\domin\IdeaProjects\ReSourceExchange\target\classes started by domin in C:\Users\domin\IdeaProjects\ReSourceExchange)
+2024-12-16 11:47:04 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-16 11:47:04 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-16 11:47:04 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 75 ms. Found 8 JPA repository interfaces.
+2024-12-16 11:47:05 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-16 11:47:05 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-16 11:47:05 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-16 11:47:05 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-16 11:47:05 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-16 11:47:05 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1461 ms
+2024-12-16 11:47:05 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-16 11:47:05 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2024-12-16 11:47:05 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-16 11:47:06 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-16 11:47:06 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-16 11:47:08 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@45c408a4
+2024-12-16 11:47:08 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-16 11:47:08 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-12-16 11:47:08 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-16 11:47:08 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2024-12-16 11:47:10 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-16 11:47:18 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-16 11:47:18 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-16 11:47:21 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-16 11:47:22 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2024-12-16 11:47:22 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2024-12-16 11:47:22 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4204ad9d]]
+2024-12-16 11:47:22 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2024-12-16 11:47:22 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-16 11:47:22 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-16 11:47:22 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 19.285 seconds (process running for 19.97)
+2024-12-16 11:47:36 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-16 11:47:36 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-16 11:47:36 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-16 11:47:36 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2024-12-16 11:47:44 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2024-12-16 11:47:44 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2024-12-16 11:47:47 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2024-12-16 11:47:47 INFO  [http-nio-8080-exec-3] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2024-12-16 11:47:47 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2024-12-16 11:47:49 INFO  [http-nio-8080-exec-3] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2024-12-16 11:47:49 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2024-12-16 11:48:01 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2024-12-16 11:48:22 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]

@@ -5,14 +5,12 @@ import com.resexchange.app.model.Material;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.MaterialRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,35 +33,6 @@ public class ListingService {
         this.materialRepository = materialRepository;
     }
 
-
-    /**
-     * Fügt ein neues Listing hinzu.
-     * Wenn das angegebene Material existiert, wird ein neues Listing mit dem angegebenen Material,
-     * der Menge und dem Preis erstellt.
-     *
-     * @param materialId Die ID des Materials, das mit dem Listing verknüpft werden soll
-     * @param quantity Die Menge des Materials im Listing
-     * @param price Der Preis des Listings
-     * @author Dominik
-     */
-    public void addListing(Long materialId, int quantity, double price) {
-        Optional<Material> materialOptional = materialRepository.findById(materialId);
-
-        if (materialOptional.isPresent()) {
-            Material material = materialOptional.get();
-
-            Listing listing = new Listing();
-            listing.setMaterial(material);  // Verknüpft das Listing mit dem existierenden Material
-            listing.setQuantity(quantity);
-            listing.setPrice(price);
-
-            LOGGER.info("Listing has been added for material: {}", material.getName());
-            listingRepository.save(listing);
-        } else {
-            LOGGER.warn("Material with ID: {} not found. Listing not created.", materialId);
-        }
-    }
-
     /**
      * Ruft alle Listings ab.
      *
@@ -71,13 +40,16 @@ public class ListingService {
      * @author Dominik
      */
     public List<Listing> getAllListings() {
-        LOGGER.info("Retrieving all listings");
-        return listingRepository.findAll();
-    }
+        LOGGER.info("Retrieving all listings from the database");
 
-    public List<Listing> getListingsByUser(Long userId) {
-        LOGGER.info("Retrieving all listings for user ID: {}", userId);
-        return listingRepository.findByCreatedById(userId);
+        try {
+            List<Listing> listings = listingRepository.findAll();
+            LOGGER.info("Successfully retrieved {} listings", listings.size());
+            return listings;
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while retrieving listings", e);
+            throw new RuntimeException("Error occurred while retrieving listings", e); // Optional: Exception weiterwerfen
+        }
     }
 
     /**
@@ -88,10 +60,18 @@ public class ListingService {
      * @author Dominik
      */
     public void updateListing(Listing listing) {
+        LOGGER.info("Attempting to update listing with ID: {}", listing.getId());
+
         if (listingRepository.existsById(listing.getId())) {
-            listingRepository.save(listing);  // Speichert das Listing (update)
+            try {
+                listingRepository.save(listing);
+                LOGGER.info("Successfully updated listing with ID: {}", listing.getId());
+            } catch (Exception e) {
+                LOGGER.error("Error occurred while updating listing with ID: {}", listing.getId(), e);
+                throw new RuntimeException("Error occurred while updating listing with ID: " + listing.getId(), e);
+            }
         } else {
-            LOGGER.warn("Listing with ID: {} not found", listing.getId());
+            LOGGER.warn("Listing with ID: {} not found, cannot update", listing.getId());
         }
     }
 
@@ -104,8 +84,17 @@ public class ListingService {
      * @author Dominik
      */
     public Listing getListingById(Long id) {
-        return listingRepository.findById(id)
-                .orElse(null);  // Gibt null zurück, wenn das Listing nicht gefunden wird
+        LOGGER.info("Retrieving listing with ID: {}", id);
+
+        Listing listing = listingRepository.findById(id).orElse(null);
+
+        if (listing != null) {
+            LOGGER.info("Successfully retrieved listing with ID: {}", id);
+        } else {
+            LOGGER.warn("No listing found with ID: {}", id);
+        }
+
+        return listing;
     }
 
 
@@ -118,11 +107,18 @@ public class ListingService {
      */
     @Transactional
     public void deleteListing(Long id) {
+        LOGGER.info("Attempting to delete listing with ID: {}", id);
+
         if (listingRepository.existsById(id)) {
-            LOGGER.info("Deleting listing with ID: {}", id);
-            listingRepository.deleteById(id);
+            try {
+                listingRepository.deleteById(id);
+                LOGGER.info("Successfully deleted listing with ID: {}", id);
+            } catch (Exception e) {
+                LOGGER.error("Error occurred while deleting listing with ID: {}", id, e);
+                throw new RuntimeException("Error occurred while deleting listing with ID: " + id, e); // Optional: Exception weiterwerfen
+            }
         } else {
-            LOGGER.warn("Listing with ID: {} not found", id);
+            LOGGER.warn("Listing with ID: {} not found, cannot delete", id);
         }
     }
 
@@ -130,14 +126,37 @@ public class ListingService {
      * Get Filtered Listings from the Database
      */
     public Page<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity, Boolean own, Long ownedId, Pageable pageable) {
-        return listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, own, ownedId, pageable);
+        LOGGER.info("Attempting to retrieve filtered listings with parameters: materialId={}, sold={}, bookmarked={}, userId={}, minPrice={}, maxPrice={}, minQuantity={}, maxQuantity={}, own={}, ownedId={}",
+                materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, own, ownedId);
+
+        try {
+            Page<Listing> listings = listingRepository.findByFilters(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, own, ownedId, pageable);
+
+            LOGGER.info("Successfully retrieved {} listings with applied filters", listings.getTotalElements());
+
+            return listings;
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while retrieving filtered listings", e);
+            throw new RuntimeException("Error occurred while retrieving filtered listings", e); // Optional: Exception weiterwerfen
+        }
     }
 
     /**
      * Get Searched Listings from the Database
      */
     public Page<Listing> getSearchedListings(String keyword, Pageable pageable) {
-        return listingRepository.searchByKeyword(keyword, pageable);
+        LOGGER.info("Searching for listings with keyword: {}", keyword);
+
+        try {
+            Page<Listing> listings = listingRepository.searchByKeyword(keyword, pageable);
+
+            LOGGER.info("Successfully retrieved {} listings for keyword: {}", listings.getTotalElements(), keyword);
+
+            return listings;
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while searching for listings with keyword: {}", keyword, e);
+            throw new RuntimeException("Error occurred while searching for listings with keyword: " + keyword, e); // Optional: Exception weiterwerfen
+        }
     }
 
     /**
@@ -146,7 +165,19 @@ public class ListingService {
      * @return Berechnete Anzahl an Seiten
      */
     public int getTotalPages(int pageSize) {
-        long totalListings = listingRepository.count();
-        return (int) Math.ceil((double) totalListings / pageSize);
+        LOGGER.info("Calculating total pages for page size: {}", pageSize);
+
+        try {
+            long totalListings = listingRepository.count();
+            int totalPages = (int) Math.ceil((double) totalListings / pageSize);
+
+            LOGGER.info("Total listings: {}. Calculated total pages: {}", totalListings, totalPages);
+
+            return totalPages;
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while calculating total pages", e);
+            throw new RuntimeException("Error occurred while calculating total pages", e); // Optional: Exception weiterwerfen
+        }
     }
+
 }

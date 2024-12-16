@@ -4,6 +4,8 @@ import com.resexchange.app.model.Bookmark;
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.services.BookmarkService;
 import com.resexchange.app.services.ListingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/bookmark")
 public class BookmarkController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookmarkController.class);
+
     @Autowired
     private BookmarkService bookmarkService;
 
@@ -42,19 +46,24 @@ public class BookmarkController {
      */
     @GetMapping("/{id}")
     public String getBookmarkDetails(@PathVariable Long id, Model model) {
-        // Das Bookmark anhand der ID finden
-        Bookmark bookmark = bookmarkService.findById(id);
+        LOGGER.info("Fetching bookmark details for bookmark ID: {}", id);
 
-        // Das Listing, das mit dem Bookmark verknüpft ist, finden
-        Listing listing = listingService.getListingById(bookmark.getListing().getId());
+        try {
+            Bookmark bookmark = bookmarkService.findById(id);
+            Listing listing = listingService.getListingById(bookmark.getListing().getId());
 
-        // Hinzufügen der Details zum Model, um sie in der View anzuzeigen
-        model.addAttribute("bookmark", bookmark);
-        model.addAttribute("listing", listing);
+            model.addAttribute("bookmark", bookmark);
+            model.addAttribute("listing", listing);
 
+            LOGGER.info("Successfully fetched bookmark and associated listing for bookmark ID: {}", id);
 
-        return "listing-detail";
+            return "listing-detail";
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while fetching bookmark details for bookmark ID: {}", id, e);
+            return "error";
+        }
     }
+
 
     /**
      * Controller-Methode zur Behandlung von GET-Anfragen, um ein Bookmark zu löschen.
@@ -66,12 +75,21 @@ public class BookmarkController {
      * @param id die ID des Bookmarks, das gelöscht werden soll
      * @return eine Weiterleitung zur Hauptseite ("/main")
      */
-    @GetMapping ("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteBookmark(@PathVariable Long id) {
-        bookmarkService.deleteBookmark(id);
+        LOGGER.info("Attempting to delete bookmark with ID: {}", id);
 
-        return "redirect:/main";
+        try {
+            bookmarkService.deleteBookmark(id);
+            LOGGER.info("Bookmark with ID: {} successfully deleted", id);
+
+            return "redirect:/main";
+        } catch (Exception e) {
+            LOGGER.error("Error occurred while deleting bookmark with ID: {}", id, e);
+            return "error";
+        }
     }
+
 
 }
 

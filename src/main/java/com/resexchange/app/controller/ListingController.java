@@ -13,6 +13,8 @@ import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.services.*;
 import com.resexchange.app.repositories.MaterialRepository;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -43,6 +45,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/listing")
 public class ListingController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ListingController.class);
 
     @Autowired
     private ListingService listingService;
@@ -82,11 +85,15 @@ public class ListingController {
      */
     @GetMapping("/create")
     public String showListingForm(Model model) {
+        LOGGER.info("Displaying the create listing form");
+
         model.addAttribute("listing", new Listing());
 
         // Liste aller vorhandenen Materialien
         List<Material> materials = materialRepository.findAll();
         model.addAttribute("materials", materials);
+
+        LOGGER.info("Loaded {} materials for listing creation", materials.size());
 
         return "CreateListings";
     }
@@ -102,11 +109,14 @@ public class ListingController {
     @GetMapping("/purchases")
     public String getUserPurchases(Principal principal, Model model) {
         String mail = principal.getName();
+        LOGGER.info("Fetching purchases for user with email: {}", mail);
+
         List<Listing> purchasedListings = listingRepository.findByBuyerMail(mail);
+        LOGGER.info("Found {} purchased listings for user {}", purchasedListings.size(), mail);
+
         model.addAttribute("purchasedListings", purchasedListings);
         return "purchases";
     }
-
 
     /**
      * Controller-Methode zur Behandlung von POST-Anfragen, um ein neues Listing zu speichern.
@@ -122,14 +132,18 @@ public class ListingController {
      */
     @PostMapping("/create")
     public String createListing(@ModelAttribute("listing") Listing listing, RedirectAttributes redirectAttributes, Authentication authentication) {
+        LOGGER.info("Creating listing with material: {}", listing.getMaterial());
+
         // Check, ob ein Material ausgewählt wurde
         if (listing.getMaterial() == null || listing.getMaterial().getId() == null) {
             redirectAttributes.addFlashAttribute("error", "Material must be selected!");
+            LOGGER.warn("Material not selected for listing creation.");
             return "redirect:/listing/create";
         }
         // Check, ob quantity und Preis größer 0
         if (listing.getQuantity() <= 0 || listing.getPrice() <= 0) {
             redirectAttributes.addFlashAttribute("error", "Quantity and Price must be greater than 0!");
+            LOGGER.warn("Invalid quantity or price for listing creation. Quantity: {}, Price: {}", listing.getQuantity(), listing.getPrice());
             return "redirect:/listing/create";
         }
 
@@ -142,14 +156,19 @@ public class ListingController {
         if (coordinates != null) {
             listing.setLatitude(coordinates[0]);
             listing.setLongitude(coordinates[1]);
+            LOGGER.info("Geocoded coordinates for user {}: Latitude: {}, Longitude: {}", user.getMail(), coordinates[0], coordinates[1]);
+        } else {
+            LOGGER.warn("No geocoded address found for user {}", user.getMail());
         }
 
         listing.setCreatedBy(user);
         listingRepository.save(listing);
         redirectAttributes.addFlashAttribute("success", "Listing successfully created!");
+        LOGGER.info("Listing created successfully by user {}", user.getMail());
 
         return "redirect:/main";
     }
+
 
     /**
      * Controller-Methode zur Behandlung von GET-Anfragen, um das Formular für die Aktualisierung eines Listings anzuzeigen.
@@ -170,23 +189,32 @@ public class ListingController {
     public String showUpdateForm(@PathVariable("id") Long id,
                                  @PathVariable("initiatorId") Long initiatorId,
                                  Model model, Principal principal) {
+        LOGGER.info("User {} attempting to update listing with ID: {}", principal.getName(), id);
 
         User loggedInUser = userRepository.findByMail(principal.getName())
                 .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
 
         // Überprüfen, ob der Benutzer berechtigt ist, die Aktualisierung vorzunehmen
         if (!loggedInUser.getId().equals(initiatorId)) {
+            LOGGER.warn("Unauthorized access attempt by user {} to update listing with ID: {}", principal.getName(), id);
             throw new SecurityException("Unauthorized access attempt");
         }
 
         Listing listing = listingService.getListingById(id);
         List<Material> materials = materialRepository.findAll();
 
-        // Sicherstellen, dass ein Material gesetzt ist; Standardwert verwenden, falls nötig
-        if (!(listing.getMaterial() == null)) {
-            listing.setMaterial(listing.getMaterial());
-        }else if(!materials.isEmpty()){
-            listing.setMaterial(materials.getFirst()); // Setze das erste Material als Standard
+        if (listing == null) {
+            LOGGER.error("Listing with ID {} not found", id);
+            throw new ResourceNotFoundException("Listing not found");
+        }
+
+        LOGGER.info("Listing with ID {} found, preparing for update.", id);
+
+        if (listing.getMaterial() != null) {
+            LOGGER.info("Listing material is set: {}", listing.getMaterial().getName());
+        } else if (!materials.isEmpty()) {
+            listing.setMaterial(materials.get(0)); // Setze das erste Material als Standard
+            LOGGER.info("No material set for listing, defaulting to first material: {}", materials.get(0).getName());
         }
 
         model.addAttribute("listing", listing);
@@ -194,6 +222,7 @@ public class ListingController {
 
         return "updateListing";
     }
+
 
     /**
      * Controller-Methode zur Behandlung von POST-Anfragen, um ein bestehendes Listing zu aktualisieren.
@@ -218,11 +247,17 @@ public class ListingController {
                                 Principal principal,
                                 RedirectAttributes redirectAttributes) {
 
+        LOGGER.info("User {} attempting to update listing with ID: {}", principal.getName(), id);
+
         User loggedInUser = userRepository.findByMail(principal.getName())
-                .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+                .orElseThrow(() -> {
+                    LOGGER.error("Logged-in user with email {} not found", principal.getName());
+                    return new IllegalArgumentException("Logged-in user not found");
+                });
 
         // Überprüfen, ob der Benutzer berechtigt ist, die Aktualisierung vorzunehmen
         if (!loggedInUser.getId().equals(initiatorId)) {
+            LOGGER.warn("Unauthorized access attempt by user {} to update listing with ID: {}", principal.getName(), id);
             throw new SecurityException("Unauthorized update attempt");
         }
 
@@ -236,14 +271,21 @@ public class ListingController {
         if (coordinates != null) {
             listing.setLatitude(coordinates[0]);
             listing.setLongitude(coordinates[1]);
+            LOGGER.info("Geocoded coordinates for user {} set: Latitude = {}, Longitude = {}",
+                    loggedInUser.getMail(), coordinates[0], coordinates[1]);
+        } else {
+            LOGGER.warn("Geocoded coordinates for user {} could not be found", loggedInUser.getMail());
         }
 
         // Das Listing aktualisieren
         listingService.updateListing(listing);
 
+        LOGGER.info("Listing with ID {} successfully updated by user {}", id, principal.getName());
+
         redirectAttributes.addFlashAttribute("message", "Listing updated successfully.");
         return "redirect:/main";
     }
+
 
 
     /**
@@ -259,8 +301,20 @@ public class ListingController {
      */
     @GetMapping("/delete/{id}")
     public String deleteListing(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
-        listingService.deleteListing(id);
-        redirectAttributes.addFlashAttribute("message", "Listing deleted successfully.");
+        LOGGER.info("Attempting to delete listing with ID: {}", id);
+
+        try {
+            // Löschen des Listings
+            listingService.deleteListing(id);
+            LOGGER.info("Listing with ID {} successfully deleted", id);
+
+            redirectAttributes.addFlashAttribute("message", "Listing deleted successfully.");
+        } catch (Exception e) {
+            // Fehlerbehandlung und Logging
+            LOGGER.error("Error occurred while trying to delete listing with ID: {}", id, e);
+            redirectAttributes.addFlashAttribute("error", "Failed to delete the listing.");
+        }
+
         return "redirect:/main";
     }
 
@@ -280,21 +334,34 @@ public class ListingController {
      * @throws IllegalArgumentException wenn der angemeldete Benutzer nicht gefunden wird
      */
     @GetMapping("/bookmark/{id}/{initiatorId}")
-    public String addBookmark(@PathVariable Long id, @PathVariable Long initiatorId, Principal principal, Authentication authentication,RedirectAttributes redirectAttributes) {
-        Listing listing = listingService.getListingById(id);
-        User loggedInUser = userRepository.findByMail(principal.getName())
-                .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+    public String addBookmark(@PathVariable Long id, @PathVariable Long initiatorId, Principal principal, Authentication authentication, RedirectAttributes redirectAttributes) {
+        LOGGER.info("Attempting to bookmark listing with ID: {} by user: {}", id, principal.getName());
 
-        // Überprüfen, ob das Listing bereits ein Bookmark ist
-        if (bookmarkService.BookmarkExist(loggedInUser, listing)) {
-            redirectAttributes.addFlashAttribute("message", "You have already bookmarked this listing.");
-            return "redirect:/main";
+        try {
+            Listing listing = listingService.getListingById(id);
+            User loggedInUser = userRepository.findByMail(principal.getName())
+                    .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
+
+            // Überprüfen, ob das Listing bereits ein Bookmark ist
+            if (bookmarkService.BookmarkExist(loggedInUser, listing)) {
+                LOGGER.warn("User {} has already bookmarked the listing with ID: {}", principal.getName(), id);
+                redirectAttributes.addFlashAttribute("message", "You have already bookmarked this listing.");
+                return "redirect:/main";
+            }
+
+            // Hinzufügen des Bookmarks
+            bookmarkService.addBookmark(loggedInUser, listing);
+            LOGGER.info("User {} successfully bookmarked the listing with ID: {}", principal.getName(), id);
+
+        } catch (Exception e) {
+            // Fehlerbehandlung und Logging
+            LOGGER.error("Error occurred while trying to bookmark listing with ID: {}", id, e);
+            redirectAttributes.addFlashAttribute("error", "Failed to bookmark the listing.");
         }
-
-        bookmarkService.addBookmark(loggedInUser, listing);
 
         return "redirect:/main";
     }
+
 
     /**
      * Controller-Methode zur Behandlung von GET-Anfragen, um die Detailansicht eines Listings anzuzeigen.
@@ -311,11 +378,24 @@ public class ListingController {
      */
     @GetMapping("/{id}")
     public String getListing(@PathVariable Long id, Model model, HttpSession session) {
-        Listing listing = listingRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Listing with ID " + id + " not found"));
-        model.addAttribute("listing", listing);
+        LOGGER.info("Attempting to retrieve listing with ID: {}", id);
 
-        return "listing-detail";
+        try {
+            // Suchen des Listings anhand der ID
+            Listing listing = listingRepository.findById(id)
+                    .orElseThrow(() -> new NoSuchElementException("Listing with ID " + id + " not found"));
+
+            model.addAttribute("listing", listing);
+            LOGGER.info("Successfully retrieved listing with ID: {}", id);
+
+        } catch (NoSuchElementException e) {
+            // Fehlerbehandlung und Logging
+            LOGGER.error("Listing with ID {} not found", id, e);
+            model.addAttribute("error", "Listing not found");
+            return "error"; // Redirect or error page in case the listing is not found
+        }
+
+        return "listing-detail"; // Anzeige der Detailseite für das Listing
     }
 
     /**
@@ -336,12 +416,16 @@ public class ListingController {
      */
     @GetMapping("/buy/{id}")
     public String buyListing(@PathVariable Long id, Principal principal, HttpSession session, RedirectAttributes redirectAttributes) {
+        LOGGER.info("User {} is attempting to purchase listing with ID: {}", principal.getName(), id);
+
         try {
+            // Suchen des Listings anhand der ID
             Listing listing = listingRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Listing not found"));
 
-            // Wenn das Listing bereits verkauft wurde, weiterleiten zur Detailansicht
+            // Wenn das Listing bereits verkauft wurde
             if (listing.isSold()) {
+                LOGGER.info("Listing with ID {} is already sold, redirecting to detail view.", id);
                 return "redirect:/listing/" + id;
             }
 
@@ -362,13 +446,17 @@ public class ListingController {
             // Suchen des Links für die PayPal-Zahlungsbestätigung und Weiterleitung
             for (com.paypal.api.payments.Links link : payment.getLinks()) {
                 if (link.getRel().equalsIgnoreCase("approval_url")) {
+                    LOGGER.info("Payment created successfully. Redirecting to PayPal approval URL: {}", link.getHref());
                     return "redirect:" + link.getHref();
                 }
             }
+
+            LOGGER.error("No approval URL found for payment creation. Redirecting to listing detail page.");
             redirectAttributes.addFlashAttribute("error", "Unknown error occurred.");
             return "redirect:/listing/" + id;
+
         } catch (PayPalRESTException e) {
-            e.printStackTrace();
+            LOGGER.error("Error occurred while creating payment for listing with ID {}: {}", id, e.getMessage());
             redirectAttributes.addFlashAttribute("error", "Payment creation failed.");
             return "redirect:/listing/" + id;
         }
@@ -396,6 +484,9 @@ public class ListingController {
                           @RequestParam("listingId") Long listingId,
                           Principal principal,
                           RedirectAttributes redirectAttributes) {
+
+        LOGGER.info("User {} has successfully completed payment with paymentId: {} for listingId: {}", principal.getName(), paymentId, listingId);
+
         try {
             Payment payment = paypalService.executePayment(paymentId, payerId);
 
@@ -409,10 +500,14 @@ public class ListingController {
                 User buyer = userRepository.findByMail(buyerUsername)
                         .orElseThrow(() -> new ResourceNotFoundException("Buyer not found"));
 
+                // Den Käufer auf das Listing setzen und den Status "verkauft" aktualisieren
                 listing.setBuyer(buyer);
                 listing.setSold(true);
                 listingRepository.save(listing);
 
+                LOGGER.info("Payment successful. Listing with ID {} marked as sold and assigned to buyer {}", listingId, buyerUsername);
+
+                // Bestätigungs-E-Mail an den Käufer senden
                 mailService.sendEmail(
                         buyer.getMail(),
                         "Successfully bought at ReSource Exchange!",
@@ -421,11 +516,12 @@ public class ListingController {
 
                 return "success";
             } else {
+                LOGGER.error("Payment failed for paymentId: {} for listingId: {}", paymentId, listingId);
                 redirectAttributes.addFlashAttribute("error", "Payment failed.");
                 return "redirect:/listing/" + listingId;
             }
         } catch (PayPalRESTException e) {
-            e.printStackTrace();
+            LOGGER.error("Error occurred while executing payment for paymentId: {} for listingId: {}: {}", paymentId, listingId, e.getMessage());
             redirectAttributes.addFlashAttribute("error", "Payment execution failed.");
             return "redirect:/listing/" + listingId;
         }
@@ -441,7 +537,8 @@ public class ListingController {
      * @return der Name der Ansicht, die dem Benutzer angezeigt wird, nachdem die Zahlung abgebrochen wurde
      */
     @GetMapping("/cancel")
-    public String cancel() {
+    public String cancel(Principal principal) {
+        LOGGER.info("User {} has canceled the payment process.", principal.getName());
         return "cancel";
     }
 
@@ -487,36 +584,41 @@ public class ListingController {
         Long userId = loggedInUser.getId();
         Long ownedId = userId;
 
-        // Wenn ein suchwort eingegeben ist soll nach Suchwort gesucht werden ansonst werden die Filter angewendet
+        // Log the received parameters
+        LOGGER.info("Filtering listings with parameters: keyword={}, materialId={}, sold={}, bookmarked={}, " +
+                        "minPrice={}, maxPrice={}, minQuantity={}, maxQuantity={}, own={}, page={}",
+                keyword, materialId, sold, bookmarked, minPrice, maxPrice, minQuantity, maxQuantity, own, page);
+
+        // Wenn ein Suchwort eingegeben ist, soll nach Suchwort gesucht werden, andernfalls werden die Filter angewendet
         if(keyword != null && !keyword.isEmpty()) {
+            LOGGER.info("Searching listings with keyword: {}", keyword);
             listings = listingService.getSearchedListings(keyword, pageable);
         } else {
-
-            // Wenn der "Bookmarked" Filter nicht angewendet wird ist die userId irrelevant und muss null gesetzt werden
+            // Wenn der "Bookmarked" Filter nicht angewendet wird, ist die userId irrelevant und muss null gesetzt werden
             if(bookmarked == null) {
                 userId = null;
             }
-            // Wenn der "Sold" Filter nicht gesetzt ist soll nach noch nicht verkauften Listings gesucht werden
+            // Wenn der "Sold" Filter nicht gesetzt ist, soll nach noch nicht verkauften Listings gesucht werden
             if(sold == null) {
                 sold = false;
             }
 
             if(own != null && own) {
+                LOGGER.info("Fetching own listings with filters: materialId={}, sold={}, bookmarked={}, minPrice={}, maxPrice={}",
+                        materialId, sold, bookmarked, minPrice, maxPrice);
                 listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, true, ownedId, pageable);
                 model.addAttribute("selectedOwn", true);
             } else {
+                LOGGER.info("Fetching listings with filters: materialId={}, sold={}, bookmarked={}, minPrice={}, maxPrice={}",
+                        materialId, sold, bookmarked, minPrice, maxPrice);
                 listings = listingService.getFilteredListings(materialId, sold, bookmarked, userId, minPrice, maxPrice, minQuantity, maxQuantity, false, ownedId, pageable);
                 model.addAttribute("selectedOwn", false);
             }
 
-            if(sold) {
-                model.addAttribute("selectedSold", sold);
-            } else {
-                model.addAttribute("selectedSold", false);
-            }
-
+            model.addAttribute("selectedSold", sold != null && sold);
         }
 
+        // Adding materials to the model
         List<Material> materials = materialService.getAllMaterials();
 
         model.addAttribute("listings", listings.getContent());
@@ -532,13 +634,14 @@ public class ListingController {
         model.addAttribute("totalPages", listings.getTotalPages());
         model.addAttribute("totalElements", listings.getTotalElements());
 
+        // Geolocation of the logged-in user
         double[] coordinates = userService.getGeocodedAddressFromUser(loggedInUser);
 
         if (coordinates != null) {
             model.addAttribute("userLatitude", coordinates[0]);
             model.addAttribute("userLongitude", coordinates[1]);
         } else {
-            // Fallback Berlin
+            // Fallback to Berlin coordinates if geolocation is not available
             model.addAttribute("userLatitude", 52.520008);
             model.addAttribute("userLongitude", 13.404954);
         }

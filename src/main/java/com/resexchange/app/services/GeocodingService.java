@@ -2,6 +2,8 @@ package com.resexchange.app.services;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,6 +20,7 @@ import java.io.BufferedReader;
  */
 public class GeocodingService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeocodingService.class);
     // Nominatim API URL
     private static final String NOMINATIM_API_URL = "https://nominatim.openstreetmap.org/search";
 
@@ -40,6 +43,7 @@ public class GeocodingService {
         try {
             String address = street + ", " + city + ", " + postalCode + ", " + country;
 
+            LOGGER.info("Start geocoding for address: {}", address);
             // Kodiert die Adresse für die URL
             String encodedAddress = java.net.URLEncoder.encode(address, "UTF-8");
 
@@ -69,13 +73,14 @@ public class GeocodingService {
                 double lat = firstResult.getDouble("lat");
                 double lng = firstResult.getDouble("lon");
 
+                LOGGER.info("Geocoding successful for address: {}, Latitude: {}, Longitude: {}", address, lat, lng);
                 return new double[]{lat, lng};
             } else {
-                System.out.println("Keine Koordinaten für die Adresse gefunden.");
+                LOGGER.warn("No coordinates found for address: {}", address);
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("Error occurred during geocoding for address: {}", street + ", " + city + ", " + postalCode + ", " + country, e);
             return null;
         }
     }

@@ -125,9 +125,13 @@
                             <h6 class="mb-2 text-muted" th:text="${listing.material.name}"></h6>
                         </div>
                         <div class="card-header d-flex justify-content-between align-items-center text-break">
-                            <h6 class="mb-2 text-muted" th:text="${listing.createdBy.name}" data-tooltip="${listing.createdBy.name}"></h6>
+                            <h6 class="mb-2 text-muted">
+                                <a th:href="@{/profile/{userId}(userId=${listing.createdBy.id})}"
+                                   th:text="${listing.createdBy.name}"
+                                   data-tooltip="${listing.createdBy.name}">
+                                </a>
+                            </h6>
                         </div>
-
                         <p class="card-text justify-content-between align-items-center">
                             <span th:text="#{listing.quantity} + ': ' + ${listing.quantity}"></span><br>
                             <span th:text="#{listing.price} + ': ' + ${#numbers.formatDecimal(listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span><br>

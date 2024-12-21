@@ -1,9 +1,11 @@
 package com.resexchange.app.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,6 +42,16 @@ public abstract class User {
      */
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Listing> listings;
+
+    // Reviews, die dieser Benutzer geschrieben hat
+    @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<Review> writtenReviews;
+
+    // Reviews, die für diesen Benutzer erstellt wurden
+    @OneToMany(mappedBy = "reviewed", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<Review> receivedReviews;
 
     public User() {
 
@@ -95,7 +107,6 @@ public abstract class User {
         this.verificationToken = verificationToken;
     }
 
-
     public boolean has2FA() {
         return has2FA;
     }
@@ -109,5 +120,20 @@ public abstract class User {
     public abstract void setAddress(Address address);
 
 
+    public List<Review> getWrittenReviews() {
+        return writtenReviews;
+    }
+
+    public void setWrittenReviews(List<Review> writtenReviews) {
+        this.writtenReviews = writtenReviews;
+    }
+
+    public List<Review> getReceivedReviews() {
+        return receivedReviews;
+    }
+
+    public void setReceivedReviews(List<Review> receivedReviews) {
+        this.receivedReviews = receivedReviews;
+    }
 }
 

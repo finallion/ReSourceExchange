@@ -330,3 +330,58 @@
     justify-content: center; /* Horizontale Zentrierung */
     align-items: center; /* Vertikale Zentrierung */
 }
+
+.rating {
+    display: flex;
+    direction: rtl;
+    justify-content: center;
+}
+.rating label {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ccc;
+}
+.rating input[type="radio"]:checked ~ label {
+    color: gold;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+.star-rating label {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+}
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffc107;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.review-card .card-body {
+    padding: 20px;
+}
+.review-card .card-title {
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: bold;
+}
+.review-card .rating span {
+    font-size: 1.5rem;
+    color: #ffc107;
+}
+.review-card .rating .text-muted {
+    color: #ddd;
+}
+.review-card .card-text {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+}

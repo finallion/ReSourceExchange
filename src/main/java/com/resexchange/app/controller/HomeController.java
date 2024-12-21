@@ -124,6 +124,7 @@ public class HomeController {
         model.addAttribute("materials", materials);
         model.addAttribute("currentPage", listingPage.getNumber() + 1);
         model.addAttribute("totalPages", listingPage.getTotalPages());
+        model.addAttribute("totalElements", listingPage.getTotalElements());
 
         Long userId = userDetails.getId();
         List<Bookmark> userBookmarks = bookmarkRepository.findByUserId(userId);

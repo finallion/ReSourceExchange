@@ -8,6 +8,7 @@ import com.resexchange.app.repositories.ChatRepository;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.MessageRepository;
 import com.resexchange.app.repositories.UserRepository;
+import com.resexchange.app.services.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class ChatController {
 
     @Autowired
     private MessageRepository messageRepository;
+
+    @Autowired
+    private NotificationService notificationService;
 
 
     @GetMapping("/{listingId}/{creatorId}/{initiatorId}")
@@ -92,6 +96,11 @@ public class ChatController {
         model.addAttribute("chatId", chat.getId());
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("messages", messages);
+
+        if(creatorId!=loggedInUser.getId()) {
+        String notificationMessage = "Neue Nachricht von " + loggedInUser.getName();
+        notificationService.createNotification(creator, notificationMessage, "chat/"+listing.getId()+"/"+creatorId+"/"+initiatorId);
+        }
 
         return "chat/chat";
     }

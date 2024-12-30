@@ -26,7 +26,231 @@
 </head>
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/main}">ReSourceExchange</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="margin-right: 10px !important;">
+                    <li class="nav-item dropdown" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="#" id="materialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.materials}">
+                            Materials
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="materialDropdown">
+                            <li>
+                                <a class="dropdown-item" th:href="@{/material/overview}" th:text="#{material.overview}">View Materials</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" th:href="@{/material/create}" th:text="#{navbar.create_material}">Add Material</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="listingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.listings}">
+                            Listings
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="listingsDropdown">
+                            <li><h6 class="dropdown-header">Meine Listings</h6></li>
+                            <li th:if="${#lists.isEmpty(userListings)}">
+                                <a class="dropdown-item disabled" href="#">Keine Listings vorhanden</a>
+                            </li>
+                            <li th:each="listing : ${userListings}">
+                                <div class="dropdown-item d-flex justify-content-between align-items-center">
+                                    <span th:text="${listing.material.name} + ' - ' + ${listing.createdBy.name}"></span>
+                                    <div class="listing-actions">
+                                        <a class="card-link details-icon"
+                                           th:href="@{/listing/{id}(id=${listing.id})}"
+                                           title="View Details">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z" />
+                                            </svg>
+                                        </a>
+                                        <a th:href="@{/listing/delete/{id}(id=${listing.id})}" class="card-link delete-icon" title="Delete">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="nav-item" sec:authorize="hasAuthority('MANAGE_LISTINGS')">
+                                <a class="nav-link active" aria-current="page" th:href="@{/listing/create}" th:text="#{navbar.create_listing}">
+                                    Create Listing
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.profile}">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li><h6 class="dropdown-header">Meine Bookmarks</h6></li>
+                            <li th:if="${#lists.isEmpty(userBookmarks)}">
+                                <a class="dropdown-item disabled" href="#">Keine Bookmarks vorhanden</a>
+                            </li>
+                            <li th:each="bookmark : ${userBookmarks}">
+                                <div class="dropdown-item d-flex justify-content-between align-items-center">
+                                    <span th:text="${bookmark.listing.material.name} + ' - ' + ${bookmark.listing.createdBy.name}"></span>
+                                    <div class="bookmark-actions">
+                                        <a class="card-link details-icon"
+                                           th:href="@{/bookmark/{id}(id=${bookmark.id})}"
+                                           title="View Details">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"/>
+                                            </svg>
+                                        </a>
+                                        <a th:href="@{/bookmark/delete/{id}(id=${bookmark.id})}" class="card-link delete-icon" title="Delete">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li class="dropdown-item-text" th:text="#{navbar.switch_language}">Language</li>
+                            <li class="px-3">
+                                <select class="form-select form-select-sm" id="locales" onchange="changeLanguage(this.value)">
+                                    <option value="en" th:text="#{lang.en}" th:selected="${currentLocale == 'en'}"></option>
+                                    <option value="de" th:text="#{lang.de}" th:selected="${currentLocale == 'de'}"></option>
+                                </select>
+                                <script>
+                                    // Prüfen, ob der `lang`-Parameter in der URL vorhanden ist
+                                    const urlParams = new URLSearchParams(window.location.search);
+                                    const lang = urlParams.get('lang');  // Der Parameter aus der URL
+
+                                    // Wenn ein Wert gefunden wird, setze ihn im select-Feld
+                                    if (lang) {
+                                        document.getElementById("locales").value = lang;
+                                    }
+
+                                    // Funktion, um die Sprache zu ändern
+                                    function changeLanguage(language) {
+                                        // Sprache in der URL ändern (z.B. ?lang=en)
+                                        window.location.href = window.location.pathname + "?lang=" + language;
+                                    }
+                                </script>
+                            </li>
+
+                            <li class="dropdown-item-text" th:text="#{navbar.switch_currency}">Currency</li>
+                            <li class="px-3">
+                                <select class="form-select form-select-sm" id="currencySelector" onchange="changeCurrency(this.value)">
+                                    <option value="eur" th:selected="${session.currency == 'eur'}">EUR</option>
+                                    <option value="usd" th:selected="${session.currency == 'usd'}">USD</option>
+                                    <option value="gbp" th:selected="${session.currency == 'gbp'}">GBP</option>
+                                    <option value="chf" th:selected="${session.currency == 'chf'}">CHF</option>
+                                </select>
+                                <script>
+                                    function changeCurrency(currency) {
+                                        window.location.href = '/convert-currency?currency=' + currency;
+                                    }
+                                </script>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" th:href="@{/chat/active}" th:text="#{navbar.chat}">Active Chats</a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" th:href="@{/listing/purchases}">Purchases</a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <div class="dropdown-item" th:each="auth : ${#authentication.authorities}" th:text="${auth}"></div>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form th:action="@{/logout}" method="post" style="display:inline;">
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Cart
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                            <li th:if="${session.cart == null or #lists.isEmpty(session.cart)}">
+                                <a class="dropdown-item disabled" href="#">Cart is empty</a>
+                            </li>
+                            <li th:each="item : ${session.cart}">
+                                <div class="dropdown-item d-flex justify-content-between align-items-center">
+                                    <span th:text="${item.material.name} + ' - ' + ${item.price} + ' ' + ${session.currency.toUpperCase()}"></span>
+                                </div>
+                            </li>
+                            <li th:if="${session.cart != null and !#lists.isEmpty(session.cart)}"><hr class="dropdown-divider"></li>
+                            <li th:if="${session.cart != null and !#lists.isEmpty(session.cart)}">
+                                <a class="dropdown-item" th:href="@{/cart/checkout}">Checkout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{/admin/users}" th:text="#{navbar.manage_users}">Manage Users</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+                            </svg>
+                            <span id="notificationCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown" id="notificationMenu">
+                            <li id="noNotifications" class="d-none">
+                                <a class="dropdown-item disabled" href="#">Keine Benachrichtigungen</a>
+                            </li>
+                            <!-- Hier werden die Benachrichtigungen dynamisch eingefügt -->
+                            <li id="notificationTemplate" class="d-none">
+                                <div class="dropdown-item d-flex justify-content-between align-items-center">
+                                    <span class="notification-message"></span>
+                                    <div class="notification-actions">
+                                        <a href="#" class="card-link details-icon" title="Details anzeigen">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z" />
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="card-link delete-icon" title="Löschen">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 <div class="main-page">
     <div class="side-bar">
         <div class="main-page-content">
@@ -441,7 +665,7 @@
     /*]]>*/
 </script>
 
-
+<script src="/js/Notifications.js"></script>
 
 </body>
 </html>

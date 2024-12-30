@@ -6,9 +6,11 @@ import com.paypal.base.rest.PayPalRESTException;
 import com.resexchange.app.model.Address;
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
+import com.resexchange.app.model.Notification;
 import com.resexchange.app.model.PrivateUser;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ListingRepository;
+import com.resexchange.app.repositories.NotificationRepository;
 import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.services.*;
 import com.resexchange.app.repositories.MaterialRepository;
@@ -66,6 +68,9 @@ public class ListingController {
     private UserRepository userRepository;
 
     @Autowired
+    private NotificationRepository notificationRepository;
+
+    @Autowired
     private APIContext apiContext;
 
     @Autowired
@@ -75,6 +80,9 @@ public class ListingController {
 
     @Autowired
     private MailService mailService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     /**
      * Controller-Methode zur Behandlung von GET-Anfragen, um das Formular für ein neues Listing anzuzeigen.
@@ -506,6 +514,13 @@ public class ListingController {
                 listingRepository.save(listing);
 
                 LOGGER.info("Payment successful. Listing with ID {} marked as sold and assigned to buyer {}", listingId, buyerUsername);
+
+                User creator = listing.getCreatedBy();
+                if (creator != null) {
+                    String msg = ("Your listing " + listing.getMaterial() + " has been sold!");
+                    String link = "/listing/" + listingId;
+                    notificationService.createNotification(listing.getCreatedBy(),msg,link);
+                }
 
                 // Bestätigungs-E-Mail an den Käufer senden
                 mailService.sendEmail(

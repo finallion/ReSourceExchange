@@ -2,12 +2,16 @@ package com.resexchange.app.services;
 
 import com.resexchange.app.model.Bookmark;
 import com.resexchange.app.model.Listing;
+import com.resexchange.app.model.Notification;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.BookmarkRepository;
+import com.resexchange.app.repositories.NotificationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 /**
  * Service-Klasse, die Geschäftslogik für die Verwaltung von Bookmarks (Lesezeichen) bereitstellt.
@@ -21,6 +25,9 @@ import org.springframework.stereotype.Service;
 
         @Autowired
         private BookmarkRepository bookmarkRepository;
+
+        @Autowired
+        private NotificationService notificationService;
 
         private static final Logger LOGGER = LoggerFactory.getLogger(BookmarkService.class);
 
@@ -42,6 +49,14 @@ import org.springframework.stereotype.Service;
 
                 bookmarkRepository.save(bookmark);
                 LOGGER.info("Successfully saved bookmark for user: {} and listing: {}", user.getId(), listing.getId());
+
+                User creator = listing.getCreatedBy(); // assuming Listing has a `createdBy` field
+                if (creator != null && !creator.equals(user)) {
+                    String msg = ("Your listing '" + listing.getMaterial().getName() + "' was bookmarked by " + user.getName());
+                    String link = "/listing/" + listing.getId();
+                    notificationService.createNotification(creator,msg,link);
+                    LOGGER.info("Notification created for listing creator: {} about the bookmark.", creator.getId());
+                }
             } catch (Exception e) {
                 LOGGER.error("Error while adding bookmark for user: {} and listing: {}", user.getId(), listing.getId(), e);
             }

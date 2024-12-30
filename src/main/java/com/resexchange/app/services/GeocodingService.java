@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,6 +19,7 @@ import java.io.BufferedReader;
  *
  * @author Dominik
  */
+@Service
 public class GeocodingService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GeocodingService.class);

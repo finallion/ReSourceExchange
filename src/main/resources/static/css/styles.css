@@ -261,23 +261,22 @@
     display: block;
 }
 
-.dropdown-item .listing-actions  {
+.dropdown-item .listing-actions,
+.dropdown-item .bookmark-actions,
+.notification-actions {
     display: flex;
     gap: 8px;
 }
 
-.dropdown-item .listing-actions a {
-    margin-left: 16px;
-}
-
-.dropdown-item .bookmark-actions {
-    display: flex;
-    gap: 8px;
-}
-
+.dropdown-item .listing-actions a,
 .dropdown-item .bookmark-actions a {
     margin-left: 16px;
 }
+
+.notification-message {
+    margin-right: 16px;
+}
+
 #popup {
     visibility: hidden;  /* Popup wird unsichtbar, nimmt aber noch Platz ein */
 }

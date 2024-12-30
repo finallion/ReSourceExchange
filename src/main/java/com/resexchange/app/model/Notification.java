@@ -2,6 +2,13 @@ package com.resexchange.app.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Modellklasse für eine Benachrichtigung im System.
+ * Diese Klasse repräsentiert eine Benachrichtigung, die einem Benutzer zugeordnet ist.
+ * Sie enthält Informationen wie die Nachricht, den Status der Benachrichtigung und den zugehörigen Link.
+ *
+ * @author Dominik
+ */
 @Entity
 public class Notification {
     @Id

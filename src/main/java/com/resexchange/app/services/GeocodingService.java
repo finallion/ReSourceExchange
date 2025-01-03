@@ -32,13 +32,14 @@ public class GeocodingService {
      * Diese Methode nutzt die Nominatim API von OpenStreetMap, um eine Adresse in geographische Koordinaten
      * umzuwandeln. Die Adresse wird durch die Kombination von Straßenname, Stadt, Postleitzahl und Land
      * gebildet. Falls die API eine Adresse findet, gibt die Methode die entsprechenden Koordinaten zurück.
+     * Wenn keine Koordinaten gefunden werden oder ein Fehler auftritt, gibt die Methode `null` zurück.
      *
      * @param street    die Straße der Adresse
      * @param city      die Stadt der Adresse
      * @param postalCode die Postleitzahl der Adresse
      * @param country   das Land der Adresse
      * @return ein Array mit zwei Werten: dem Breiten- und dem Längengrad der Adresse,
-     *         oder null, wenn keine Koordinaten gefunden wurden
+     *         oder `null`, wenn keine Koordinaten gefunden wurden oder ein Fehler aufgetreten ist
      * @author Dominik
      */
     public static double[] getCoordinatesFromAddress(String street, String city, String postalCode, String country) {
@@ -46,9 +47,9 @@ public class GeocodingService {
             String address = street + ", " + city + ", " + postalCode + ", " + country;
 
             LOGGER.info("Start geocoding for address: {}", address);
+
             // Kodiert die Adresse für die URL
             String encodedAddress = java.net.URLEncoder.encode(address, "UTF-8");
-
             String urlString = NOMINATIM_API_URL + "?q=" + encodedAddress + "&format=json&addressdetails=1";
 
             // Öffnet die Verbindung zur Nominatim API

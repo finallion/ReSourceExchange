@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Der BookmarkController ist ein Spring MVC-Controller, der für die Verwaltung von Bookmarks zuständig ist.
@@ -63,7 +62,6 @@ public class BookmarkController {
             return "error";
         }
     }
-
 
     /**
      * Controller-Methode zur Behandlung von GET-Anfragen, um ein Bookmark zu löschen.

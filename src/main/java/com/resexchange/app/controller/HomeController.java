@@ -6,8 +6,6 @@ import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.MaterialRepository;
 import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.security.REUserDetails;
-import com.resexchange.app.services.BookmarkService;
-import com.resexchange.app.services.GeocodingService;
 import com.resexchange.app.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -20,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,9 +49,6 @@ public class HomeController {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private MaterialRepository materialRepository;

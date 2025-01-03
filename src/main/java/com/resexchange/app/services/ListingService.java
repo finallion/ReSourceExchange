@@ -1,16 +1,13 @@
 package com.resexchange.app.services;
 
 import com.resexchange.app.model.Listing;
-import com.resexchange.app.model.Material;
 import com.resexchange.app.repositories.ListingRepository;
-import com.resexchange.app.repositories.MaterialRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,37 +23,18 @@ public class ListingService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ListingService.class);
 
     private final ListingRepository listingRepository;
-    private final MaterialRepository materialRepository;
 
-    public ListingService(ListingRepository listingRepository, MaterialRepository materialRepository) {
+    public ListingService(ListingRepository listingRepository) {
         this.listingRepository = listingRepository;
-        this.materialRepository = materialRepository;
-    }
-
-    /**
-     * Ruft alle Listings ab.
-     *
-     * @return eine Liste von allen Listings
-     * @author Dominik
-     */
-    public List<Listing> getAllListings() {
-        LOGGER.info("Retrieving all listings from the database");
-
-        try {
-            List<Listing> listings = listingRepository.findAll();
-            LOGGER.info("Successfully retrieved {} listings", listings.size());
-            return listings;
-        } catch (Exception e) {
-            LOGGER.error("Error occurred while retrieving listings", e);
-            throw new RuntimeException("Error occurred while retrieving listings", e); // Optional: Exception weiterwerfen
-        }
     }
 
     /**
      * Aktualisiert ein bestehendes Listing.
-     * Wenn das Listing existiert, wird es mit den neuen Daten gespeichert.
      *
-     * @param listing Das Listing, das aktualisiert werden soll
+     * Wenn das Listing existiert, wird es mit den neuen Daten gespeichert. Falls das Listing nicht gefunden wird,
+     * wird eine Warnung protokolliert, aber keine Änderungen vorgenommen.
+     *
+     * @param listing Das Listing, das aktualisiert werden soll. Das Listing muss eine gültige ID enthalten.
      * @author Dominik
      */
     public void updateListing(Listing listing) {
@@ -77,10 +55,12 @@ public class ListingService {
 
     /**
      * Ruft ein Listing anhand seiner ID ab.
-     * Gibt null zurück, wenn das Listing nicht gefunden wird.
+     *
+     * Diese Methode durchsucht die Datenbank nach einem Listing mit der angegebenen ID.
+     * Wenn das Listing nicht gefunden wird, gibt die Methode `null` zurück.
      *
      * @param id Die ID des Listings
-     * @return Das gefundene Listing oder null, wenn nicht vorhanden
+     * @return Das gefundene Listing oder `null`, wenn kein Listing mit der angegebenen ID vorhanden ist
      * @author Dominik
      */
     public Listing getListingById(Long id) {
@@ -100,9 +80,13 @@ public class ListingService {
 
     /**
      * Löscht ein Listing anhand seiner ID.
-     * Diese Methode wird in einer Transaktion ausgeführt.
+     *
+     * Diese Methode löscht ein Listing mit der angegebenen ID. Sie wird in einer Transaktion ausgeführt,
+     * was bedeutet, dass bei einem Fehler alle Änderungen rückgängig gemacht werden.
+     * Falls das Listing nicht existiert, wird eine Warnung im Log ausgegeben.
      *
      * @param id Die ID des Listings, das gelöscht werden soll
+     * @throws RuntimeException Wenn ein Fehler beim Löschen des Listings auftritt
      * @author Dominik
      */
     @Transactional
@@ -123,7 +107,25 @@ public class ListingService {
     }
 
     /**
-     * Get Filtered Listings from the Database
+     * Ruft gefilterte Listings aus der Datenbank ab, basierend auf den angegebenen Filterparametern.
+     *
+     * Diese Methode verwendet eine Vielzahl von Parametern, um Listings zu filtern, einschließlich Material-ID, Verkaufsstatus,
+     * Buchmarkierungsstatus, Benutzer-ID und Preisspanne. Sie gibt eine Seite von Listings zurück, die den Filterkriterien entsprechen.
+     *
+     * @param materialId Die ID des Materials, nach dem gefiltert werden soll (optional).
+     * @param sold Der Verkaufsstatus der Listings (optional).
+     * @param bookmarked Der Buchmarkierungsstatus der Listings (optional).
+     * @param userId Die ID des Benutzers, für den die Listings angezeigt werden sollen (optional).
+     * @param minPrice Der minimale Preis, nach dem gefiltert werden soll (optional).
+     * @param maxPrice Der maximale Preis, nach dem gefiltert werden soll (optional).
+     * @param minQuantity Die minimale Menge, nach der gefiltert werden soll (optional).
+     * @param maxQuantity Die maximale Menge, nach der gefiltert werden soll (optional).
+     * @param own Gibt an, ob nur eigene Listings angezeigt werden sollen (optional).
+     * @param ownedId Die ID des Benutzers, dessen Listings angezeigt werden sollen, wenn `own=true` (optional).
+     * @param pageable Die Paginierungsinformationen, die die Seitengröße und die Seite definieren.
+     * @return Eine Seite von Listings, die den Filterkriterien entsprechen.
+     * @throws RuntimeException Wenn ein Fehler beim Abrufen der Listings auftritt.
+     * @author Stefan
      */
     public Page<Listing> getFilteredListings(Long materialId, Boolean sold, Boolean bookmarked, Long userId, Double minPrice, Double maxPrice, Integer minQuantity, Integer maxQuantity, Boolean own, Long ownedId, Pageable pageable) {
         LOGGER.info("Attempting to retrieve filtered listings with parameters: materialId={}, sold={}, bookmarked={}, userId={}, minPrice={}, maxPrice={}, minQuantity={}, maxQuantity={}, own={}, ownedId={}",
@@ -142,8 +144,18 @@ public class ListingService {
     }
 
     /**
-     * Get Searched Listings from the Database
+     * Sucht Listings aus der Datenbank, die mit einem angegebenen Schlüsselwort übereinstimmen.
+     *
+     * Diese Methode verwendet das angegebene Schlüsselwort, um in der Datenbank nach Listings zu suchen.
+     * Es wird eine Seite von Listings zurückgegeben, die das Schlüsselwort enthalten.
+     *
+     * @param keyword Das Suchwort, nach dem in den Listings gesucht werden soll.
+     * @param pageable Die Paginierungsinformationen, die die Seitengröße und die Seite definieren.
+     * @return Eine Seite von Listings, die dem Suchkriterium entsprechen.
+     * @throws RuntimeException Wenn ein Fehler bei der Suche nach Listings auftritt.
+     * @author Stefan
      */
+
     public Page<Listing> getSearchedListings(String keyword, Pageable pageable) {
         LOGGER.info("Searching for listings with keyword: {}", keyword);
 
@@ -158,26 +170,4 @@ public class ListingService {
             throw new RuntimeException("Error occurred while searching for listings with keyword: " + keyword, e); // Optional: Exception weiterwerfen
         }
     }
-
-    /**
-     * Hilfsmethode um Anzahl der Pages zu berechnen
-     * @param pageSize Anzahl der Listings die auf einer Seite dargestellt werden sollen
-     * @return Berechnete Anzahl an Seiten
-     */
-    public int getTotalPages(int pageSize) {
-        LOGGER.info("Calculating total pages for page size: {}", pageSize);
-
-        try {
-            long totalListings = listingRepository.count();
-            int totalPages = (int) Math.ceil((double) totalListings / pageSize);
-
-            LOGGER.info("Total listings: {}. Calculated total pages: {}", totalListings, totalPages);
-
-            return totalPages;
-        } catch (Exception e) {
-            LOGGER.error("Error occurred while calculating total pages", e);
-            throw new RuntimeException("Error occurred while calculating total pages", e); // Optional: Exception weiterwerfen
-        }
-    }
-
 }

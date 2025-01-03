@@ -5,7 +5,6 @@ import com.resexchange.app.model.Notification;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.UserRepository;
 import com.resexchange.app.services.NotificationService;
-import com.resexchange.app.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,12 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/notifications")
 public class NotificationController {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(NotificationController.class);
+
     @Autowired
     private NotificationService notificationService;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -44,13 +46,17 @@ public class NotificationController {
      * Ruft alle Benachrichtigungen des angemeldeten Benutzers ab.
      *
      * Diese Methode holt die Benachrichtigungen aus der Datenbank, zählt sie und gibt sie an den Client zurück.
-     * Im Falle von Fehlern (z. B. Benutzer nicht gefunden) wird eine Fehlermeldung zurückgegeben.
+     * Im Falle eines Fehlers, wie z. B. einem nicht gefundenen Benutzer oder einem anderen internen Fehler, wird eine
+     * entsprechende Fehlermeldung zurückgegeben.
      *
-     * @param principal Das Principal-Objekt des angemeldeten Benutzers, das Benutzerinformationen enthält.
-     * @param redirectAttributes Attribute, die beim Weiterleiten im Falle von Fehlern verwendet werden.
-     * @return Ein ResponseEntity, das die Liste der Benachrichtigungen und deren Anzahl oder eine Fehlermeldung enthält.
+     * @param principal Das Principal-Objekt des angemeldeten Benutzers, das Benutzerinformationen (insbesondere die E-Mail-Adresse) enthält.
+     * @param redirectAttributes Attribute, die beim Weiterleiten von Fehlern genutzt werden können (könnte aber hier nicht verwendet werden).
+     * @return Ein ResponseEntity, das entweder:
+     *         - Eine Liste der Benachrichtigungen und deren Anzahl als erfolgreiches Ergebnis (200 OK)
+     *         - Eine Fehlermeldung im Fall eines Fehlers (400 Bad Request oder 500 Internal Server Error)
      * @author Dominik
      */
+
     @GetMapping
     public ResponseEntity<?> getAllNotifications(Principal principal,
                                                  RedirectAttributes redirectAttributes) {
@@ -66,7 +72,7 @@ public class NotificationController {
             return ResponseEntity.ok(new NotificationResponse(count, notifications));
 
         } catch (IllegalArgumentException e) {
-            LOGGER.error("Error fetching notifications: {}", e.getMessage());
+            LOGGER.error("Error fetching notifications for user: {}. Error message: {}", principal.getName(), e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 
         } catch (Exception e) {
@@ -81,10 +87,11 @@ public class NotificationController {
      * Löscht eine Benachrichtigung anhand ihrer ID.
      *
      * Diese Methode löscht die Benachrichtigung aus der Datenbank basierend auf ihrer ID.
-     * Wenn die Benachrichtigung nicht gefunden wird, wird eine "Nicht gefunden"-Antwort zurückgegeben.
+     * Wenn die Benachrichtigung gefunden wird, erfolgt die Löschung und es wird eine erfolgreiche Antwort (200 OK) zurückgegeben.
+     * Wenn die Benachrichtigung nicht gefunden wird, wird eine "Nicht gefunden"-Antwort (404 Not Found) zurückgegeben.
      *
      * @param id Die ID der zu löschenden Benachrichtigung.
-     * @return Ein ResponseEntity, das den Erfolg oder Fehler der Löschung anzeigt.
+     * @return Ein ResponseEntity, das den Erfolg (200 OK) oder Fehler (404 Not Found) der Löschung anzeigt.
      * @author Dominik
      */
     @GetMapping("/delete/{id}")
@@ -106,11 +113,12 @@ public class NotificationController {
      * Ruft eine Benachrichtigung anhand ihrer ID ab.
      *
      * Diese Methode holt eine einzelne Benachrichtigung aus der Datenbank basierend auf ihrer ID.
-     * Wenn die Benachrichtigung nicht gefunden wird, wird eine Fehlerseite zurückgegeben.
+     * Wenn die Benachrichtigung nicht gefunden wird, wird eine Fehlerseite mit dem Namen "error" zurückgegeben.
+     * Andernfalls wird die Benachrichtigung auf der Detailseite angezeigt.
      *
      * @param id Die ID der abzurufenden Benachrichtigung.
-     * @param model Das Model, um Attribute für die Ansicht hinzuzufügen.
-     * @return Der Name der zu rendernden Ansicht.
+     * @param model Das Model, um Attribute für die Ansicht hinzuzufügen (z. B. die Benachrichtigung).
+     * @return Der Name der zu rendernden Ansicht ("notification-detail" bei Erfolg, "error" bei Fehlschlagen).
      * @author Dominik
      */
     @GetMapping("/{id}")
@@ -134,6 +142,7 @@ public class NotificationController {
     /**
      * Innere Klasse zur Strukturierung der JSON-Antwort mit der Liste der Benachrichtigungen und deren Anzahl.
      * Diese Klasse wird verwendet, um die Daten in einem strukturierten Format im Antwortkörper zu senden.
+     * Sie enthält die Gesamtanzahl der Benachrichtigungen sowie die eigentlichen Benachrichtigungsobjekte.
      *
      * @author Dominik
      */

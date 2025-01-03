@@ -3,11 +3,8 @@ package com.resexchange.app.controller;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
-import com.resexchange.app.model.Address;
 import com.resexchange.app.model.Listing;
 import com.resexchange.app.model.Material;
-import com.resexchange.app.model.Notification;
-import com.resexchange.app.model.PrivateUser;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ListingRepository;
 import com.resexchange.app.repositories.NotificationRepository;
@@ -22,7 +19,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +28,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.security.Principal;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 /**
  * Der ListingController ist ein Spring MVC-Controller, der für die Verwaltung von Listings zuständig ist.
@@ -68,13 +63,8 @@ public class ListingController {
     private UserRepository userRepository;
 
     @Autowired
-    private NotificationRepository notificationRepository;
-
-    @Autowired
-    private APIContext apiContext;
-
-    @Autowired
     private PaypalService paypalService;
+
     @Autowired
     private MaterialService materialService;
 
@@ -119,6 +109,7 @@ public class ListingController {
         String mail = principal.getName();
         LOGGER.info("Fetching purchases for user with email: {}", mail);
 
+        //Liste aller gekauften Listings
         List<Listing> purchasedListings = listingRepository.findByBuyerMail(mail);
         LOGGER.info("Found {} purchased listings for user {}", purchasedListings.size(), mail);
 
@@ -158,7 +149,7 @@ public class ListingController {
         User user = userRepository.findByMail(authentication.getName())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        // Geokodierte Adresse des Benutzers abrufen
+        // Geokodierte Adresse
         double[] coordinates = userService.getGeocodedAddressFromUser(user);
 
         if (coordinates != null) {
@@ -273,7 +264,7 @@ public class ListingController {
         listing.setCreatedBy(loggedInUser);
         listing.setChats(listing.getChats());
 
-        // Geokodierte Adresse des Benutzers abrufen und setzen, falls verfügbar
+        // Geokodierte Adresse des Benutzers
         double[] coordinates = userService.getGeocodedAddressFromUser(loggedInUser);
 
         if (coordinates != null) {
@@ -312,13 +303,11 @@ public class ListingController {
         LOGGER.info("Attempting to delete listing with ID: {}", id);
 
         try {
-            // Löschen des Listings
             listingService.deleteListing(id);
             LOGGER.info("Listing with ID {} successfully deleted", id);
 
             redirectAttributes.addFlashAttribute("message", "Listing deleted successfully.");
         } catch (Exception e) {
-            // Fehlerbehandlung und Logging
             LOGGER.error("Error occurred while trying to delete listing with ID: {}", id, e);
             redirectAttributes.addFlashAttribute("error", "Failed to delete the listing.");
         }
@@ -351,18 +340,16 @@ public class ListingController {
                     .orElseThrow(() -> new IllegalArgumentException("Logged-in user not found"));
 
             // Überprüfen, ob das Listing bereits ein Bookmark ist
-            if (bookmarkService.BookmarkExist(loggedInUser, listing)) {
+            if (bookmarkService.bookmarkExist(loggedInUser, listing)) {
                 LOGGER.warn("User {} has already bookmarked the listing with ID: {}", principal.getName(), id);
                 redirectAttributes.addFlashAttribute("message", "You have already bookmarked this listing.");
                 return "redirect:/main";
             }
 
-            // Hinzufügen des Bookmarks
             bookmarkService.addBookmark(loggedInUser, listing);
             LOGGER.info("User {} successfully bookmarked the listing with ID: {}", principal.getName(), id);
 
         } catch (Exception e) {
-            // Fehlerbehandlung und Logging
             LOGGER.error("Error occurred while trying to bookmark listing with ID: {}", id, e);
             redirectAttributes.addFlashAttribute("error", "Failed to bookmark the listing.");
         }
@@ -389,7 +376,6 @@ public class ListingController {
         LOGGER.info("Attempting to retrieve listing with ID: {}", id);
 
         try {
-            // Suchen des Listings anhand der ID
             Listing listing = listingRepository.findById(id)
                     .orElseThrow(() -> new NoSuchElementException("Listing with ID " + id + " not found"));
 
@@ -397,13 +383,12 @@ public class ListingController {
             LOGGER.info("Successfully retrieved listing with ID: {}", id);
 
         } catch (NoSuchElementException e) {
-            // Fehlerbehandlung und Logging
             LOGGER.error("Listing with ID {} not found", id, e);
             model.addAttribute("error", "Listing not found");
-            return "error"; // Redirect or error page in case the listing is not found
+            return "error";
         }
 
-        return "listing-detail"; // Anzeige der Detailseite für das Listing
+        return "listing-detail";
     }
 
     /**
@@ -427,11 +412,9 @@ public class ListingController {
         LOGGER.info("User {} is attempting to purchase listing with ID: {}", principal.getName(), id);
 
         try {
-            // Suchen des Listings anhand der ID
             Listing listing = listingRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Listing not found"));
 
-            // Wenn das Listing bereits verkauft wurde
             if (listing.isSold()) {
                 LOGGER.info("Listing with ID {} is already sold, redirecting to detail view.", id);
                 return "redirect:/listing/" + id;
@@ -599,7 +582,6 @@ public class ListingController {
         Long userId = loggedInUser.getId();
         Long ownedId = userId;
 
-        // Log the received parameters
         LOGGER.info("Filtering listings with parameters: keyword={}, materialId={}, sold={}, bookmarked={}, " +
                         "minPrice={}, maxPrice={}, minQuantity={}, maxQuantity={}, own={}, page={}",
                 keyword, materialId, sold, bookmarked, minPrice, maxPrice, minQuantity, maxQuantity, own, page);
@@ -633,7 +615,6 @@ public class ListingController {
             model.addAttribute("selectedSold", sold != null && sold);
         }
 
-        // Adding materials to the model
         List<Material> materials = materialService.getAllMaterials();
 
         model.addAttribute("listings", listings.getContent());
@@ -649,14 +630,13 @@ public class ListingController {
         model.addAttribute("totalPages", listings.getTotalPages());
         model.addAttribute("totalElements", listings.getTotalElements());
 
-        // Geolocation of the logged-in user
+        //Geokoordinaten des eingeloggten Users
         double[] coordinates = userService.getGeocodedAddressFromUser(loggedInUser);
 
         if (coordinates != null) {
             model.addAttribute("userLatitude", coordinates[0]);
             model.addAttribute("userLongitude", coordinates[1]);
         } else {
-            // Fallback to Berlin coordinates if geolocation is not available
             model.addAttribute("userLatitude", 52.520008);
             model.addAttribute("userLongitude", 13.404954);
         }

@@ -51,6 +51,7 @@ public class Listing {
     @JsonIgnore
     private Set<Chat> chats = new HashSet<>();
 
+    // Getter und Setter
     public void setId(Long id) {
         this.id = id;
     }

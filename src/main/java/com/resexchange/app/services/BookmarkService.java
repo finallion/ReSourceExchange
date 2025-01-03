@@ -2,16 +2,12 @@ package com.resexchange.app.services;
 
 import com.resexchange.app.model.Bookmark;
 import com.resexchange.app.model.Listing;
-import com.resexchange.app.model.Notification;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.BookmarkRepository;
-import com.resexchange.app.repositories.NotificationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 /**
  * Service-Klasse, die Geschäftslogik für die Verwaltung von Bookmarks (Lesezeichen) bereitstellt.
@@ -34,12 +30,16 @@ import java.time.LocalDateTime;
     /**
      * Fügt ein neues Bookmark für einen Benutzer und ein Listing hinzu.
      *
-     * @param user    der Benutzer, der das Bookmark erstellt
-     * @param listing das Listing, das als Bookmark gespeichert werden soll
+     * Diese Methode speichert ein Bookmark, das mit einem Benutzer und einem Listing verknüpft ist.
+     * Wenn das Listing von einem anderen Benutzer als dem aktuellen Benutzer erstellt wurde,
+     * wird eine Benachrichtigung an den Ersteller des Listings gesendet.
      *
+     * @param user    Der Benutzer, der das Bookmark erstellt.
+     * @param listing Das Listing, das als Bookmark gespeichert werden soll.
      * @author Dominik
      */
-        public void addBookmark(User user, Listing listing) {
+
+    public void addBookmark(User user, Listing listing) {
             LOGGER.info("Attempting to add a bookmark for user: {} and listing: {}", user.getId(), listing.getId());
             try {
                 Bookmark bookmark = new Bookmark(listing, user);
@@ -65,11 +65,15 @@ import java.time.LocalDateTime;
     /**
      * Sucht ein Bookmark anhand seiner ID.
      *
-     * @param id die ID des Bookmarks
-     * @return das gefundene Bookmark
-     * @throws IllegalArgumentException wenn kein Bookmark mit der angegebenen ID gefunden wird
+     * Diese Methode durchsucht das Repository nach einem Bookmark mit der angegebenen ID.
+     * Wenn kein Bookmark mit dieser ID gefunden wird, wird eine `IllegalArgumentException` geworfen.
+     *
+     * @param id Die ID des Bookmarks, das gesucht werden soll.
+     * @return Das gefundene Bookmark.
+     * @throws IllegalArgumentException Wenn kein Bookmark mit der angegebenen ID gefunden wird.
      * @author Dominik
      */
+
     public Bookmark findById(Long id) {
         LOGGER.info("Looking for bookmark with id: {}", id);
 
@@ -91,10 +95,15 @@ import java.time.LocalDateTime;
     /**
      * Löscht ein Bookmark anhand seiner ID.
      *
-     * @param id die ID des zu löschenden Bookmarks
-     * @throws IllegalArgumentException wenn kein Bookmark mit der angegebenen ID gefunden wird
+     * Diese Methode prüft, ob ein Bookmark mit der angegebenen ID existiert. Wenn das Bookmark gefunden wird,
+     * wird es aus der Datenbank gelöscht. Falls kein Bookmark mit der angegebenen ID existiert,
+     * wird eine `IllegalArgumentException` geworfen.
+     *
+     * @param id Die ID des zu löschenden Bookmarks.
+     * @throws IllegalArgumentException Wenn kein Bookmark mit der angegebenen ID gefunden wird.
      * @author Dominik
      */
+
     public void deleteBookmark(Long id) {
         LOGGER.info("Attempting to delete bookmark with id: {}", id);
 
@@ -115,12 +124,15 @@ import java.time.LocalDateTime;
     /**
      * Überprüft, ob ein bestimmtes Listing bereits als Bookmark für einen Benutzer gespeichert wurde.
      *
-     * @param user    der Benutzer, dessen Bookmarks überprüft werden
-     * @param listing das Listing, das überprüft werden soll
-     * @return true, wenn das Listing bereits als Bookmark für den Benutzer existiert, andernfalls false
+     * Diese Methode prüft, ob das angegebene Listing bereits als Bookmark des angegebenen Benutzers existiert.
+     * Sie gibt `true` zurück, wenn das Bookmark bereits existiert, und `false`, wenn es noch nicht gespeichert wurde.
+     *
+     * @param user    Der Benutzer, dessen Bookmarks überprüft werden.
+     * @param listing Das Listing, das auf ein vorhandenes Bookmark geprüft werden soll.
+     * @return `true`, wenn das Listing bereits als Bookmark für den Benutzer existiert, andernfalls `false`.
      * @author Dominik
      */
-    public boolean BookmarkExist(User user, Listing listing) {
+    public boolean bookmarkExist(User user, Listing listing) {
         LOGGER.info("Checking if bookmark exists for user: {} and listing: {}", user.getId(), listing.getId());
 
         boolean exists = bookmarkRepository.existsByUserAndListing(user, listing);

@@ -18,20 +18,19 @@ public class Bookmark {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Primärschlüssel für Bookmark
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "listing_id")  // Fremdschlüssel zur Tabelle "Listing"
+    @JoinColumn(name = "listing_id")
     private Listing listing;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")  // Fremdschlüssel zur Tabelle "User"
+    @JoinColumn(name = "user_id")
     private User user;
 
-    // Standardkonstruktor (wird von JPA benötigt)
+    // Standardkonstruktor
     public Bookmark() {}
 
-    // Konstruktor mit Parametern
     public Bookmark(Listing listing, User owner) {
         this.listing = listing;
         this.user = owner;

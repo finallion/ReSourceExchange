@@ -3,11 +3,9 @@ package com.resexchange.app.services;
 import com.resexchange.app.model.Notification;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.NotificationRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -30,12 +28,13 @@ public class NotificationService {
     /**
      * Erstellt eine neue Benachrichtigung für den angegebenen Benutzer.
      *
-     * Diese Methode erstellt eine Benachrichtigung mit einer Nachricht und einem Link
+     * Diese Methode erstellt eine Benachrichtigung mit einer Nachricht und einem optionalen Link,
      * und speichert diese in der Datenbank.
+     * Wenn kein Link angegeben wird, bleibt der Link leer.
      *
      * @param user Der Benutzer, dem die Benachrichtigung gehört.
      * @param message Die Nachricht der Benachrichtigung.
-     * @param link Ein optionaler Link, der mit der Benachrichtigung verknüpft wird.
+     * @param link Ein optionaler Link, der mit der Benachrichtigung verknüpft wird (kann null sein).
      * @author Dominik
      */
     public void createNotification(User user, String message,String link) {
@@ -51,9 +50,10 @@ public class NotificationService {
      * Ruft alle nicht überprüften Benachrichtigungen für den angegebenen Benutzer ab.
      *
      * Diese Methode gibt eine Liste von Benachrichtigungen zurück, die noch nicht vom Benutzer überprüft wurden.
+     * Falls keine Benachrichtigungen gefunden werden, wird eine leere Liste zurückgegeben.
      *
      * @param userId Die ID des Benutzers, dessen Benachrichtigungen abgerufen werden sollen.
-     * @return Eine Liste von Benachrichtigungen für den angegebenen Benutzer.
+     * @return Eine Liste von Benachrichtigungen für den angegebenen Benutzer (kann leer sein, wenn keine Benachrichtigungen gefunden wurden).
      * @author Dominik
      */
     public List<Notification> getAllNotifications(Long userId) {
@@ -71,10 +71,12 @@ public class NotificationService {
     /**
      * Ruft eine Benachrichtigung anhand ihrer ID ab.
      *
-     * Diese Methode gibt eine einzelne Benachrichtigung zurück, die anhand ihrer ID gefunden wurde.
+     * Diese Methode gibt ein `Optional` zurück, das eine einzelne Benachrichtigung enthält,
+     * wenn sie anhand der gegebenen ID gefunden wird. Falls keine Benachrichtigung mit dieser ID
+     * existiert, wird ein leeres `Optional` zurückgegeben.
      *
      * @param id Die ID der Benachrichtigung, die abgerufen werden soll.
-     * @return Ein Optional mit der Benachrichtigung, wenn sie gefunden wurde.
+     * @return Ein `Optional` mit der Benachrichtigung, wenn sie gefunden wurde, ansonsten ein leeres `Optional`.
      * @author Dominik
      */
     public Optional<Notification> getNotificationById(Long id) {
@@ -86,6 +88,7 @@ public class NotificationService {
      * Löscht eine Benachrichtigung anhand ihrer ID.
      *
      * Diese Methode löscht die Benachrichtigung aus der Datenbank basierend auf ihrer ID.
+     * Falls die Benachrichtigung nicht gefunden wird, wird ein entsprechendes Log erzeugt.
      *
      * @param id Die ID der zu löschenden Benachrichtigung.
      * @author Dominik

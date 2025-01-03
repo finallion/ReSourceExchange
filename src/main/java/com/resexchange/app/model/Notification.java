@@ -22,6 +22,15 @@ public class Notification {
     private Boolean checked;
     private String link;
 
+    public Notification() {}
+
+    public Notification(String message, User user, Boolean read) {
+        this.message = message;
+        this.user = user;
+        this.checked = read;
+    }
+
+    // Getter und Setter
     public Boolean getChecked() {
         return checked;
     }
@@ -36,14 +45,6 @@ public class Notification {
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public Notification() {}
-
-    public Notification(String message, User user, Boolean read) {
-        this.message = message;
-        this.user = user;
-        this.checked = read;
     }
 
     public Long getId() {

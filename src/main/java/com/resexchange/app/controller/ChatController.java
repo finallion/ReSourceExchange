@@ -2,7 +2,7 @@ package com.resexchange.app.controller;
 
 import com.resexchange.app.model.Chat;
 import com.resexchange.app.model.Listing;
-import com.resexchange.app.model.Message;
+import com.resexchange.app.model.ChatMessage;
 import com.resexchange.app.model.User;
 import com.resexchange.app.repositories.ChatRepository;
 import com.resexchange.app.repositories.ListingRepository;
@@ -11,9 +11,6 @@ import com.resexchange.app.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.DestinationVariable;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,7 +84,7 @@ public class ChatController {
                     return chatRepository.save(newChat);
                 });
 
-        List<Message> messages = messageRepository.findByChatIdOrderByIdAsc(chat.getId());
+        List<ChatMessage> messages = messageRepository.findByChatIdOrderByIdAsc(chat.getId());
 
         model.addAttribute("chatId", chat.getId());
         model.addAttribute("loggedInUser", loggedInUser);

@@ -20,7 +20,7 @@
         <div class="col-md-8 col-lg-6">
 
                 <div class="card-header text-center">
-                    <h4>Chat Room</h4>
+                    <h4 th:text="#{chat.head}">Chat Room</h4>
                 </div>
                 <div class="card-body" style="max-height: 400px; overflow-y: auto;">
                     <input type="hidden" id="chatId" th:value="${chatId}" />
@@ -35,13 +35,13 @@
                 </div>
                 <div class="card-footer">
                     <div class="input-group">
-                        <input type="text" id="message-input" class="form-control" placeholder="Type a message...">
-                        <button id="send-button" class="btn btn-primary">Send</button>
+                        <input type="text" id="message-input" class="form-control" th:placeholder="#{chat.placeholder}">
+                        <button id="send-button" class="btn btn-primary" th:text="#{button.send}">Send</button>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-3">
-                <button class="btn btn-secondary" onclick="history.back()">Back</button>
+                <button class="btn btn-secondary" onclick="history.back()" th:text="#{button.back}">Back</button>
             </div>
 
     </div>

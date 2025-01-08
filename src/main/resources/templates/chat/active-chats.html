@@ -12,29 +12,28 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Your Active Chats</h1>
+    <h1 class="text-center mb-4" th:text="#{chat.activeChats}">Your Active Chats</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <ul class="list-group">
                 <li th:each="chat : ${activeChats}" class="list-group-item">
                     <div class="mb-2">
                         <strong>Listing:</strong> <span th:text="${chat.listing.material}"></span><br />
-                        <strong>Price:</strong> <span th:text="${chat.listing.price}"></span><br />
-                        <strong>Quantity:</strong> <span th:text="${chat.listing.quantity}"></span>
+                        <strong th:text="#{listing.price}">Price:</strong> <span th:text="${#numbers.formatDecimal(chat.listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span><br>
+                        <strong th:text="#{listing.quantity}">Quantity:</strong> <span th:text="${chat.listing.quantity}"></span>
                     </div>
                     <a th:href="@{/chat/{listingId}/{creatorId}/{initiatorId}(
                                 listingId=${chat.listing.id},
                                 creatorId=${chat.creator.id},
                                 initiatorId=${chat.initiator.id})}"
                        class="btn btn-primary">
-                        Chat with
-                        <span th:text="${chat.initiator.mail}" th:if="${chat.initiator.mail != loggedInUser.mail}"></span>
-                        <span th:text="${chat.creator.mail}" th:if="${chat.creator.mail != loggedInUser.mail}"></span>
+                        <span th:text="#{chat.chatWith} + ' ' + ${chat.initiator.mail}" th:if="${chat.initiator.mail != loggedInUser.mail}"></span>
+                        <span th:text="#{chat.chatWith} + ' ' + ${chat.creator.mail}" th:if="${chat.creator.mail != loggedInUser.mail}"></span>
                     </a>
                 </li>
             </ul>
             <div class="text-center mt-3">
-                <button class="btn btn-secondary" onclick="history.back()">Back</button>
+                <button class="btn btn-secondary" onclick="history.back()" th:text="#{button.back}">Back</button>
             </div>
         </div>
     </div>

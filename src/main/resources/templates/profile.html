@@ -34,7 +34,6 @@
         </div>
     </div>
 
-    <!-- Eigene Review bearbeiten oder hinzufügen -->
     <div class="mt-5" th:if="${isNewReview == false}">
         <h3 th:text="#{profile.review.yourReview}"></h3>
         <form th:action="@{/profile/review/edit}" th:method="post" class="mb-3">
@@ -59,7 +58,6 @@
         </form>
     </div>
 
-    <!-- Neues Review erstellen -->
     <div th:if="${isNewReview == true}">
         <h3 th:text="#{profile.review.add}"></h3>
         <form th:action="@{/profile/{userId}/review/create(userId=${profileUser.id})}" method="post">

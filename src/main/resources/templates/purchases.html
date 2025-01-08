@@ -10,7 +10,7 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 <div class="container mt-5">
-    <h1 class="text-center">My Purchases</h1>
+    <h1 class="text-center" th:text="#{purchases.myPurchases}">My Purchases</h1>
     <hr>
     <div class="row">
         <div class="col-12">
@@ -29,7 +29,7 @@
                                     <strong>Sold By:</strong> <span th:text="${listing.createdBy.name}">Seller</span><br>
                                     <strong>Buyer:</strong> <span th:text="${listing.buyer.name}">Buyer</span>
                                 </p>
-                                <a class="btn btn-primary w-100" th:href="@{/listing/{id}(id=${listing.id})}">
+                                <a class="btn btn-primary w-100" th:href="@{/listing/{id}(id=${listing.id})}" th:text="#{button.viewDetails}">
                                     View Details
                                 </a>
                             </div>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="text-center mt-3">
-        <button class="btn btn-secondary" onclick="history.back()">Back</button>
+        <button class="btn btn-secondary" onclick="history.back()" th:text="#{button.back}">Back</button>
     </div>
 </div>
 </body>

@@ -1,6 +1,6 @@
 package com.resexchange.app.controller;
 
-import com.resexchange.app.model.Message;
+import com.resexchange.app.model.ChatMessage;
 import com.resexchange.app.repositories.ChatRepository;
 import com.resexchange.app.repositories.MessageRepository;
 import org.slf4j.Logger;
@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
@@ -26,7 +27,7 @@ public class MessageController {
 
     @MessageMapping("/chat/{chatId}")
     @SendTo("/topic/chat/{chatId}")
-    public Message sendMessage(@DestinationVariable Long chatId, Message message) {
+    public ChatMessage sendMessage(@DestinationVariable Long chatId, @Payload ChatMessage message) {
         LOGGER.info("Received message for chatId: {}", chatId);
 
         var chat = chatRepository.findById(chatId)

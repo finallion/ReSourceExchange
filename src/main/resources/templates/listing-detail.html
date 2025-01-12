@@ -20,8 +20,7 @@
         <div class="card-body">
             <h3 th:text="${listing.material}">Material</h3>
             <p th:text="${listing.description}">Description</p>
-            <p><strong>Price:</strong> <span th:text="${listing.price}">10.00</span> <span th:text="${session.currency.toUpperCase()}">USD</span></p>
-
+            <p><strong th:text="#{listing.price} + ':'">Price:</strong> <span th:text="${#numbers.formatDecimal(listing.price * session.exchange_rate, 1, 2)} + ' ' + ${session.currency.toUpperCase()}"></span></span></p>
 
             <a th:if="${#authentication.name != listing.createdBy.mail or #authentication.authorities.contains('ROLE_ADMIN')}"
                th:href="@{/cart/add/{id}(id=${listing.id})}"

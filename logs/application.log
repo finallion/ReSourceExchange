@@ -762,3 +762,1125 @@ Caused by: java.net.ConnectException: Connection timed out: getsockopt
 2024-12-16 11:47:49 INFO  [http-nio-8080-exec-3] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
 2024-12-16 11:48:01 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
 2024-12-16 11:48:22 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-01-04 12:24:16 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 4284 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:24:16 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:24:17 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:24:17 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:24:17 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:24:17 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:24:17 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:24:17 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:24:17 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:24:17 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1631 ms
+2025-01-04 12:24:17 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:24:18 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:24:18 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:24:18 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:24:18 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:24:18 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3749c2b
+2025-01-04 12:24:18 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:24:19 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:24:19 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:24:19 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:24:20 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:24:22 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:24:22 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:24:25 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:24:25 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:24:26 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:24:26 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@380191d7]]
+2025-01-04 12:24:26 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:24:26 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:24:26 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:24:26 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.564 seconds (process running for 12.595)
+2025-01-04 12:24:26 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:24:26 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:24:26 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:24:26 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:24:34 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:24:34 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:24:34 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:24:34 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:24:34 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:24:35 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.0040073, Longitude: 12.0942038
+2025-01-04 12:24:35 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.0040073, longitude = 12.0942038
+2025-01-04 12:24:35 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:24:36 INFO  [http-nio-8080-exec-10] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=, materialId=null, sold=null, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=null, page=2
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=1
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.services.ListingService - Successfully retrieved 28 listings with applied filters
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:24:42 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:24:43 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.0040073, Longitude: 12.0942038
+2025-01-04 12:24:43 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=, materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, page=1
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=1
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.services.ListingService - Successfully retrieved 28 listings with applied filters
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:24:47 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:24:48 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.0040073, Longitude: 12.0942038
+2025-01-04 12:24:48 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:24:55 INFO  [http-nio-8080-exec-9] c.r.app.controller.ChatController - Creating new chat for Listing ID: 3, Creator ID: 3, Initiator ID: 1
+2025-01-04 12:24:55 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:25:26 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 6, active threads = 0, queued tasks = 0, completed tasks = 6], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-01-04 12:27:30 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Filtering listings with parameters: keyword=, materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, page=1
+2025-01-04 12:27:30 INFO  [http-nio-8080-exec-6] c.r.app.controller.ListingController - Fetching listings with filters: materialId=null, sold=false, bookmarked=null, minPrice=null, maxPrice=null
+2025-01-04 12:27:30 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Attempting to retrieve filtered listings with parameters: materialId=null, sold=false, bookmarked=null, userId=null, minPrice=null, maxPrice=null, minQuantity=null, maxQuantity=null, own=false, ownedId=1
+2025-01-04 12:27:30 INFO  [http-nio-8080-exec-6] c.r.app.services.ListingService - Successfully retrieved 28 listings with applied filters
+2025-01-04 12:27:31 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:27:31 INFO  [http-nio-8080-exec-6] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:27:31 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:27:31 INFO  [http-nio-8080-exec-6] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.0040073, Longitude: 12.0942038
+2025-01-04 12:27:31 WARN  [http-nio-8080-exec-6] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-6][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:27:35 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:29:21 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@380191d7]]
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:29:21 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:29:25 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 12376 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:29:25 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:29:26 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:29:26 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:29:26 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:29:26 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:29:26 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:29:26 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:29:26 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:29:26 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1270 ms
+2025-01-04 12:29:26 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:29:26 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:29:26 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:29:27 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:29:27 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:29:27 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c0b0bd9
+2025-01-04 12:29:27 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:29:27 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:29:27 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:29:27 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:29:28 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:29:31 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:29:31 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:29:33 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:29:33 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:29:34 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:29:34 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@66ffee26]]
+2025-01-04 12:29:34 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:29:34 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:29:34 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:29:34 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 9.306 seconds (process running for 10.153)
+2025-01-04 12:29:34 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:29:34 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:29:34 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:29:42 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:29:49 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:29:49 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:29:50 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:29:50 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:29:50 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:29:50 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.0040073, Longitude: 12.0942038
+2025-01-04 12:29:50 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.0040073, longitude = 12.0942038
+2025-01-04 12:29:50 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:29:54 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:29:57 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:29:57 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[47], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/1], content-length=[47]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=1}, simpSessionAttributes={}, simpHeartbeat=[J@75feac6a, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@18a6dfa1, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=A07CD78D98928A008E743E2D2CF4E50C], Granted Authorities=[MANAGE_MATERIALS, CHAT, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/1, simpSessionId=d81ec8a5-4d68-6527-b1d6-ecbbad0f782e, simpDestination=/app/chat/1}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:30:15 WARN  [clientInboundChannel-10] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:30:15 ERROR [clientInboundChannel-10] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/1], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=1}, simpSessionAttributes={}, simpHeartbeat=[J@36879e67, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@18a6dfa1, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=A07CD78D98928A008E743E2D2CF4E50C], Granted Authorities=[MANAGE_MATERIALS, CHAT, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/1, simpSessionId=d81ec8a5-4d68-6527-b1d6-ecbbad0f782e, simpDestination=/app/chat/1}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:30:34 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 12, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-01-04 12:31:13 WARN  [clientInboundChannel-13] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:31:13 ERROR [clientInboundChannel-13] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[46], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/1], content-length=[46]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=1}, simpSessionAttributes={}, simpHeartbeat=[J@39645d0, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@18a6dfa1, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=A07CD78D98928A008E743E2D2CF4E50C], Granted Authorities=[MANAGE_MATERIALS, CHAT, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/1, simpSessionId=d81ec8a5-4d68-6527-b1d6-ecbbad0f782e, simpDestination=/app/chat/1}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:35:44 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@66ffee26]]
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:35:44 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:35:46 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 4876 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:35:46 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:35:47 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:35:47 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:35:47 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:35:47 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:35:47 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:35:47 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:35:47 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:35:47 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1262 ms
+2025-01-04 12:35:47 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:35:48 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:35:48 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:35:48 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:35:48 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:35:48 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e50eb3f
+2025-01-04 12:35:48 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:35:48 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:35:48 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:35:48 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:35:49 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:35:52 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:35:52 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:35:54 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:35:54 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:35:55 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:35:55 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@20520eb6]]
+2025-01-04 12:35:55 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:35:55 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:35:55 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:35:55 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 9.117 seconds (process running for 9.856)
+2025-01-04 12:35:55 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:35:55 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:35:55 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:35:55 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:36:00 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:36:00 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:36:01 INFO  [http-nio-8080-exec-10] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:36:01 INFO  [http-nio-8080-exec-10] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:36:01 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:36:02 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.0040073, Longitude: 12.0942038
+2025-01-04 12:36:02 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.0040073, longitude = 12.0942038
+2025-01-04 12:36:02 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:36:06 INFO  [http-nio-8080-exec-5] c.r.app.controller.ChatController - Creating new chat for Listing ID: 2, Creator ID: 2, Initiator ID: 1
+2025-01-04 12:36:07 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:36:14 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:36:14 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[47], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-length=[47]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@697a58e, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@6a694da7, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=44129DECE652AE777CADB0E8487A47F3], Granted Authorities=[CHAT, MANAGE_MATERIALS, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/2, simpSessionId=77e70d92-777a-4f1c-f293-6b455430bfdc, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:36:55 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 9, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-01-04 12:42:26 WARN  [clientInboundChannel-10] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:42:26 ERROR [clientInboundChannel-10] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@66b3628a, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@6a694da7, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=44129DECE652AE777CADB0E8487A47F3], Granted Authorities=[CHAT, MANAGE_MATERIALS, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/2, simpSessionId=77e70d92-777a-4f1c-f293-6b455430bfdc, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:43:00 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@20520eb6]]
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:43:00 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:43:03 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 14416 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:43:03 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:43:04 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:43:04 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:43:04 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:43:04 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:43:04 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:43:04 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:43:04 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:43:04 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1249 ms
+2025-01-04 12:43:04 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:43:04 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:43:04 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:43:05 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:43:05 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:43:05 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c06b1bc
+2025-01-04 12:43:05 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:43:05 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:43:05 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:43:05 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:43:06 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:43:09 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:43:09 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:43:12 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:43:12 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:43:13 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:43:13 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@20520eb6]]
+2025-01-04 12:43:13 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:43:13 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:43:13 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:43:13 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.737 seconds (process running for 11.538)
+2025-01-04 12:43:13 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:43:13 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:43:13 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:43:45 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:43:51 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:43:51 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:43:51 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:43:51 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:43:51 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:43:52 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 12:43:52 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 12:43:52 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:44:15 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-01-04 12:44:24 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:44:28 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:44:28 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@6d0febd4, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@69c0458f, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DA1583946E9A50D19EEEDA550B6CBD12], Granted Authorities=[MANAGE_MATERIALS, MANAGE_LISTINGS, CHAT, ADMIN]], lookupDestination=/chat/2, simpSessionId=489587ca-ef52-8fc1-bcbb-65cff4c66cbe, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:48:02 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@20520eb6]]
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:48:02 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:48:05 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 13528 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:48:05 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:48:06 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:48:06 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:48:06 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:48:06 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:48:06 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:48:06 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:48:06 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:48:06 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1245 ms
+2025-01-04 12:48:06 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:48:06 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:48:07 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:48:07 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:48:07 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:48:07 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1d8dbf10
+2025-01-04 12:48:07 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:48:07 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:48:07 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:48:07 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:48:08 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:48:11 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:48:12 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:48:14 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:48:14 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:48:15 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:48:15 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@122673fe]]
+2025-01-04 12:48:15 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:48:15 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:48:15 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:48:15 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.724 seconds (process running for 11.464)
+2025-01-04 12:48:15 INFO  [http-nio-8080-exec-8] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:48:15 INFO  [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:48:15 INFO  [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:48:30 INFO  [http-nio-8080-exec-3] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:48:35 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:48:35 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:48:36 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:48:36 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:48:36 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:48:37 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 12:48:37 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 12:48:37 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:48:43 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:49:15 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:50:35 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@122673fe]]
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:50:35 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:50:38 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 14076 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:50:38 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:50:38 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:50:38 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:50:39 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:50:39 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:50:39 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:50:39 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:50:39 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:50:39 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1208 ms
+2025-01-04 12:50:39 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:50:39 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:50:39 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:50:40 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:50:40 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:50:40 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c06b1bc
+2025-01-04 12:50:40 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:50:40 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:50:40 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:50:40 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:50:41 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:50:44 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:50:44 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:50:46 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:50:47 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:50:48 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:50:48 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2fe12b04]]
+2025-01-04 12:50:48 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:50:48 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:50:48 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:50:48 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.335 seconds (process running for 11.05)
+2025-01-04 12:51:03 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:51:03 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:51:03 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-01-04 12:51:15 INFO  [http-nio-8080-exec-4] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:51:23 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:51:23 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:51:23 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:51:23 INFO  [http-nio-8080-exec-7] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:51:23 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:51:24 INFO  [http-nio-8080-exec-7] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 12:51:24 INFO  [http-nio-8080-exec-7] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 12:51:24 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:51:27 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:51:32 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:51:32 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@3de362f1, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@69337ee4, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=39E89D40EE404B391896856662B81C4D], Granted Authorities=[MANAGE_MATERIALS, CHAT, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/2, simpSessionId=k0zyi1jl, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:51:48 INFO  [MessageBroker-6] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 9, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 9, active threads = 1, queued tasks = 2, completed tasks = 5]
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:52:39 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2fe12b04]]
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:52:39 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:52:43 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 1652 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:52:43 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:52:43 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:52:43 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:52:44 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:52:44 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:52:44 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:52:44 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:52:44 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:52:44 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1282 ms
+2025-01-04 12:52:44 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:52:44 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:52:44 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:52:44 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:52:45 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:52:45 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76ed7573
+2025-01-04 12:52:45 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:52:45 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:52:45 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:52:45 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:52:46 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:52:49 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:52:50 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:52:53 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:52:53 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:52:54 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:52:54 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@71e55649]]
+2025-01-04 12:52:54 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:52:54 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:52:54 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:52:54 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 11.795 seconds (process running for 12.541)
+2025-01-04 12:52:54 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:52:54 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:52:54 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:52:54 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 12:53:00 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 12:53:00 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 12:53:01 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 12:53:01 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 12:53:01 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 12:53:01 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 12:53:01 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 12:53:01 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:53:04 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 12:53:08 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 12:53:08 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@5f313509, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@6935bb13, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=02F8F4AF09D0E5D13A9B6C640482038A], Granted Authorities=[CHAT, MANAGE_MATERIALS, MANAGE_LISTINGS, ADMIN]], lookupDestination=/chat/2, simpSessionId=xg0aml3s, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 12:53:54 INFO  [MessageBroker-5] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 9, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 11]
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:55:59 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@71e55649]]
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:55:59 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:56:01 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 2856 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:56:01 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:56:02 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:56:02 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:56:03 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:56:03 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:56:03 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:56:03 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:56:03 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:56:03 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1235 ms
+2025-01-04 12:56:03 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:56:03 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:56:03 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:56:03 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:56:03 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:56:04 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51df2a41
+2025-01-04 12:56:04 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:56:04 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:56:04 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:56:04 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:56:05 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 12:56:07 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:56:08 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 12:56:10 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 12:56:10 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 12:56:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 12:56:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@21b8e988]]
+2025-01-04 12:56:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 12:56:11 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:56:11 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 12:56:11 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.484 seconds (process running for 11.225)
+2025-01-04 12:56:19 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 12:56:19 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 12:56:19 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 12:57:11 INFO  [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 6, active threads = 0, queued tasks = 0, completed tasks = 6], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 13]
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 12:59:50 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@21b8e988]]
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 12:59:50 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 12:59:54 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 592 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 12:59:54 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 12:59:55 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 12:59:55 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56 ms. Found 9 JPA repository interfaces.
+2025-01-04 12:59:55 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 12:59:55 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 12:59:55 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 12:59:55 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 12:59:55 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 12:59:55 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1250 ms
+2025-01-04 12:59:55 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 12:59:55 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 12:59:55 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 12:59:56 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 12:59:56 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 12:59:56 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@54f69311
+2025-01-04 12:59:56 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 12:59:56 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 12:59:56 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 12:59:56 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 12:59:57 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 13:00:00 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:00:01 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 13:00:03 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 13:00:03 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 13:00:04 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 13:00:04 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@451211cf]]
+2025-01-04 13:00:04 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 13:00:04 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:00:04 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 13:00:04 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.187 seconds (process running for 10.927)
+2025-01-04 13:00:05 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 13:00:05 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 13:00:05 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 13:00:05 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:00:11 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:00:11 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 13:00:11 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:00:11 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:00:11 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:00:12 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:00:12 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:00:12 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:00:15 WARN  [http-nio-8080-exec-8] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-8][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:00:20 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:00:20 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:00:20 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-type=[application/json], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@1beff663, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@7722b2de, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=CF025702DE9D4D35DCBFA010C7E729C1], Granted Authorities=[CHAT, MANAGE_MATERIALS, MANAGE_LISTINGS, ADMIN]], contentType=application/json, lookupDestination=/chat/2, simpSessionId=aiisqfvn, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 13:01:04 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 9, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 11]
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 13:01:55 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@451211cf]]
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 13:01:55 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 13:02:02 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 2956 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 13:02:02 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 13:02:03 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 13:02:03 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52 ms. Found 9 JPA repository interfaces.
+2025-01-04 13:02:03 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 13:02:03 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:02:03 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 13:02:03 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 13:02:03 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 13:02:03 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1400 ms
+2025-01-04 13:02:03 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 13:02:03 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 13:02:03 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 13:02:04 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 13:02:04 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 13:02:04 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c0b0bd9
+2025-01-04 13:02:04 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 13:02:04 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 13:02:04 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 13:02:04 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 13:02:05 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 13:02:08 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:02:08 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 13:02:10 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 13:02:10 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 13:02:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 13:02:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@41b78022]]
+2025-01-04 13:02:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 13:02:11 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:02:11 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 13:02:11 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 9.783 seconds (process running for 10.5)
+2025-01-04 13:02:15 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 13:02:15 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 13:02:15 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 13:02:17 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:02:22 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:02:22 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 13:02:23 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:02:23 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:02:23 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:02:24 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:02:24 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:02:24 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:02:26 WARN  [http-nio-8080-exec-2] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-2][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:02:29 WARN  [clientInboundChannel-16] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:02:29 WARN  [clientInboundChannel-16] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:02:29 ERROR [clientInboundChannel-16] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[45], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-type=[application/json], content-length=[45]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@33802768, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@31d6934d, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=0F64B724F06C6655164E1B967A9EA4C3], Granted Authorities=[CHAT, MANAGE_LISTINGS, MANAGE_MATERIALS, ADMIN]], contentType=application/json, lookupDestination=/chat/2, simpSessionId=iqhjx4cv, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 13:03:11 INFO  [MessageBroker-11] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 18, active threads = 0, queued tasks = 0, completed tasks = 18], outboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 13]
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 13:04:14 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@41b78022]]
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 13:04:14 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 13:04:18 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 2888 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 13:04:18 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 13:04:18 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 13:04:19 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 9 JPA repository interfaces.
+2025-01-04 13:04:19 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 13:04:19 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:04:19 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 13:04:19 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 13:04:19 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 13:04:19 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1224 ms
+2025-01-04 13:04:19 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 13:04:19 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 13:04:19 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 13:04:20 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 13:04:20 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 13:04:20 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@537451d5
+2025-01-04 13:04:20 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 13:04:20 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 13:04:20 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 13:04:20 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 13:04:21 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 13:04:24 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:04:24 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 13:04:26 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 13:04:26 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 13:04:27 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 13:04:27 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@bb2c986]]
+2025-01-04 13:04:27 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 13:04:27 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:04:27 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 13:04:27 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 9.837 seconds (process running for 10.545)
+2025-01-04 13:04:27 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 13:04:27 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 13:04:27 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 13:04:28 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:04:29 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:04:30 INFO  [http-nio-8080-exec-9] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:04:35 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:04:35 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 13:04:35 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:04:35 INFO  [http-nio-8080-exec-1] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:04:35 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:04:36 INFO  [http-nio-8080-exec-1] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:04:36 INFO  [http-nio-8080-exec-1] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:04:36 WARN  [http-nio-8080-exec-1] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:04:37 INFO  [http-nio-8080-exec-5] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:04:39 INFO  [http-nio-8080-exec-4] c.r.app.controller.ChatController - Creating new chat for Listing ID: 4, Creator ID: 2, Initiator ID: 1
+2025-01-04 13:04:39 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:04:43 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:04:43 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:04:43 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[46], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/3], content-type=[application/json], content-length=[46]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=3}, simpSessionAttributes={}, simpHeartbeat=[J@48795ecc, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@3e4bd962, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=D2B40D4B367FDD1F16CE145ED67BAB28], Granted Authorities=[MANAGE_MATERIALS, CHAT, MANAGE_LISTINGS, ADMIN]], contentType=application/json, lookupDestination=/chat/3, simpSessionId=2o345jtd, simpDestination=/app/chat/3}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 13:05:27 INFO  [MessageBroker-8] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 9, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 11]
+2025-01-04 13:07:32 WARN  [clientInboundChannel-10] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:07:32 WARN  [clientInboundChannel-10] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.Message]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:07:32 ERROR [clientInboundChannel-10] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.Message] for GenericMessage [payload=byte[49], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/3], content-type=[application/json], content-length=[49]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=3}, simpSessionAttributes={}, simpHeartbeat=[J@1d7c70c9, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@3e4bd962, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=D2B40D4B367FDD1F16CE145ED67BAB28], Granted Authorities=[MANAGE_MATERIALS, CHAT, MANAGE_LISTINGS, ADMIN]], contentType=application/json, lookupDestination=/chat/3, simpSessionId=2o345jtd, simpDestination=/app/chat/3}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 13:11:57 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@bb2c986]]
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 13:11:57 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 13:12:01 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 12792 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 13:12:01 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 13:12:02 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 13:12:02 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57 ms. Found 9 JPA repository interfaces.
+2025-01-04 13:12:02 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 13:12:02 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:12:03 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 13:12:03 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 13:12:03 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 13:12:03 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1273 ms
+2025-01-04 13:12:03 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 13:12:03 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 13:12:03 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 13:12:03 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 13:12:03 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 13:12:04 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51df2a41
+2025-01-04 13:12:04 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 13:12:04 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 13:12:04 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 13:12:04 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 13:12:05 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 13:12:08 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:12:08 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 13:12:10 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 13:12:10 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 13:12:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 13:12:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@79091c84]]
+2025-01-04 13:12:11 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 13:12:11 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:12:11 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 13:12:11 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.046 seconds (process running for 10.783)
+2025-01-04 13:12:16 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 13:12:16 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 13:12:16 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 13:12:19 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:12:28 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:12:28 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 13:12:28 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:12:28 INFO  [http-nio-8080-exec-9] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:12:28 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:12:29 INFO  [http-nio-8080-exec-9] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:12:29 INFO  [http-nio-8080-exec-9] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:12:29 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:12:31 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:12:34 WARN  [http-nio-8080-exec-3] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:12:39 WARN  [clientInboundChannel-16] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.ChatMessage]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:12:39 WARN  [clientInboundChannel-16] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.ChatMessage]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:12:39 ERROR [clientInboundChannel-16] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.ChatMessage] for GenericMessage [payload=byte[47], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-type=[application/json], content-length=[47]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@4265130a, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@798756d5, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=EC215D93F269FC984BA2F257522D33C1], Granted Authorities=[CHAT, MANAGE_LISTINGS, MANAGE_MATERIALS, ADMIN]], contentType=application/json, lookupDestination=/chat/2, simpSessionId=11iqb0jx, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 13:13:11 INFO  [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 18, active threads = 0, queued tasks = 0, completed tasks = 18], outboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 12]
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 13:15:44 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@79091c84]]
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 13:15:44 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 13:15:48 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 4284 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 13:15:48 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 13:15:48 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 13:15:48 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 9 JPA repository interfaces.
+2025-01-04 13:15:49 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 13:15:49 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:15:49 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 13:15:49 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 13:15:49 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 13:15:49 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1217 ms
+2025-01-04 13:15:49 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 13:15:49 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 13:15:49 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 13:15:49 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 13:15:49 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 13:15:50 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@432f4626
+2025-01-04 13:15:50 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 13:15:50 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 13:15:50 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 13:15:50 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 13:15:51 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 13:15:55 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:15:55 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 13:15:57 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 13:15:57 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 13:15:58 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 13:15:58 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2472d568]]
+2025-01-04 13:15:58 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 13:15:58 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:15:58 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 13:15:58 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 10.621 seconds (process running for 11.311)
+2025-01-04 13:15:59 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 13:15:59 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 13:15:59 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-04 13:15:59 INFO  [http-nio-8080-exec-2] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:16:04 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:16:04 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 13:16:04 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:16:04 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:16:04 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:16:05 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:16:05 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:16:05 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:16:07 INFO  [http-nio-8080-exec-8] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:16:07 WARN  [http-nio-8080-exec-9] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-9][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:16:08 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:16:11 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.ChatMessage]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:16:11 WARN  [clientInboundChannel-7] o.s.m.c.MappingJackson2MessageConverter - Failed to evaluate Jackson deserialization for type [[simple type, class com.resexchange.app.model.ChatMessage]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Multiple back-reference properties with name 'defaultReference'
+2025-01-04 13:16:11 ERROR [clientInboundChannel-7] o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Unhandled exception from message handler method
+org.springframework.messaging.converter.MessageConversionException: Cannot convert from [[B] to [com.resexchange.app.model.ChatMessage] for GenericMessage [payload=byte[47], headers={simpMessageType=MESSAGE, stompCommand=SEND, nativeHeaders={destination=[/app/chat/2], content-type=[application/json], content-length=[47]}, DestinationVariableMethodArgumentResolver.templateVariables={chatId=2}, simpSessionAttributes={}, simpHeartbeat=[J@77cb9a75, simpUser=UsernamePasswordAuthenticationToken [Principal=com.resexchange.app.security.REUserDetails@67d88615, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=D65D38964E5C3C3A06C6280A9C882B63], Granted Authorities=[CHAT, MANAGE_MATERIALS, MANAGE_LISTINGS, ADMIN]], contentType=application/json, lookupDestination=/chat/2, simpSessionId=gk1lcjg5, simpDestination=/app/chat/2}]
+	at org.springframework.messaging.handler.annotation.support.PayloadMethodArgumentResolver.resolveArgument(PayloadMethodArgumentResolver.java:151)
+	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:118)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:147)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:115)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMatch(AbstractMethodMessageHandler.java:568)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:530)
+	at org.springframework.messaging.simp.annotation.support.SimpAnnotationMethodMessageHandler.handleMatch(SimpAnnotationMethodMessageHandler.java:93)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessageInternal(AbstractMethodMessageHandler.java:522)
+	at org.springframework.messaging.handler.invocation.AbstractMethodMessageHandler.handleMessage(AbstractMethodMessageHandler.java:457)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask.run(ExecutorSubscribableChannel.java:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-04 13:16:58 INFO  [MessageBroker-3] o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 9, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 2, completed tasks = 13]
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-04 13:17:51 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2472d568]]
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-04 13:17:51 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-04 13:17:55 INFO  [main] c.r.app.ResourceExchangeApplication - Starting ResourceExchangeApplication using Java 21.0.4 with PID 6168 (C:\Users\lbret\OneDrive\Desktop\SE\target\classes started by lbret in C:\Users\lbret\OneDrive\Desktop\SE)
+2025-01-04 13:17:55 INFO  [main] c.r.app.ResourceExchangeApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-04 13:17:55 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-04 13:17:55 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 9 JPA repository interfaces.
+2025-01-04 13:17:56 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-04 13:17:56 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:17:56 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-04 13:17:56 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-04 13:17:56 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-04 13:17:56 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1259 ms
+2025-01-04 13:17:56 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-04 13:17:56 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.1.Final
+2025-01-04 13:17:56 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-04 13:17:56 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-04 13:17:56 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-04 13:17:57 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c06b1bc
+2025-01-04 13:17:57 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-04 13:17:57 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.60 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-01-04 13:17:57 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-04 13:17:57 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.60
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-04 13:17:58 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-04 13:18:00 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-04 13:18:01 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-04 13:18:03 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-04 13:18:03 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name REUserDetailsService
+2025-01-04 13:18:03 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-01-04 13:18:03 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@624cc07]]
+2025-01-04 13:18:03 INFO  [main] o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-01-04 13:18:03 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-04 13:18:03 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-04 13:18:03 INFO  [main] c.r.app.ResourceExchangeApplication - Started ResourceExchangeApplication in 9.347 seconds (process running for 10.065)
+2025-01-04 13:18:04 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-04 13:18:04 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-04 13:18:04 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-01-04 13:18:06 INFO  [main] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:18:06 INFO  [main] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:18:06 INFO  [main] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:18:07 INFO  [main] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:18:07 INFO  [main] c.r.app.services.UserService - Geocoding address for user: max.mustermann@example.com
+2025-01-04 13:18:07 INFO  [main] c.r.app.services.UserService - Address for user max.mustermann@example.com: Jägergasse 9 Ergolding, 84030 Germany
+2025-01-04 13:18:07 INFO  [main] c.r.app.services.GeocodingService - Start geocoding for address: Jägergasse 9, Ergolding, 84030, Germany
+2025-01-04 13:18:08 INFO  [main] c.r.app.services.GeocodingService - Geocoding successful for address: Jägergasse 9, Ergolding, 84030, Germany, Latitude: 48.57576958191031, Longitude: 12.170818031144385
+2025-01-04 13:18:08 INFO  [http-nio-8080-exec-6] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:18:08 INFO  [main] c.r.app.services.UserService - Geocoding address for user: erika.musterfrau@example.com
+2025-01-04 13:18:08 INFO  [main] c.r.app.services.UserService - Address for user erika.musterfrau@example.com: Hans-Hayder-Straße 2 Regensburg, 93059 Germany
+2025-01-04 13:18:08 INFO  [main] c.r.app.services.GeocodingService - Start geocoding for address: Hans-Hayder-Straße 2, Regensburg, 93059, Germany
+2025-01-04 13:18:09 INFO  [main] c.r.app.services.GeocodingService - Geocoding successful for address: Hans-Hayder-Straße 2, Regensburg, 93059, Germany, Latitude: 49.033989500000004, Longitude: 12.112104513835074
+2025-01-04 13:18:13 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:18:13 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - No currency set. Defaulting to: eur
+2025-01-04 13:18:14 INFO  [http-nio-8080-exec-10] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:18:14 INFO  [http-nio-8080-exec-10] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:18:14 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:18:14 INFO  [http-nio-8080-exec-10] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:18:14 INFO  [http-nio-8080-exec-10] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:18:14 WARN  [http-nio-8080-exec-10] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-10][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:18:15 INFO  [http-nio-8080-exec-3] c.r.app.controller.AuthController - Accessing the login page
+2025-01-04 13:18:17 INFO  [http-nio-8080-exec-4] c.r.app.controller.ChatController - Creating new chat for Listing ID: 2, Creator ID: 2, Initiator ID: 1
+2025-01-04 13:18:17 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:18:24 INFO  [clientInboundChannel-16] c.r.app.controller.MessageController - Received message for chatId: 1
+2025-01-04 13:18:24 INFO  [clientInboundChannel-16] c.r.app.controller.MessageController - Message saved successfully for chatId: 1
+2025-01-04 13:18:28 INFO  [clientInboundChannel-19] c.r.app.controller.MessageController - Received message for chatId: 1
+2025-01-04 13:18:29 INFO  [clientInboundChannel-19] c.r.app.controller.MessageController - Message saved successfully for chatId: 1
+2025-01-04 13:18:30 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:18:31 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:18:31 INFO  [http-nio-8080-exec-4] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:18:31 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:18:31 INFO  [http-nio-8080-exec-4] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:18:31 INFO  [http-nio-8080-exec-4] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:18:31 WARN  [http-nio-8080-exec-4] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-4][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:18:33 WARN  [http-nio-8080-exec-7] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-7][chat/chat] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template chat/chat, line 17, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-01-04 13:18:37 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Logged in user: admin@admin.com
+2025-01-04 13:18:38 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Geocoding address for user: admin@admin.com
+2025-01-04 13:18:38 INFO  [http-nio-8080-exec-5] c.r.app.services.UserService - Address for user admin@admin.com: Seybothstraße 6 Regensburg, 93053 Germany
+2025-01-04 13:18:38 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Start geocoding for address: Seybothstraße 6, Regensburg, 93053, Germany
+2025-01-04 13:18:38 INFO  [http-nio-8080-exec-5] c.r.app.services.GeocodingService - Geocoding successful for address: Seybothstraße 6, Regensburg, 93053, Germany, Latitude: 49.004007256048666, Longitude: 12.094070385728322
+2025-01-04 13:18:38 INFO  [http-nio-8080-exec-5] c.r.app.controller.HomeController - Geocoded address for user admin@admin.com: latitude = 49.004007256048666, longitude = 12.094070385728322
+2025-01-04 13:18:38 WARN  [http-nio-8080-exec-5] o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][main] Deprecated unwrapped fragment expression "fragments/navbar :: navbar" found in template main, line 29, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments/navbar :: navbar}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.

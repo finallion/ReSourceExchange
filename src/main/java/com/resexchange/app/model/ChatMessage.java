@@ -1,20 +1,26 @@
 package com.resexchange.app.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-public class Message {
+public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
     private String sender;
     @ManyToOne
+    @JsonIgnore
     private Chat chat;
 
-    public Message() {
+    public ChatMessage() {
 
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

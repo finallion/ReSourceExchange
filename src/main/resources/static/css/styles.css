@@ -60,11 +60,12 @@
 .main-page {
     display: flex;
     flex-direction: row;
+    height: 100%;
     padding-top: 5px;
 }
 
 .side-bar {
-    height: 800px;                      <!-- REMOVE -->
+    height: 900px;                      <!-- REMOVE -->
     padding: 10px;
     width: 20%;
     background-color: #f8f9fa;
@@ -74,7 +75,7 @@
 
 .listings, #map-container {
     width: 80%;
-    height: 800px;                      <!-- REMOVE -->
+    height: 850px;                      <!-- REMOVE -->
     border: 1px solid grey;
 }
 
